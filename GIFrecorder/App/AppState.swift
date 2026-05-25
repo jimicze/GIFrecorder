@@ -1,5 +1,6 @@
 import Foundation
 import SwiftUI
+import AppKit
 import Combine
 
 /// Central app state shared across all SwiftUI views.
@@ -27,6 +28,8 @@ final class AppState: ObservableObject {
     @Published var lastError: String?
     @Published var lastRecordingSession: RecordingSession?
     @Published var exportedFileURL: URL?
+    /// Thumbnail of the most recently exported file. Generated asynchronously after export.
+    @Published var lastExportThumbnail: NSImage?
     @Published var screenRecordingPermission: ScreenRecordingPermission = .unknown
     /// 0.0–1.0 progress during `.exporting`; reset to 0 at start of each export.
     @Published var exportProgress: Double = 0

@@ -22,6 +22,7 @@
 		5975A680C0D79E5CAD09BEB1 /* SelectionWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3F0C6C148BE8DA280B7C70E /* SelectionWindow.swift */; };
 		62B4697CCA165A539FAE664D /* ExportFormat+UTType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89478859E3CC7B0B22435C67 /* ExportFormat+UTType.swift */; };
 		65F0AF2AAD09439B22133C28 /* ExportFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48229557738F3D7267CA3026 /* ExportFormat.swift */; };
+		7AF61EBA5131350A8221A1B2 /* ThumbnailGeneratorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9320BC32AB8A268DD1D9557E /* ThumbnailGeneratorTests.swift */; };
 		8430EECDC23066C7CD45A972 /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCA629E340E34540B9A50BB /* AppSettings.swift */; };
 		86B1BC4315237E9310220643 /* AppSettingsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D752AD68B50501093CD63C66 /* AppSettingsTests.swift */; };
 		89996CDD87C41F5D3A501BB6 /* GlobalHotkeyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6484BF8A816A50BA4971F738 /* GlobalHotkeyManager.swift */; };
@@ -29,6 +30,7 @@
 		A0D5D5CA02DDC134D7632812 /* MenuBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4BEAEDC998C107E59A43368 /* MenuBarView.swift */; };
 		AF83A0DCCBBAE1910C182BC4 /* SelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CEEB7F12D86F2CCE408F7E /* SelectionView.swift */; };
 		B98901E657F9B7DDBF608B0A /* MP4Exporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A6E4F7A62F8108F46F3B8DD /* MP4Exporter.swift */; };
+		B9ACDF3BF4D960DB24835417 /* ThumbnailGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92C28A75F7A0E915705351A1 /* ThumbnailGenerator.swift */; };
 		BEECC49900C4D7B1E737B97C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A878D61E7C863CB1F676DA9C /* AppDelegate.swift */; };
 		C0C42F7BEAA9B2A29491C56D /* RecordingEngineTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F72CA2F8F7183656B19C635 /* RecordingEngineTests.swift */; };
 		C2279A2291FFB30FC4111DFB /* GIFrecorderApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC62BAFDB3E5B84B8975C8F9 /* GIFrecorderApp.swift */; };
@@ -78,6 +80,8 @@
 		7B28ECA020812E059719EFE6 /* WindowSnapManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowSnapManager.swift; sourceTree = "<group>"; };
 		89478859E3CC7B0B22435C67 /* ExportFormat+UTType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ExportFormat+UTType.swift"; sourceTree = "<group>"; };
 		8C34DCB759F2E142A4151EE3 /* GIFrecorder.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = GIFrecorder.entitlements; sourceTree = "<group>"; };
+		92C28A75F7A0E915705351A1 /* ThumbnailGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThumbnailGenerator.swift; sourceTree = "<group>"; };
+		9320BC32AB8A268DD1D9557E /* ThumbnailGeneratorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThumbnailGeneratorTests.swift; sourceTree = "<group>"; };
 		9EB929968B9E583C6B290AC0 /* RecordingCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordingCoordinator.swift; sourceTree = "<group>"; };
 		A42585CB3F8FA189713D56B6 /* RecordingEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordingEngine.swift; sourceTree = "<group>"; };
 		A878D61E7C863CB1F676DA9C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -110,6 +114,7 @@
 				3793B9B5890E772328454D7E /* GIFExporterTests.swift */,
 				3F72CA2F8F7183656B19C635 /* RecordingEngineTests.swift */,
 				732AF30F79EE733FA2ED4917 /* RecordingSessionTests.swift */,
+				9320BC32AB8A268DD1D9557E /* ThumbnailGeneratorTests.swift */,
 				4239AF619966A5BFA273E516 /* WindowSnapManagerTests.swift */,
 				06F9804B1E5750EB8AE2AA9A /* Fixtures */,
 			);
@@ -153,6 +158,7 @@
 				168FE28F2C17B95E94D16629 /* GIFExporter.swift */,
 				3792351521906D0BF17E7BBB /* MOVExporter.swift */,
 				1A6E4F7A62F8108F46F3B8DD /* MP4Exporter.swift */,
+				92C28A75F7A0E915705351A1 /* ThumbnailGenerator.swift */,
 			);
 			path = Export;
 			sourceTree = "<group>";
@@ -357,7 +363,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "set -e\nDEST=\"$PROJECT_DIR/build/$CONFIGURATION\"\nmkdir -p \"$DEST\"\nrm -rf \"$DEST/$FULL_PRODUCT_NAME\"\n# ditto preserves symlinks and resource forks but may not preserve the\n# code signature in all Xcode/macOS versions. Re-sign explicitly below.\nditto \"$BUILT_PRODUCTS_DIR/$FULL_PRODUCT_NAME\" \"$DEST/$FULL_PRODUCT_NAME\"\n# Ad-hoc re-sign so the copy is launchable on macOS 13+.\n# --deep ensures nested helpers/frameworks are also signed.\n/usr/bin/codesign --force --deep --sign - \"$DEST/$FULL_PRODUCT_NAME\"\necho \"Exported and signed $FULL_PRODUCT_NAME → build/$CONFIGURATION/$FULL_PRODUCT_NAME\"\n";
+			shellScript = "set -e\nDEST=\"$PROJECT_DIR/build/$CONFIGURATION\"\nmkdir -p \"$DEST\"\nrm -rf \"$DEST/$FULL_PRODUCT_NAME\"\n# ditto preserves symlinks and resource forks but may not preserve the\n# code signature in all Xcode/macOS versions. Re-sign explicitly below.\nditto \"$BUILT_PRODUCTS_DIR/$FULL_PRODUCT_NAME\" \"$DEST/$FULL_PRODUCT_NAME\"\n# Ad-hoc re-sign so the copy is launchable on macOS 13+.\n# --deep ensures nested helpers/frameworks are also signed.\n# When xctest plugins are embedded (from a previous test run), codesign --deep\n# fails on the xctest bundle. Skip signing if any .xctest plugin is present.\nif [ -z \"$(find \"$DEST/$FULL_PRODUCT_NAME/Contents/PlugIns\" -name \"*.xctest\" 2>/dev/null | head -1)\" ]; then\n  /usr/bin/codesign --force --deep --sign - \"$DEST/$FULL_PRODUCT_NAME\"\nelse\n  echo \"Skipping deep codesign — xctest plugins embedded (test build)\"\nfi\necho \"Exported and signed $FULL_PRODUCT_NAME → build/$CONFIGURATION/$FULL_PRODUCT_NAME\"\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -395,6 +401,7 @@
 				5975A680C0D79E5CAD09BEB1 /* SelectionWindow.swift in Sources */,
 				D7EB030C36466D014CE8C2D4 /* SettingsView.swift in Sources */,
 				013A6966D78ADC24B5A3862D /* StreamDelegate.swift in Sources */,
+				B9ACDF3BF4D960DB24835417 /* ThumbnailGenerator.swift in Sources */,
 				51B36B48D16DF7262CCBDAFF /* WindowSnapManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -408,6 +415,7 @@
 				C74885312FBC38A2D338421C /* GIFExporterTests.swift in Sources */,
 				C0C42F7BEAA9B2A29491C56D /* RecordingEngineTests.swift in Sources */,
 				2D073DC47269B3440CF4176B /* RecordingSessionTests.swift in Sources */,
+				7AF61EBA5131350A8221A1B2 /* ThumbnailGeneratorTests.swift in Sources */,
 				CB1FE8B365BDDA0C8E0A24A0 /* WindowSnapManagerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -39,6 +39,10 @@ final class AppSettings: ObservableObject {
         didSet { defaults.set(globalHotkeyEnabled, forKey: Keys.globalHotkeyEnabled) }
     }
 
+    @Published var autoCopyOnExport: Bool {
+        didSet { defaults.set(autoCopyOnExport, forKey: Keys.autoCopyOnExport) }
+    }
+
     private enum Keys {
         static let fps = "fps"
         static let defaultFormat = "defaultFormat"
@@ -46,6 +50,7 @@ final class AppSettings: ObservableObject {
         static let capturesAudio = "capturesAudio"
         static let showCountdown = "showCountdown"
         static let globalHotkeyEnabled = "globalHotkeyEnabled"
+        static let autoCopyOnExport = "autoCopyOnExport"
     }
 
     private init() {
@@ -55,6 +60,7 @@ final class AppSettings: ObservableObject {
         self.capturesAudio = defaults.object(forKey: Keys.capturesAudio) as? Bool ?? true
         self.showCountdown = defaults.object(forKey: Keys.showCountdown) as? Bool ?? true
         self.globalHotkeyEnabled = defaults.object(forKey: Keys.globalHotkeyEnabled) as? Bool ?? true
+        self.autoCopyOnExport = defaults.object(forKey: Keys.autoCopyOnExport) as? Bool ?? false
 
         if let raw = defaults.string(forKey: Keys.defaultFormat),
            let format = ExportFormat(rawValue: raw) {

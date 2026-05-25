@@ -227,18 +227,46 @@ struct MenuBarView: View {
     }
 
     private func lastExportView(_ url: URL) -> some View {
-        HStack {
-            Image(systemName: "checkmark.circle.fill")
-                .foregroundColor(.green)
-            Text(url.lastPathComponent)
-                .font(.caption)
-                .lineLimit(1)
-            Spacer()
-            Button("Show") {
-                NSWorkspace.shared.selectFile(url.path, inFileViewerRootedAtPath: "")
+        VStack(alignment: .leading, spacing: 6) {
+            // Thumbnail (shown when available)
+            if let thumb = appState.lastExportThumbnail {
+                Image(nsImage: thumb)
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(maxWidth: .infinity)
+                    .clipShape(RoundedRectangle(cornerRadius: 6))
+                    .onTapGesture {
+                        NSWorkspace.shared.selectFile(url.path, inFileViewerRootedAtPath: "")
+                    }
             }
-            .buttonStyle(.link)
-            .font(.caption)
+
+            // File name + action buttons
+            HStack(spacing: 4) {
+                Image(systemName: "checkmark.circle.fill")
+                    .foregroundColor(.green)
+                Text(url.lastPathComponent)
+                    .font(.caption)
+                    .lineLimit(1)
+                Spacer()
+                Button {
+                    NSWorkspace.shared.selectFile(url.path, inFileViewerRootedAtPath: "")
+                } label: {
+                    Image(systemName: "folder")
+                }
+                .buttonStyle(.link)
+                .font(.caption)
+                .help("Show in Finder")
+
+                Button {
+                    NSPasteboard.general.clearContents()
+                    NSPasteboard.general.writeObjects([url as NSURL])
+                } label: {
+                    Image(systemName: "doc.on.clipboard")
+                }
+                .buttonStyle(.link)
+                .font(.caption)
+                .help("Copy file to clipboard")
+            }
         }
         .padding(8)
         .background(Color.green.opacity(0.1))
@@ -268,6 +296,7 @@ struct MenuBarView: View {
         Task { @MainActor in
             appState.clearError()
             appState.exportedFileURL = nil
+            appState.lastExportThumbnail = nil
             appState.recordingState = .selectingRegion
 
             // Close the popover using the explicit API on AppDelegate.

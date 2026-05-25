@@ -247,6 +247,25 @@ final class RecordingCoordinator {
 
             showExportNotification(url: destinationURL)
 
+            // Generate thumbnail off the main actor to avoid blocking UI.
+            let thumbnailURL = destinationURL
+            let thumbnailFormat = format
+            Task {
+                let thumbnail = await ThumbnailGenerator.generate(from: thumbnailURL, format: thumbnailFormat)
+                await MainActor.run {
+                    // Guard against stale: only update if this is still the current export.
+                    if appState.exportedFileURL == thumbnailURL {
+                        appState.lastExportThumbnail = thumbnail
+                    }
+                }
+            }
+
+            // Auto-copy to clipboard if enabled.
+            if AppSettings.shared.autoCopyOnExport {
+                NSPasteboard.general.clearContents()
+                NSPasteboard.general.writeObjects([destinationURL as NSURL])
+            }
+
         } catch {
             currentSession = nil
             currentAppState = nil

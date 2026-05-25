@@ -34,6 +34,9 @@ struct SettingsView: View {
                 // Countdown Toggle
                 Toggle("Show 3-Second Countdown", isOn: $settings.showCountdown)
 
+                // Auto-copy Toggle
+                Toggle("Copy to Clipboard After Export", isOn: $settings.autoCopyOnExport)
+
                 // Global Hotkey
                 VStack(alignment: .leading, spacing: 4) {
                     Toggle("Global Keyboard Shortcut", isOn: $settings.globalHotkeyEnabled)

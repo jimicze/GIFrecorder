@@ -82,7 +82,13 @@ targets:
           ditto "$BUILT_PRODUCTS_DIR/$FULL_PRODUCT_NAME" "$DEST/$FULL_PRODUCT_NAME"
           # Ad-hoc re-sign so the copy is launchable on macOS 13+.
           # --deep ensures nested helpers/frameworks are also signed.
-          /usr/bin/codesign --force --deep --sign - "$DEST/$FULL_PRODUCT_NAME"
+          # When xctest plugins are embedded (from a previous test run), codesign --deep
+          # fails on the xctest bundle. Skip signing if any .xctest plugin is present.
+          if [ -z "$(find "$DEST/$FULL_PRODUCT_NAME/Contents/PlugIns" -name "*.xctest" 2>/dev/null | head -1)" ]; then
+            /usr/bin/codesign --force --deep --sign - "$DEST/$FULL_PRODUCT_NAME"
+          else
+            echo "Skipping deep codesign — xctest plugins embedded (test build)"
+          fi
           echo "Exported and signed $FULL_PRODUCT_NAME → build/$CONFIGURATION/$FULL_PRODUCT_NAME"
         showEnvVarsInLog: false
 
