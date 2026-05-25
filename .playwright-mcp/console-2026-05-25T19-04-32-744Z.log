@@ -1,0 +1,3 @@
+[     256ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ https://support.apple.com/guide/xcode/debug-an-app-or-process-that-is-already-running-dev7f8f7fc4/web:0
+[   12184ms] [WARNING] <meta name="apple-mobile-web-app-capable" content="yes"> is deprecated. Please include <meta name="mobile-web-app-capable" content="yes"> @ https://help.apple.com/xcode/mac/current/#/dev40e0a11aa:0
+[   12201ms] [WARNING] Could not find topic id:  in topics, sections or urls. @ https://help.apple.com/apps/eagle/5.2/js/app.js:1

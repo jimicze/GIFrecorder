@@ -1,0 +1,119 @@
+name: GIFrecorder
+options:
+  bundleIdPrefix: com.gifrecorder
+  deploymentTarget:
+    macOS: "13.0"
+  xcodeVersion: "16.0"
+  generateEmptyDirectories: true
+  createIntermediateGroups: true
+
+settings:
+  base:
+    SWIFT_VERSION: "5.9"
+    MACOSX_DEPLOYMENT_TARGET: "13.0"
+    ARCHS: arm64
+    VALID_ARCHS: arm64
+    ONLY_ACTIVE_ARCH: YES
+    # Swift 6 / Xcode 16 defaults to 'complete' strict concurrency checking.
+    # 'targeted' checks only declarations that adopt Sendable/async — appropriate
+    # for a Swift 5.9 codebase that already handles concurrency explicitly.
+    SWIFT_STRICT_CONCURRENCY: targeted
+
+schemes:
+  GIFrecorder:
+    build:
+      targets:
+        GIFrecorder: all
+    run:
+      config: Debug
+    test:
+      config: Debug
+      targets:
+        - name: GIFrecorderTests
+          parallelizable: true
+        - name: GIFrecorderUITests
+    profile:
+      config: Release
+    archive:
+      config: Release
+
+targets:
+  GIFrecorder:
+    type: application
+    platform: macOS
+    deploymentTarget: "13.0"
+    sources:
+      - path: GIFrecorder
+        excludes:
+          - "**/*.md"
+    resources:
+      - path: GIFrecorder/Resources/Assets.xcassets
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.gifrecorder.app
+        SWIFT_VERSION: "5.9"
+        MACOSX_DEPLOYMENT_TARGET: "13.0"
+        ARCHS: arm64
+        VALID_ARCHS: arm64
+        CODE_SIGN_ENTITLEMENTS: GIFrecorder/Resources/GIFrecorder.entitlements
+        INFOPLIST_FILE: GIFrecorder/Resources/Info.plist
+        PRODUCT_NAME: GIFrecorder
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+        ENABLE_HARDENED_RUNTIME: YES
+        CODE_SIGN_STYLE: Automatic
+        # Xcode 16 sandboxes build scripts by default; the post-build copy script
+        # needs to read/delete files outside the build directory (build/$CONFIGURATION/).
+        # Disabling sandboxing restores the pre-Xcode-16 behaviour for this target only.
+        ENABLE_USER_SCRIPT_SANDBOXING: NO
+    info:
+      path: GIFrecorder/Resources/Info.plist
+    entitlements:
+      path: GIFrecorder/Resources/GIFrecorder.entitlements
+    postBuildScripts:
+      - name: "Export .app to project build folder"
+        basedOnDependencyAnalysis: false
+        script: |
+          set -e
+          DEST="$PROJECT_DIR/build/$CONFIGURATION"
+          mkdir -p "$DEST"
+          rm -rf "$DEST/$FULL_PRODUCT_NAME"
+          # ditto preserves symlinks and resource forks but may not preserve the
+          # code signature in all Xcode/macOS versions. Re-sign explicitly below.
+          ditto "$BUILT_PRODUCTS_DIR/$FULL_PRODUCT_NAME" "$DEST/$FULL_PRODUCT_NAME"
+          # Ad-hoc re-sign so the copy is launchable on macOS 13+.
+          # --deep ensures nested helpers/frameworks are also signed.
+          /usr/bin/codesign --force --deep --sign - "$DEST/$FULL_PRODUCT_NAME"
+          echo "Exported and signed $FULL_PRODUCT_NAME → build/$CONFIGURATION/$FULL_PRODUCT_NAME"
+        showEnvVarsInLog: false
+
+  GIFrecorderTests:
+    type: bundle.unit-test
+    platform: macOS
+    deploymentTarget: "13.0"
+    sources:
+      - path: GIFrecorderTests
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.gifrecorder.app.tests
+        SWIFT_VERSION: "5.9"
+        MACOSX_DEPLOYMENT_TARGET: "13.0"
+        ARCHS: arm64
+        GENERATE_INFOPLIST_FILE: YES
+    dependencies:
+      - target: GIFrecorder
+
+  GIFrecorderUITests:
+    type: bundle.ui-testing
+    platform: macOS
+    deploymentTarget: "13.0"
+    sources:
+      - path: GIFrecorderUITests
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.gifrecorder.app.uitests
+        SWIFT_VERSION: "5.9"
+        MACOSX_DEPLOYMENT_TARGET: "13.0"
+        ARCHS: arm64
+        GENERATE_INFOPLIST_FILE: YES
+    dependencies:
+      - target: GIFrecorder

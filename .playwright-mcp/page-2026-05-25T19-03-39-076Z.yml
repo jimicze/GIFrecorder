@@ -1,0 +1,1635 @@
+- application [ref=e2]:
+  - banner [ref=e3]:
+    - generic [ref=e4]:
+      - checkbox "Hide table of contents" [checked] [ref=e5] [cursor=pointer]
+      - heading "Xcode Help" [level=1] [ref=e6]:
+        - link "Xcode Help" [ref=e7] [cursor=pointer]:
+          - /url: "#/"
+      - checkbox "Search" [ref=e9] [cursor=pointer]
+  - generic [ref=e10]:
+    - navigation "Table of contents" [ref=e11]:
+      - tree [ref=e12]:
+        - treeitem "Welcome" [ref=e13]:
+          - link "Welcome" [ref=e14] [cursor=pointer]:
+            - /url: "#/devc8c2a6be1"
+            - generic: Welcome
+        - treeitem "Get started" [ref=e15]:
+          - generic [ref=e16] [cursor=pointer]:
+            - generic: Get started
+          - treeitem [ref=e18]:
+            - link [ref=e19] [cursor=pointer]:
+              - /url: "#/dev07db0e578"
+              - generic: Create a project
+          - treeitem [ref=e20]:
+            - link [ref=e21] [cursor=pointer]:
+              - /url: "#/dev84c38774c"
+              - generic: About the main window
+          - treeitem [ref=e22]:
+            - generic [ref=e23] [cursor=pointer]:
+              - generic: Manage project files
+            - treeitem [ref=e25]:
+              - link [ref=e26] [cursor=pointer]:
+                - /url: "#/deva4f92d838"
+                - generic: Navigate project files
+            - treeitem [ref=e27]:
+              - link [ref=e28] [cursor=pointer]:
+                - /url: "#/dev81ce1d383"
+                - generic: Add files and folders
+            - treeitem [ref=e29]:
+              - link [ref=e30] [cursor=pointer]:
+                - /url: "#/dev9364498a5"
+                - generic: Organize files in groups
+            - treeitem [ref=e31]:
+              - link [ref=e32] [cursor=pointer]:
+                - /url: "#/dev35dbcdcf8"
+                - generic: Find and replace content
+            - treeitem [ref=e33]:
+              - link [ref=e34] [cursor=pointer]:
+                - /url: "#/devf5378fca9"
+                - generic: Use workspaces for related projects
+            - treeitem [ref=e35]:
+              - link [ref=e36] [cursor=pointer]:
+                - /url: "#/dev7b72b5ea5"
+                - generic: Reference another project
+          - treeitem [ref=e37]:
+            - link [ref=e38] [cursor=pointer]:
+              - /url: "#/dev79c94bf05"
+              - generic: Configure the editor area
+          - treeitem [ref=e39]:
+            - link [ref=e40] [cursor=pointer]:
+              - /url: "#/devf503af6b4"
+              - generic: Search documentation
+          - treeitem [ref=e41]:
+            - link [ref=e42] [cursor=pointer]:
+              - /url: "#/dev3db3afe4f"
+              - generic: Rename a project or an app
+        - treeitem "Create a SwiftUI interface" [ref=e43]:
+          - generic [ref=e44] [cursor=pointer]:
+            - generic: Create a SwiftUI interface
+          - treeitem [ref=e46]:
+            - link [ref=e47] [cursor=pointer]:
+              - /url: "#/dev793551915"
+              - generic: Show a preview
+          - treeitem [ref=e48]:
+            - link [ref=e49] [cursor=pointer]:
+              - /url: "#/dev3ce8ca815"
+              - generic: Add views and modifiers
+          - treeitem [ref=e50]:
+            - link [ref=e51] [cursor=pointer]:
+              - /url: "#/dev21c1a6ea8"
+              - generic: Edit user interface element attributes
+          - treeitem [ref=e52]:
+            - link [ref=e53] [cursor=pointer]:
+              - /url: "#/dev8b6269c47"
+              - generic: Embed code using the Action menu
+        - treeitem "Create an interface using Interface Builder" [ref=e54]:
+          - generic [ref=e55] [cursor=pointer]:
+            - generic: Create an interface using Interface Builder
+          - treeitem [ref=e57]:
+            - link [ref=e58] [cursor=pointer]:
+              - /url: "#/dev31645f17f"
+              - generic: Interface Builder workflow
+          - treeitem [ref=e59]:
+            - generic [ref=e60] [cursor=pointer]:
+              - generic: Add objects and images
+            - treeitem [ref=e62]:
+              - link [ref=e63] [cursor=pointer]:
+                - /url: "#/dev9ffcd0c51"
+                - generic: Add user interface objects
+            - treeitem [ref=e64]:
+              - link [ref=e65] [cursor=pointer]:
+                - /url: "#/dev1c8ee8a91"
+                - generic: Add images to the user interface
+            - treeitem [ref=e66]:
+              - link [ref=e67] [cursor=pointer]:
+                - /url: "#/dev87f4911e2"
+                - generic: Add custom objects
+            - treeitem [ref=e68]:
+              - link [ref=e69] [cursor=pointer]:
+                - /url: "#/devf60c1c514"
+                - generic: Render custom views
+            - treeitem [ref=e70]:
+              - link [ref=e71] [cursor=pointer]:
+                - /url: "#/dev5df060a3b"
+                - generic: Debug custom views
+            - treeitem [ref=e72]:
+              - link [ref=e73] [cursor=pointer]:
+                - /url: "#/dev0e9e2ee0f"
+                - generic: Switch to alignment rectangle
+            - treeitem [ref=e74]:
+              - link [ref=e75] [cursor=pointer]:
+                - /url: "#/dev46304b851"
+                - generic: Place views using guides
+            - treeitem [ref=e76]:
+              - link [ref=e77] [cursor=pointer]:
+                - /url: "#/dev8882ce271"
+                - generic: Add a user defined runtime attribute
+            - treeitem [ref=e78]:
+              - link [ref=e79] [cursor=pointer]:
+                - /url: "#/dev677fbdeb7"
+                - generic: Set the file’s owner
+          - treeitem [ref=e80]:
+            - generic [ref=e81] [cursor=pointer]:
+              - generic: Auto resize and position objects
+            - treeitem [ref=e83]:
+              - link [ref=e84] [cursor=pointer]:
+                - /url: "#/devc5759ad6f"
+                - generic: About Auto Layout
+            - treeitem [ref=e85]:
+              - link [ref=e86] [cursor=pointer]:
+                - /url: "#/dev1f19e69d2"
+                - generic: Specify distance and alignment constraints
+            - treeitem [ref=e87]:
+              - link [ref=e88] [cursor=pointer]:
+                - /url: "#/deve7dfb37c9"
+                - generic: Specify size and position
+            - treeitem [ref=e89]:
+              - link [ref=e90] [cursor=pointer]:
+                - /url: "#/dev3000b8f78"
+                - generic: Control-drag a constraint
+            - treeitem [ref=e91]:
+              - link [ref=e92] [cursor=pointer]:
+                - /url: "#/dev513da9bf6"
+                - generic: View and manage constraints
+            - treeitem [ref=e93]:
+              - link [ref=e94] [cursor=pointer]:
+                - /url: "#/devc276f21a7"
+                - generic: Find and resolve Auto Layout issues
+            - treeitem [ref=e95]:
+              - link [ref=e96] [cursor=pointer]:
+                - /url: "#/devfe8d7ba97"
+                - generic: Edit a constraint
+            - treeitem [ref=e97]:
+              - link [ref=e98] [cursor=pointer]:
+                - /url: "#/deva9cacea30"
+                - generic: Set the intrinsic size
+          - treeitem [ref=e99]:
+            - link [ref=e100] [cursor=pointer]:
+              - /url: "#/devcdad283cc"
+              - generic: Support dark mode (macOS)
+          - treeitem [ref=e101]:
+            - generic [ref=e102] [cursor=pointer]:
+              - generic: Add device-specific variations
+            - treeitem [ref=e104]:
+              - link [ref=e105] [cursor=pointer]:
+                - /url: "#/dev44ecfa876"
+                - generic: View device configurations
+            - treeitem [ref=e106]:
+              - link [ref=e107] [cursor=pointer]:
+                - /url: "#/dev8181af7e6"
+                - generic: Create user interface variations (iOS, tvOS, watchOS)
+            - treeitem [ref=e108]:
+              - link [ref=e109] [cursor=pointer]:
+                - /url: "#/devba3dd0b51"
+                - generic: Edit variations of property values (iOS, tvOS, watchOS)
+          - treeitem [ref=e110]:
+            - generic [ref=e111] [cursor=pointer]:
+              - generic: Connect objects to code
+            - treeitem [ref=e113]:
+              - link [ref=e114] [cursor=pointer]:
+                - /url: "#/devc06f7ee11"
+                - generic: Send messages to a UI object
+            - treeitem [ref=e115]:
+              - link [ref=e116] [cursor=pointer]:
+                - /url: "#/dev9662c7670"
+                - generic: Receive messages from a UI object
+            - treeitem [ref=e117]:
+              - link [ref=e118] [cursor=pointer]:
+                - /url: "#/devc0cdc8c7a"
+                - generic: Manage connections
+            - treeitem [ref=e119]:
+              - link [ref=e120] [cursor=pointer]:
+                - /url: "#/devb926800e4"
+                - generic: Add, remove, and edit Cocoa bindings
+          - treeitem [ref=e121]:
+            - generic [ref=e122] [cursor=pointer]:
+              - generic: Edit objects and storyboards
+            - treeitem [ref=e124]:
+              - link [ref=e125] [cursor=pointer]:
+                - /url: "#/dev62c993289"
+                - generic: Storyboards, scenes, and connections
+            - treeitem [ref=e126]:
+              - link [ref=e127] [cursor=pointer]:
+                - /url: "#/dev874b7f100"
+                - generic: Add scenes and views
+            - treeitem [ref=e128]:
+              - link [ref=e129] [cursor=pointer]:
+                - /url: "#/dev7be043cad"
+                - generic: Add a segue
+            - treeitem [ref=e130]:
+              - link [ref=e131] [cursor=pointer]:
+                - /url: "#/deve5fc2eb19"
+                - generic: Configure a segue
+            - treeitem [ref=e132]:
+              - link [ref=e133] [cursor=pointer]:
+                - /url: "#/dev66c5f17da"
+                - generic: Add a storyboard reference
+            - treeitem [ref=e134]:
+              - link [ref=e135] [cursor=pointer]:
+                - /url: "#/dev986814e10"
+                - generic: Configure object attributes
+            - treeitem [ref=e136]:
+              - link [ref=e137] [cursor=pointer]:
+                - /url: "#/dev973096230"
+                - generic: Layer views
+            - treeitem [ref=e138]:
+              - link [ref=e139] [cursor=pointer]:
+                - /url: "#/dev18e5486e9"
+                - generic: Set the initial scene
+            - treeitem [ref=e140]:
+              - link [ref=e141] [cursor=pointer]:
+                - /url: "#/dev7e77680a8"
+                - generic: Refactor a storyboard
+          - treeitem [ref=e142]:
+            - link [ref=e143] [cursor=pointer]:
+              - /url: "#/dev2a498daa2"
+              - generic: Preview layouts in different device configurations
+          - treeitem [ref=e144]:
+            - link [ref=e145] [cursor=pointer]:
+              - /url: "#/dev5274a91d6"
+              - generic: Preview your app’s Touch Bar items
+          - treeitem [ref=e146]:
+            - link [ref=e147] [cursor=pointer]:
+              - /url: "#/dev133151dbd"
+              - generic: Add simulated bars
+          - treeitem [ref=e148]:
+            - link [ref=e149] [cursor=pointer]:
+              - /url: "#/dev754c8fa81"
+              - generic: Set a simulated screen size
+          - treeitem [ref=e150]:
+            - link [ref=e151] [cursor=pointer]:
+              - /url: "#/dev7cad651ef"
+              - generic: Toggle placeholder backgrounds
+        - treeitem "Write code" [ref=e152]:
+          - generic [ref=e153] [cursor=pointer]:
+            - generic: Write code
+          - treeitem [ref=e155]:
+            - link [ref=e156] [cursor=pointer]:
+              - /url: "#/devfdbf4c94e"
+              - generic: About the source editor
+          - treeitem [ref=e157]:
+            - generic [ref=e158] [cursor=pointer]:
+              - generic: Enter code
+            - treeitem [ref=e160]:
+              - link [ref=e161] [cursor=pointer]:
+                - /url: "#/dev5b37f5c1d"
+                - generic: Fix issues while entering code
+            - treeitem [ref=e162]:
+              - link [ref=e163] [cursor=pointer]:
+                - /url: "#/dev8716704af"
+                - generic: Avoid syntax errors by using code completion
+            - treeitem [ref=e164]:
+              - link [ref=e165] [cursor=pointer]:
+                - /url: "#/devd0a79caa7"
+                - generic: Match braces, parentheses, and brackets
+            - treeitem [ref=e166]:
+              - link [ref=e167] [cursor=pointer]:
+                - /url: "#/dev2b24f6f93"
+                - generic: Create and use snippets
+          - treeitem [ref=e168]:
+            - link [ref=e169] [cursor=pointer]:
+              - /url: "#/devbcd8ca177"
+              - generic: Find and replace text in a source file
+          - treeitem [ref=e170]:
+            - link [ref=e171] [cursor=pointer]:
+              - /url: "#/devaa031eb87"
+              - generic: Fold or collapse your code
+          - treeitem [ref=e172]:
+            - generic [ref=e173] [cursor=pointer]:
+              - generic: Refactor code
+            - treeitem [ref=e175]:
+              - link [ref=e176] [cursor=pointer]:
+                - /url: "#/dev7e78023b2"
+                - generic: Edit all occurrences of a symbol
+            - treeitem [ref=e177]:
+              - link [ref=e178] [cursor=pointer]:
+                - /url: "#/deve5f46e4f4"
+                - generic: Edit using multiple cursors
+            - treeitem [ref=e179]:
+              - link [ref=e180] [cursor=pointer]:
+                - /url: "#/deve9cd9c03c"
+                - generic: Add properties, methods, or structures
+            - treeitem [ref=e181]:
+              - link [ref=e182] [cursor=pointer]:
+                - /url: "#/dev861345bb3"
+                - generic: Create variables, functions, and methods from code
+          - treeitem [ref=e183]:
+            - generic [ref=e184] [cursor=pointer]:
+              - generic: Navigate code
+            - treeitem [ref=e186]:
+              - link [ref=e187] [cursor=pointer]:
+                - /url: "#/dev887b0e079"
+                - generic: View symbol declarations and reference
+            - treeitem [ref=e188]:
+              - link [ref=e189] [cursor=pointer]:
+                - /url: "#/dev2241bf769"
+                - generic: Navigate symbols
+            - treeitem [ref=e190]:
+              - link [ref=e191] [cursor=pointer]:
+                - /url: "#/dev04bea7362"
+                - generic: Jump to files and symbols
+            - treeitem [ref=e192]:
+              - link [ref=e193] [cursor=pointer]:
+                - /url: "#/dev524eff3ce"
+                - generic: Open a file containing a symbol
+          - treeitem [ref=e194]:
+            - link [ref=e195] [cursor=pointer]:
+              - /url: "#/dev86a148f73"
+              - generic: Add code annotations to the jump bar
+          - treeitem [ref=e196]:
+            - link [ref=e197] [cursor=pointer]:
+              - /url: "#/devb7babe820"
+              - generic: Analyze your code
+          - treeitem [ref=e198]:
+            - link [ref=e199] [cursor=pointer]:
+              - /url: "#/dev1a32e6d0b"
+              - generic: Switch syntax coloring styles
+        - treeitem "Run your app" [ref=e200]:
+          - generic [ref=e201] [cursor=pointer]:
+            - generic: Run your app
+          - treeitem [ref=e203]:
+            - link [ref=e204] [cursor=pointer]:
+              - /url: "#/devdc0193470"
+              - generic: Build and run your app
+          - treeitem [ref=e205]:
+            - link [ref=e206] [cursor=pointer]:
+              - /url: "#/devfd9e28378"
+              - generic: Run on a simulated device
+          - treeitem [ref=e207]:
+            - link [ref=e208] [cursor=pointer]:
+              - /url: "#/dev60b6fbbc7"
+              - generic: Signing workflow
+          - treeitem [ref=e209]:
+            - link [ref=e210] [cursor=pointer]:
+              - /url: "#/dev5a825a1ca"
+              - generic: Run an app on a device
+          - treeitem [ref=e211]:
+            - link [ref=e212] [cursor=pointer]:
+              - /url: "#/devbc48d1bad"
+              - generic: Pair a wireless device
+          - treeitem [ref=e213]:
+            - link [ref=e214] [cursor=pointer]:
+              - /url: "#/dev3e2f4ee6d"
+              - generic: Run on a wireless device
+          - treeitem [ref=e215]:
+            - link [ref=e216] [cursor=pointer]:
+              - /url: "#/devac3261a70"
+              - generic: Troubleshoot a wireless device
+          - treeitem [ref=e217]:
+            - link [ref=e218] [cursor=pointer]:
+              - /url: "#/devc48eab05e"
+              - generic: For faster Watch App development use Wi-Fi
+          - treeitem [ref=e219]:
+            - link [ref=e220] [cursor=pointer]:
+              - /url: "#/dev0374d3ec9"
+              - generic: View signing reports
+        - treeitem "Work with assets" [ref=e221]:
+          - generic [ref=e222] [cursor=pointer]:
+            - generic: Work with assets
+          - treeitem [ref=e224]:
+            - link [ref=e225] [cursor=pointer]:
+              - /url: "#/dev10510b1f7"
+              - generic: About Asset catalogs
+          - treeitem [ref=e226]:
+            - link [ref=e227] [cursor=pointer]:
+              - /url: "#/dev4b0ebb1bb"
+              - generic: Add an App Store icon
+          - treeitem [ref=e228]:
+            - link [ref=e229] [cursor=pointer]:
+              - /url: "#/devb90cbf66e"
+              - generic: Use an asset catalog for a launch screen (iPhone)
+          - treeitem [ref=e230]:
+            - link [ref=e231] [cursor=pointer]:
+              - /url: "#/dev89659e6a1"
+              - generic: Create trait-based asset variations (iOS, tvOS, watchOS)
+          - treeitem [ref=e232]:
+            - link [ref=e233] [cursor=pointer]:
+              - /url: "#/dev7a4aebe73"
+              - generic: Provide dark appearances (macOS)
+          - treeitem [ref=e234]:
+            - link [ref=e235] [cursor=pointer]:
+              - /url: "#/dev0ca8af590"
+              - generic: Add AR images and objects
+          - treeitem [ref=e236]:
+            - link [ref=e237] [cursor=pointer]:
+              - /url: "#/dev0bfaf1ab7"
+              - generic: Create texture atlases
+          - treeitem [ref=e238]:
+            - link [ref=e239] [cursor=pointer]:
+              - /url: "#/dev1a54b0123"
+              - generic: About SceneKit scene editor
+          - treeitem [ref=e240]:
+            - link [ref=e241] [cursor=pointer]:
+              - /url: "#/devaef24a865"
+              - generic: Preview 3D scenes
+          - treeitem [ref=e242]:
+            - link [ref=e243] [cursor=pointer]:
+              - /url: "#/deve65bd8d0d"
+              - generic: Add a resizable area to an image
+          - treeitem [ref=e244]:
+            - generic [ref=e245] [cursor=pointer]:
+              - generic: SpriteKit particle emitter editor
+            - treeitem [ref=e247]:
+              - link [ref=e248] [cursor=pointer]:
+                - /url: "#/dev9eed16018"
+                - generic: Add a particle emitter to your project
+            - treeitem [ref=e249]:
+              - link [ref=e250] [cursor=pointer]:
+                - /url: "#/devfe5e6a005"
+                - generic: Add a particle emitter to a scene
+            - treeitem [ref=e251]:
+              - link [ref=e252] [cursor=pointer]:
+                - /url: "#/dev8819f8406"
+                - generic: Change background and texture
+            - treeitem [ref=e253]:
+              - link [ref=e254] [cursor=pointer]:
+                - /url: "#/dev8fa542d06"
+                - generic: Manage a particle’s life cycle
+            - treeitem [ref=e255]:
+              - link [ref=e256] [cursor=pointer]:
+                - /url: "#/dev028f1b7fd"
+                - generic: Control movement and physics reactions
+            - treeitem [ref=e257]:
+              - link [ref=e258] [cursor=pointer]:
+                - /url: "#/devdb059d0d9"
+                - generic: Adjust size and rotation
+            - treeitem [ref=e259]:
+              - link [ref=e260] [cursor=pointer]:
+                - /url: "#/dev5679983bd"
+                - generic: Change a particle’s color
+            - treeitem [ref=e261]:
+              - link [ref=e262] [cursor=pointer]:
+                - /url: "#/dev8b2fe606d"
+                - generic: Create custom shaders
+        - treeitem "Debug code" [expanded] [ref=e263]:
+          - generic [ref=e264] [cursor=pointer]:
+            - generic: Debug code
+          - group:
+            - treeitem "About the debug area" [ref=e898]:
+              - link "About the debug area" [ref=e899] [cursor=pointer]:
+                - /url: "#/devda5478599"
+                - generic: About the debug area
+            - treeitem "Control the execution of your running app" [ref=e900]:
+              - link "Control the execution of your running app" [ref=e901] [cursor=pointer]:
+                - /url: "#/dev2f7e98457"
+                - generic: Control the execution of your running app
+            - treeitem "Debug a running app or process" [ref=e902]:
+              - link "Debug a running app or process" [ref=e903] [cursor=pointer]:
+                - /url: "#/devaeaf4813e"
+                - generic: Debug a running app or process
+            - treeitem "Run an app with diagnostics" [ref=e904]:
+              - link "Run an app with diagnostics" [ref=e905] [cursor=pointer]:
+                - /url: "#/devcef23c572"
+                - generic: Run an app with diagnostics
+            - treeitem "Examine variables and threads" [ref=e906]:
+              - generic [ref=e275] [cursor=pointer]:
+                - generic: Examine variables and threads
+              - treeitem [ref=e277]:
+                - link [ref=e278] [cursor=pointer]:
+                  - /url: "#/dev9de24d52b"
+                  - generic: View variables
+              - treeitem [ref=e279]:
+                - link [ref=e280] [cursor=pointer]:
+                  - /url: "#/dev01d33c3bd"
+                  - generic: See variable values at runtime
+              - treeitem [ref=e281]:
+                - link [ref=e282] [cursor=pointer]:
+                  - /url: "#/devea99126aa"
+                  - generic: Examine threads and stacks
+              - treeitem [ref=e283]:
+                - link [ref=e284] [cursor=pointer]:
+                  - /url: "#/dev08af4c50f"
+                  - generic: View threads
+              - treeitem [ref=e285]:
+                - link [ref=e286] [cursor=pointer]:
+                  - /url: "#/dev94bc3d929"
+                  - generic: Suspend and resume threads
+            - treeitem "Set breakpoints" [ref=e907]:
+              - generic [ref=e288] [cursor=pointer]:
+                - generic: Set breakpoints
+              - treeitem [ref=e290]:
+                - link [ref=e291] [cursor=pointer]:
+                  - /url: "#/dev9a374afc9"
+                  - generic: Add breakpoints to your code
+              - treeitem [ref=e292]:
+                - link [ref=e293] [cursor=pointer]:
+                  - /url: "#/dev1cf0a324f"
+                  - generic: Manage breakpoints using the navigator
+              - treeitem [ref=e294]:
+                - link [ref=e295] [cursor=pointer]:
+                  - /url: "#/devfeaa874d0"
+                  - generic: Pause execution when events occur
+            - treeitem "Examine views" [ref=e908]:
+              - generic [ref=e297] [cursor=pointer]:
+                - generic: Examine views
+              - treeitem [ref=e299]:
+                - link [ref=e300] [cursor=pointer]:
+                  - /url: "#/dev4dfdedb7a"
+                  - generic: View hierarchy debugger
+              - treeitem [ref=e301]:
+                - link [ref=e302] [cursor=pointer]:
+                  - /url: "#/dev68a1be0d1"
+                  - generic: Examine the view hierarchy
+              - treeitem [ref=e303]:
+                - link [ref=e304] [cursor=pointer]:
+                  - /url: "#/dev43054cca8"
+                  - generic: Filter the hierarchy
+              - treeitem [ref=e305]:
+                - link [ref=e306] [cursor=pointer]:
+                  - /url: "#/dev2f8a46b40"
+                  - generic: Focus the hierarchy
+              - treeitem [ref=e307]:
+                - link [ref=e308] [cursor=pointer]:
+                  - /url: "#/dev436717e28"
+                  - generic: Inspect a view or constraint
+              - treeitem [ref=e309]:
+                - link [ref=e310] [cursor=pointer]:
+                  - /url: "#/devd0b73357e"
+                  - generic: Open the source code
+            - treeitem "Optimize performance" [ref=e909]:
+              - generic [ref=e312] [cursor=pointer]:
+                - generic: Optimize performance
+              - treeitem [ref=e314]:
+                - link [ref=e315] [cursor=pointer]:
+                  - /url: "#/dev94c128b7b"
+                  - generic: Monitor an app using gauges
+              - treeitem [ref=e316]:
+                - link [ref=e317] [cursor=pointer]:
+                  - /url: "#/devf7f7c5fcd"
+                  - generic: Monitor energy usage (iOS, Mac)
+              - treeitem [ref=e318]:
+                - link [ref=e319] [cursor=pointer]:
+                  - /url: "#/devcc15e6912"
+                  - generic: Profile an app
+              - treeitem [ref=e320]:
+                - link [ref=e321] [cursor=pointer]:
+                  - /url: "#/devcb5763ab0"
+                  - generic: What is a device condition? (iOS)
+              - treeitem [ref=e322]:
+                - link [ref=e323] [cursor=pointer]:
+                  - /url: "#/devdf21fe239"
+                  - generic: Enable a device condition (iOS)
+              - treeitem [ref=e324]:
+                - link [ref=e325] [cursor=pointer]:
+                  - /url: "#/dev308429d42"
+                  - generic: Test under adverse device conditions (iOS)
+            - treeitem "Override environment settings in the debugger" [ref=e910]:
+              - link "Override environment settings in the debugger" [ref=e911] [cursor=pointer]:
+                - /url: "#/dev04113b16d"
+                - generic: Override environment settings in the debugger
+            - treeitem "Simulate a location" [ref=e912]:
+              - link "Simulate a location" [ref=e913] [cursor=pointer]:
+                - /url: "#/dev1b4074150"
+                - generic: Simulate a location
+            - treeitem "Show the Touch Bar simulator" [ref=e914]:
+              - link "Show the Touch Bar simulator" [ref=e915] [cursor=pointer]:
+                - /url: "#/dev7a8cb8a8c"
+                - generic: Show the Touch Bar simulator
+            - treeitem "View logs and reports" [ref=e916]:
+              - link "View logs and reports" [ref=e917] [cursor=pointer]:
+                - /url: "#/dev21d56ecd4"
+                - generic: View logs and reports
+            - treeitem "View and address issues" [ref=e918]:
+              - link "View and address issues" [ref=e919] [cursor=pointer]:
+                - /url: "#/dev88d75d488"
+                - generic: View and address issues
+        - treeitem "Test your app" [ref=e336]:
+          - generic [ref=e337] [cursor=pointer]:
+            - generic: Test your app
+          - treeitem [ref=e339]:
+            - link [ref=e340] [cursor=pointer]:
+              - /url: "#/dev9d917045f"
+              - generic: Testing workflow
+          - treeitem [ref=e341]:
+            - generic [ref=e342] [cursor=pointer]:
+              - generic: Run tests
+            - treeitem [ref=e344]:
+              - link [ref=e345] [cursor=pointer]:
+                - /url: "#/dev42b289fbc"
+                - generic: Run UI tests and unit tests
+            - treeitem [ref=e346]:
+              - link [ref=e347] [cursor=pointer]:
+                - /url: "#/dev9e0e09978"
+                - generic: Enable code coverage
+            - treeitem [ref=e348]:
+              - link [ref=e349] [cursor=pointer]:
+                - /url: "#/dev6061748b5"
+                - generic: Select run options for tests
+          - treeitem [ref=e350]:
+            - generic [ref=e351] [cursor=pointer]:
+              - generic: Manage tests
+            - treeitem [ref=e353]:
+              - link [ref=e354] [cursor=pointer]:
+                - /url: "#/devd3b1da4c4"
+                - generic: Add a test class
+            - treeitem [ref=e355]:
+              - link [ref=e356] [cursor=pointer]:
+                - /url: "#/dev2ea31ea57"
+                - generic: Add a test target
+            - treeitem [ref=e357]:
+              - link [ref=e358] [cursor=pointer]:
+                - /url: "#/devba2c7e1bc"
+                - generic: View test reports
+            - treeitem [ref=e359]:
+              - link [ref=e360] [cursor=pointer]:
+                - /url: "#/dev084ed616b"
+                - generic: View test failures
+            - treeitem [ref=e361]:
+              - link [ref=e362] [cursor=pointer]:
+                - /url: "#/devc38fc7392"
+                - generic: View and share test results
+            - treeitem [ref=e363]:
+              - link [ref=e364] [cursor=pointer]:
+                - /url: "#/devc49643a5f"
+                - generic: Manage performance tests
+          - treeitem [ref=e365]:
+            - generic [ref=e366] [cursor=pointer]:
+              - generic: Use test plans
+            - treeitem [ref=e368]:
+              - link [ref=e369] [cursor=pointer]:
+                - /url: "#/dev2d0f63f98"
+                - generic: What is a test plan?
+            - treeitem [ref=e370]:
+              - link [ref=e371] [cursor=pointer]:
+                - /url: "#/devb0c245e83"
+                - generic: Convert a scheme to use test plans
+            - treeitem [ref=e372]:
+              - link [ref=e373] [cursor=pointer]:
+                - /url: "#/devc234b1bc4"
+                - generic: Edit a test plan
+        - treeitem "Configure targets and builds" [expanded] [ref=e374]:
+          - generic [ref=e375] [cursor=pointer]:
+            - generic: Configure targets and builds
+          - group:
+            - treeitem "About the project editor" [ref=e920]:
+              - link "About the project editor" [ref=e921] [cursor=pointer]:
+                - /url: "#/devb3575be3e"
+                - generic: About the project editor
+            - treeitem "Edit General settings" [ref=e922]:
+              - generic [ref=e380] [cursor=pointer]:
+                - generic: Edit General settings
+              - treeitem [ref=e382]:
+                - generic [ref=e383] [cursor=pointer]:
+                  - generic: Edit identity settings
+                - treeitem [ref=e385]:
+                  - link [ref=e386] [cursor=pointer]:
+                    - /url: "#/deve70ea917b"
+                    - generic: What is a bundle ID?
+                - treeitem [ref=e387]:
+                  - link [ref=e388] [cursor=pointer]:
+                    - /url: "#/deve21d0239c"
+                    - generic: Set the bundle ID
+                - treeitem [ref=e389]:
+                  - link [ref=e390] [cursor=pointer]:
+                    - /url: "#/devcabdebc27"
+                    - generic: Set the app category (macOS)
+                - treeitem [ref=e391]:
+                  - link [ref=e392] [cursor=pointer]:
+                    - /url: "#/devba7f53ad4"
+                    - generic: Set the version and build
+              - treeitem [ref=e393]:
+                - generic [ref=e394] [cursor=pointer]:
+                  - generic: Edit deployment info
+                - treeitem [ref=e396]:
+                  - link [ref=e397] [cursor=pointer]:
+                    - /url: "#/deve69552ee5"
+                    - generic: Edit deployment info
+                - treeitem [ref=e398]:
+                  - link [ref=e399] [cursor=pointer]:
+                    - /url: "#/devffa2192b7"
+                    - generic: Enable multiple windows (iPad)
+              - treeitem [ref=e400]:
+                - link [ref=e401] [cursor=pointer]:
+                  - /url: "#/dev765148f31"
+                  - generic: Create a launch screen
+              - treeitem [ref=e402]:
+                - link [ref=e403] [cursor=pointer]:
+                  - /url: "#/dev51a648b07"
+                  - generic: Link to frameworks and libraries
+            - treeitem "Edit signing settings" [ref=e923]:
+              - generic [ref=e405] [cursor=pointer]:
+                - generic: Edit signing settings
+              - treeitem [ref=e407]:
+                - link [ref=e408] [cursor=pointer]:
+                  - /url: "#/dev23aab79b4"
+                  - generic: Assign a project to a team
+              - treeitem [ref=e409]:
+                - link [ref=e410] [cursor=pointer]:
+                  - /url: "#/dev1bf96f17e"
+                  - generic: Manually sign apps
+            - treeitem "Edit Info settings" [ref=e924]:
+              - generic [ref=e412] [cursor=pointer]:
+                - generic: Edit Info settings
+              - treeitem [ref=e414]:
+                - link [ref=e415] [cursor=pointer]:
+                  - /url: "#/dev37c2f42ff"
+                  - generic: Edit the information property list
+              - treeitem [ref=e416]:
+                - link [ref=e417] [cursor=pointer]:
+                  - /url: "#/dev0dc15d044"
+                  - generic: Add export compliance keys
+              - treeitem [ref=e418]:
+                - link [ref=e419] [cursor=pointer]:
+                  - /url: "#/dev2ec588bbf"
+                  - generic: Set the copyright key (macOS)
+              - treeitem [ref=e420]:
+                - link [ref=e421] [cursor=pointer]:
+                  - /url: "#/devddd273fdd"
+                  - generic: Set supported document types
+            - treeitem "Edit build settings" [ref=e925]:
+              - generic [ref=e423] [cursor=pointer]:
+                - generic: Edit build settings
+              - treeitem [ref=e425]:
+                - link [ref=e426] [cursor=pointer]:
+                  - /url: "#/dev382dac089"
+                  - generic: What is a build setting?
+              - treeitem [ref=e427]:
+                - link [ref=e428] [cursor=pointer]:
+                  - /url: "#/dev04b3a04ba"
+                  - generic: Configure build settings
+              - treeitem [ref=e429]:
+                - link [ref=e430] [cursor=pointer]:
+                  - /url: "#/devef53b5dde"
+                  - generic: Learn about a build setting
+              - treeitem [ref=e431]:
+                - link [ref=e432] [cursor=pointer]:
+                  - /url: "#/dev5cf937f03"
+                  - generic: Build variations for different platforms
+              - treeitem [ref=e433]:
+                - link [ref=e434] [cursor=pointer]:
+                  - /url: "#/deva3af9b6ba"
+                  - generic: Evaluate build setting inheritance
+              - treeitem [ref=e435]:
+                - link [ref=e436] [cursor=pointer]:
+                  - /url: "#/devb7cf06445"
+                  - generic: Monitor build status
+              - treeitem [ref=e437]:
+                - link [ref=e438] [cursor=pointer]:
+                  - /url: "#/deve97bde215"
+                  - generic: Add a build configuration file
+            - treeitem "Configure build phases" [ref=e926]:
+              - generic [ref=e440] [cursor=pointer]:
+                - generic: Configure build phases
+              - treeitem [ref=e442]:
+                - link [ref=e443] [cursor=pointer]:
+                  - /url: "#/dev50bab713d"
+                  - generic: What are build phases?
+              - treeitem [ref=e444]:
+                - link [ref=e445] [cursor=pointer]:
+                  - /url: "#/devcc9f6bfb2"
+                  - generic: Create target dependencies
+              - treeitem [ref=e446]:
+                - link [ref=e447] [cursor=pointer]:
+                  - /url: "#/devc8c930575"
+                  - generic: Run a shell script
+              - treeitem [ref=e448]:
+                - link [ref=e449] [cursor=pointer]:
+                  - /url: "#/devba4d69b42"
+                  - generic: Write a build phase script
+              - treeitem [ref=e450]:
+                - link [ref=e451] [cursor=pointer]:
+                  - /url: "#/dev677fdab7a"
+                  - generic: Add headers to a target
+            - treeitem "Strip Swift symbols" [ref=e927]:
+              - link "Strip Swift symbols" [ref=e928] [cursor=pointer]:
+                - /url: "#/dev6301c07c6"
+                - generic: Strip Swift symbols
+            - treeitem "Manage schemes" [expanded] [ref=e929]:
+              - generic [ref=e455] [cursor=pointer]:
+                - generic: Manage schemes
+              - group:
+                - treeitem "Configure schemes" [ref=e930]:
+                  - link "Configure schemes" [ref=e931] [cursor=pointer]:
+                    - /url: "#/dev0bee46f46"
+                    - generic: Configure schemes
+                - treeitem "Add, delete, rename, and share schemes" [ref=e932]:
+                  - link "Add, delete, rename, and share schemes" [ref=e933] [cursor=pointer]:
+                    - /url: "#/dev5426ddfcf"
+                    - generic: Add, delete, rename, and share schemes
+                - treeitem "Build multiple targets" [ref=e934]:
+                  - link "Build multiple targets" [ref=e935] [cursor=pointer]:
+                    - /url: "#/dev38419576c"
+                    - generic: Build multiple targets
+                - treeitem "Build targets in parallel" [ref=e936]:
+                  - link "Build targets in parallel" [ref=e937] [cursor=pointer]:
+                    - /url: "#/dev6a2c4394f"
+                    - generic: Build targets in parallel
+                - treeitem "Specify runtime arguments and environment variables" [ref=e938]:
+                  - link "Specify runtime arguments and environment variables" [ref=e939] [cursor=pointer]:
+                    - /url: "#/dev3ec8a1cb4"
+                    - generic: Specify runtime arguments and environment variables
+                - treeitem "Simulate a runtime location" [ref=e940]:
+                  - link "Simulate a runtime location" [ref=e941] [cursor=pointer]:
+                    - /url: "#/dev8dbd2f820"
+                    - generic: Simulate a runtime location
+                - treeitem "Switch schemes and destinations" [ref=e942]:
+                  - link "Switch schemes and destinations" [ref=e943] [cursor=pointer]:
+                    - /url: "#/dev40e0a11aa"
+                    - generic: Switch schemes and destinations
+        - treeitem "Configure capabilities" [ref=e471]:
+          - generic [ref=e472] [cursor=pointer]:
+            - generic: Configure capabilities
+          - treeitem [ref=e474]:
+            - link [ref=e475] [cursor=pointer]:
+              - /url: "#/dev88ff319e7"
+              - generic: Add a capability
+          - treeitem [ref=e476]:
+            - link [ref=e477] [cursor=pointer]:
+              - /url: "#/dev8dd3880fe"
+              - generic: Configure app groups
+          - treeitem [ref=e478]:
+            - link [ref=e479] [cursor=pointer]:
+              - /url: "#/devbd04af149"
+              - generic: Configure App Sandbox (macOS)
+          - treeitem [ref=e480]:
+            - link [ref=e481] [cursor=pointer]:
+              - /url: "#/deva43983eb7"
+              - generic: Configure Apple Pay
+          - treeitem [ref=e482]:
+            - link [ref=e483] [cursor=pointer]:
+              - /url: "#/dev55e137b57"
+              - generic: Configure associated domains (iOS, tvOS, watchOS)
+          - treeitem [ref=e484]:
+            - link [ref=e485] [cursor=pointer]:
+              - /url: "#/deve49d0ba96"
+              - generic: Configure background modes (iOS, tvOS, watchOS)
+          - treeitem [ref=e486]:
+            - link [ref=e487] [cursor=pointer]:
+              - /url: "#/dev06ad87885"
+              - generic: Configure user fonts
+          - treeitem [ref=e488]:
+            - link [ref=e489] [cursor=pointer]:
+              - /url: "#/dev404473703"
+              - generic: Configure game controllers (tvOS)
+          - treeitem [ref=e490]:
+            - link [ref=e491] [cursor=pointer]:
+              - /url: "#/devf87a2ac8f"
+              - generic: Enable hardened runtime (macOS)
+          - treeitem [ref=e492]:
+            - link [ref=e493] [cursor=pointer]:
+              - /url: "#/dev1a5823416"
+              - generic: Configure HealthKit (iOS, watchOS)
+          - treeitem [ref=e494]:
+            - link [ref=e495] [cursor=pointer]:
+              - /url: "#/dev64789eb38"
+              - generic: Configure HomeKit (iOS, tvOS, watchOS)
+          - treeitem [ref=e496]:
+            - generic [ref=e497] [cursor=pointer]:
+              - generic: Configure iCloud services
+            - treeitem [ref=e499]:
+              - link [ref=e500] [cursor=pointer]:
+                - /url: "#/dev52452c426"
+                - generic: Enable iCloud services
+            - treeitem [ref=e501]:
+              - link [ref=e502] [cursor=pointer]:
+                - /url: "#/devcae40ccb9"
+                - generic: Manage iCloud containers
+            - treeitem [ref=e503]:
+              - link [ref=e504] [cursor=pointer]:
+                - /url: "#/dev981d5d33b"
+                - generic: Manage CloudKit schemas and records
+          - treeitem [ref=e505]:
+            - link [ref=e506] [cursor=pointer]:
+              - /url: "#/dev2be593920"
+              - generic: Configure keychain sharing
+          - treeitem [ref=e507]:
+            - generic [ref=e508] [cursor=pointer]:
+              - generic: Configure Maps
+            - treeitem [ref=e510]:
+              - link [ref=e511] [cursor=pointer]:
+                - /url: "#/devc246b80c4"
+                - generic: Enable Maps and select modes
+            - treeitem [ref=e512]:
+              - link [ref=e513] [cursor=pointer]:
+                - /url: "#/dev3fe77deca"
+                - generic: Configure a routing app
+          - treeitem [ref=e514]:
+            - link [ref=e515] [cursor=pointer]:
+              - /url: "#/dev0b2ef6f08"
+              - generic: Configure network extensions
+          - treeitem [ref=e516]:
+            - link [ref=e517] [cursor=pointer]:
+              - /url: "#/devdfd3d04a1"
+              - generic: Enable push notifications
+          - treeitem [ref=e518]:
+            - link [ref=e519] [cursor=pointer]:
+              - /url: "#/dev50571b902"
+              - generic: Enable Sign in with Apple
+          - treeitem [ref=e520]:
+            - link [ref=e521] [cursor=pointer]:
+              - /url: "#/devb1fc06729"
+              - generic: Configure Siri (iOS, watchOS)
+          - treeitem [ref=e522]:
+            - link [ref=e523] [cursor=pointer]:
+              - /url: "#/devfc3f493bb"
+              - generic: Configure Wallet
+        - treeitem "Work with Swift packages" [ref=e524]:
+          - generic [ref=e525] [cursor=pointer]:
+            - generic: Work with Swift packages
+          - treeitem [ref=e527]:
+            - link [ref=e528] [cursor=pointer]:
+              - /url: "#/dev5eb834795"
+              - generic: What is a Swift package?
+          - treeitem [ref=e529]:
+            - link [ref=e530] [cursor=pointer]:
+              - /url: "#/dev8150a0e84"
+              - generic: Open an existing Swift package
+          - treeitem [ref=e531]:
+            - link [ref=e532] [cursor=pointer]:
+              - /url: "#/devb83d64851"
+              - generic: Link a target to a package product
+          - treeitem [ref=e533]:
+            - link [ref=e534] [cursor=pointer]:
+              - /url: "#/dev9cc785f4a"
+              - generic: Create a Swift package
+          - treeitem [ref=e535]:
+            - link [ref=e536] [cursor=pointer]:
+              - /url: "#/dev426e91021"
+              - generic: Publish a Swift package
+        - treeitem "Create a Mac version of an iPad app" [ref=e537]:
+          - generic [ref=e538] [cursor=pointer]:
+            - generic: Create a Mac version of an iPad app
+          - treeitem [ref=e540]:
+            - link [ref=e541] [cursor=pointer]:
+              - /url: "#/dev8e94ce3c8"
+              - generic: Create a Mac app built with Mac Catalyst
+          - treeitem [ref=e542]:
+            - link [ref=e543] [cursor=pointer]:
+              - /url: "#/dev07ed024a6"
+              - generic: About the Mac app built with Mac Catalyst bundle ID
+          - treeitem [ref=e544]:
+            - link [ref=e545] [cursor=pointer]:
+              - /url: "#/deva1159eef6"
+              - generic: Distribute a Mac app built with Mac Catalyst
+        - treeitem "Create and distribute a watch-only app" [ref=e546]:
+          - link "Create and distribute a watch-only app" [ref=e547] [cursor=pointer]:
+            - /url: "#/devaba4602fd"
+            - generic: Create and distribute a watch-only app
+        - treeitem "Localize your app" [ref=e548]:
+          - generic [ref=e549] [cursor=pointer]:
+            - generic: Localize your app
+          - treeitem [ref=e551]:
+            - link [ref=e552] [cursor=pointer]:
+              - /url: "#/deve2bc11fab"
+              - generic: What is localization?
+          - treeitem [ref=e553]:
+            - link [ref=e554] [cursor=pointer]:
+              - /url: "#/devafa3a605f"
+              - generic: Add a language
+          - treeitem [ref=e555]:
+            - link [ref=e556] [cursor=pointer]:
+              - /url: "#/dev7c584bb2a"
+              - generic: Make a resource localizable
+          - treeitem [ref=e557]:
+            - link [ref=e558] [cursor=pointer]:
+              - /url: "#/devd9af5f7ae"
+              - generic: Add language plural variants
+          - treeitem [ref=e559]:
+            - link [ref=e560] [cursor=pointer]:
+              - /url: "#/deve7c832cd2"
+              - generic: Export localizations for translation
+          - treeitem [ref=e561]:
+            - link [ref=e562] [cursor=pointer]:
+              - /url: "#/devda5206e6c"
+              - generic: Import localizations
+          - treeitem [ref=e563]:
+            - link [ref=e564] [cursor=pointer]:
+              - /url: "#/devf66469903"
+              - generic: Lock views
+          - treeitem [ref=e565]:
+            - link [ref=e566] [cursor=pointer]:
+              - /url: "#/dev499a9529e"
+              - generic: Test localizations
+          - treeitem [ref=e567]:
+            - link [ref=e568] [cursor=pointer]:
+              - /url: "#/dev5a03f5aa1"
+              - generic: Xcode Localization Catalog
+          - treeitem [ref=e569]:
+            - link [ref=e570] [cursor=pointer]:
+              - /url: "#/devaf8b4090a"
+              - generic: Stringsdict file format
+        - treeitem "Manage devices" [ref=e571]:
+          - generic [ref=e572] [cursor=pointer]:
+            - generic: Manage devices
+          - treeitem [ref=e574]:
+            - link [ref=e575] [cursor=pointer]:
+              - /url: "#/dev93ef696c6"
+              - generic: Locate a device ID
+          - treeitem [ref=e576]:
+            - link [ref=e577] [cursor=pointer]:
+              - /url: "#/devade83d1d7"
+              - generic: Install and uninstall apps
+          - treeitem [ref=e578]:
+            - link [ref=e579] [cursor=pointer]:
+              - /url: "#/dev397906f14"
+              - generic: Install a beta OS
+          - treeitem [ref=e580]:
+            - link [ref=e581] [cursor=pointer]:
+              - /url: "#/dev85c64ec79"
+              - generic: View and import device logs
+          - treeitem [ref=e582]:
+            - link [ref=e583] [cursor=pointer]:
+              - /url: "#/dev0f3181c2c"
+              - generic: Find crash and energy logs
+          - treeitem [ref=e584]:
+            - link [ref=e585] [cursor=pointer]:
+              - /url: "#/dev816c242e1"
+              - generic: Manage app containers
+          - treeitem [ref=e586]:
+            - link [ref=e587] [cursor=pointer]:
+              - /url: "#/devfdace0ea8"
+              - generic: Take a screenshot
+          - treeitem [ref=e588]:
+            - link [ref=e589] [cursor=pointer]:
+              - /url: "#/devf225e58da"
+              - generic: Create a simulator
+          - treeitem [ref=e590]:
+            - link [ref=e591] [cursor=pointer]:
+              - /url: "#/devc98049be4"
+              - generic: Pair Apple Watch simulators
+          - treeitem [ref=e592]:
+            - link [ref=e593] [cursor=pointer]:
+              - /url: "#/dev1016d4c7f"
+              - generic: View paired Apple Watches
+        - treeitem "Maintain signing assets" [ref=e594]:
+          - generic [ref=e595] [cursor=pointer]:
+            - generic: Maintain signing assets
+          - treeitem [ref=e597]:
+            - link [ref=e598] [cursor=pointer]:
+              - /url: "#/dev3a05256b8"
+              - generic: What is app signing?
+          - treeitem [ref=e599]:
+            - link [ref=e600] [cursor=pointer]:
+              - /url: "#/dev8a2822e0b"
+              - generic: Export developer accounts
+          - treeitem [ref=e601]:
+            - link [ref=e602] [cursor=pointer]:
+              - /url: "#/dev154b28f09"
+              - generic: Manage signing certificates
+          - treeitem [ref=e603]:
+            - link [ref=e604] [cursor=pointer]:
+              - /url: "#/deva899b4fe5"
+              - generic: Download provisioning profiles
+          - treeitem [ref=e605]:
+            - link [ref=e606] [cursor=pointer]:
+              - /url: "#/devaafd622d2"
+              - generic: Manage profiles on devices
+          - treeitem [ref=e607]:
+            - link [ref=e608] [cursor=pointer]:
+              - /url: "#/dev97211aeac"
+              - generic: View or remove a signing certificate
+          - treeitem [ref=e609]:
+            - generic [ref=e610] [cursor=pointer]:
+              - generic: Signing troubleshooting
+            - treeitem [ref=e612]:
+              - link [ref=e613] [cursor=pointer]:
+                - /url: "#/devd1432da9a"
+                - generic: If a signing certificate is missing
+            - treeitem [ref=e614]:
+              - link [ref=e615] [cursor=pointer]:
+                - /url: "#/devc4c7101d8"
+                - generic: If an intermediate certificate authority is missing
+            - treeitem [ref=e616]:
+              - link [ref=e617] [cursor=pointer]:
+                - /url: "#/dev01865b392"
+                - generic: If a code signing error occurs
+            - treeitem [ref=e618]:
+              - link [ref=e619] [cursor=pointer]:
+                - /url: "#/dev298d7b2cb"
+                - generic: If a build has an entitlement error
+        - treeitem "Use source control" [ref=e620]:
+          - generic [ref=e621] [cursor=pointer]:
+            - generic: Use source control
+          - treeitem [ref=e623]:
+            - link [ref=e624] [cursor=pointer]:
+              - /url: "#/dev3fd7ccc7a"
+              - generic: Source control workflow
+          - treeitem [ref=e625]:
+            - link [ref=e626] [cursor=pointer]:
+              - /url: "#/dev8f6ee148b"
+              - generic: Create a local repository
+          - treeitem [ref=e627]:
+            - link [ref=e628] [cursor=pointer]:
+              - /url: "#/dev14751bc8b"
+              - generic: Pull, commit, and push changes
+          - treeitem [ref=e629]:
+            - link [ref=e630] [cursor=pointer]:
+              - /url: "#/devbcd8cba58"
+              - generic: Show changes in the source editor
+          - treeitem [ref=e631]:
+            - link [ref=e632] [cursor=pointer]:
+              - /url: "#/dev5ace8e9eb"
+              - generic: Compare file revisions
+          - treeitem [ref=e633]:
+            - link [ref=e634] [cursor=pointer]:
+              - /url: "#/dev89f34a32d"
+              - generic: View the history of commits
+          - treeitem [ref=e635]:
+            - link [ref=e636] [cursor=pointer]:
+              - /url: "#/deve306e855d"
+              - generic: Add a remote repository account
+          - treeitem [ref=e637]:
+            - link [ref=e638] [cursor=pointer]:
+              - /url: "#/dev2547b9dbe"
+              - generic: Create a remote from a local repository
+          - treeitem [ref=e639]:
+            - link [ref=e640] [cursor=pointer]:
+              - /url: "#/dev0c2b18623"
+              - generic: Clone a project from a repository
+          - treeitem [ref=e641]:
+            - link [ref=e642] [cursor=pointer]:
+              - /url: "#/dev436c8730d"
+              - generic: Add a remote to a local repository
+          - treeitem [ref=e643]:
+            - link [ref=e644] [cursor=pointer]:
+              - /url: "#/dev9c5192b56"
+              - generic: Add collaborators and share a repository
+          - treeitem [ref=e645]:
+            - link [ref=e646] [cursor=pointer]:
+              - /url: "#/dev897cb9ff4"
+              - generic: Manage branches
+          - treeitem [ref=e647]:
+            - link [ref=e648] [cursor=pointer]:
+              - /url: "#/dev93bdbf94c"
+              - generic: Use tags
+          - treeitem [ref=e649]:
+            - link [ref=e650] [cursor=pointer]:
+              - /url: "#/deve2fb813b4"
+              - generic: Add a README file
+        - treeitem "Distribute your app" [ref=e651]:
+          - generic [ref=e652] [cursor=pointer]:
+            - generic: Distribute your app
+          - treeitem [ref=e654]:
+            - link [ref=e655] [cursor=pointer]:
+              - /url: "#/devac02c5ab8"
+              - generic: Distribution overview
+          - treeitem [ref=e656]:
+            - link [ref=e657] [cursor=pointer]:
+              - /url: "#/dev1bc569500"
+              - generic: About the Archives organizer
+          - treeitem [ref=e658]:
+            - link [ref=e659] [cursor=pointer]:
+              - /url: "#/dev91fe7130a"
+              - generic: Prepare for app distribution
+          - treeitem [ref=e660]:
+            - link [ref=e661] [cursor=pointer]:
+              - /url: "#/devf37a1db04"
+              - generic: Create an archive
+          - treeitem [ref=e662]:
+            - generic [ref=e663] [cursor=pointer]:
+              - generic: Test a beta version
+            - treeitem [ref=e665]:
+              - link [ref=e666] [cursor=pointer]:
+                - /url: "#/dev2539d985f"
+                - generic: Distribute an app using TestFlight (iOS, tvOS, watchOS)
+            - treeitem [ref=e667]:
+              - link [ref=e668] [cursor=pointer]:
+                - /url: "#/dev7ccaf4d3c"
+                - generic: Distribute to registered devices (iOS, tvOS, watchOS)
+            - treeitem [ref=e669]:
+              - link [ref=e670] [cursor=pointer]:
+                - /url: "#/dev23ea8b877"
+                - generic: Export an app (iOS, tvOS, watchOS)
+            - treeitem [ref=e671]:
+              - link [ref=e672] [cursor=pointer]:
+                - /url: "#/devcac6ab5b3"
+                - generic: Manually manage distribution signing
+            - treeitem [ref=e673]:
+              - link [ref=e674] [cursor=pointer]:
+                - /url: "#/dev295cc0fae"
+                - generic: Distribute to registered computers (macOS)
+            - treeitem [ref=e675]:
+              - link [ref=e676] [cursor=pointer]:
+                - /url: "#/dev920940b13"
+                - generic: Export an app (macOS)
+            - treeitem [ref=e677]:
+              - link [ref=e678] [cursor=pointer]:
+                - /url: "#/dev16fb2b911"
+                - generic: Test the Mac Installer Package
+          - treeitem [ref=e679]:
+            - generic [ref=e680] [cursor=pointer]:
+              - generic: Distribute outside the Mac App Store
+            - treeitem [ref=e682]:
+              - link [ref=e683] [cursor=pointer]:
+                - /url: "#/dev033e997ca"
+                - generic: Distribute notarized or Developer ID apps
+            - treeitem [ref=e684]:
+              - link [ref=e685] [cursor=pointer]:
+                - /url: "#/dev88332a81e"
+                - generic: Upload a macOS app to be notarized
+            - treeitem [ref=e686]:
+              - link [ref=e687] [cursor=pointer]:
+                - /url: "#/dev1cc22a95c"
+                - generic: Test a Developer ID app
+            - treeitem [ref=e688]:
+              - link [ref=e689] [cursor=pointer]:
+                - /url: "#/dev9b7736b0e"
+                - generic: Enable and disable Gatekeeper
+            - treeitem [ref=e690]:
+              - link [ref=e691] [cursor=pointer]:
+                - /url: "#/deve51ce7c3d"
+                - generic: Create a Developer ID installer package
+          - treeitem [ref=e692]:
+            - generic [ref=e693] [cursor=pointer]:
+              - generic: Create an enterprise app
+            - treeitem [ref=e695]:
+              - link [ref=e696] [cursor=pointer]:
+                - /url: "#/devba5e7054d"
+                - generic: Develop and distribute an enterprise app
+            - treeitem [ref=e697]:
+              - link [ref=e698] [cursor=pointer]:
+                - /url: "#/dev96a12fb84"
+                - generic: Manually trust a developer on iOS
+        - treeitem "Distribute binary frameworks" [ref=e699]:
+          - generic [ref=e700] [cursor=pointer]:
+            - generic: Distribute binary frameworks
+          - treeitem [ref=e702]:
+            - link [ref=e703] [cursor=pointer]:
+              - /url: "#/dev6f6ac218b"
+              - generic: What is an XCFramework?
+          - treeitem [ref=e704]:
+            - link [ref=e705] [cursor=pointer]:
+              - /url: "#/dev544efab96"
+              - generic: Create an XCFramework
+        - treeitem "Submit apps to the App Store" [ref=e706]:
+          - generic [ref=e707] [cursor=pointer]:
+            - generic: Submit apps to the App Store
+          - treeitem [ref=e709]:
+            - link [ref=e710] [cursor=pointer]:
+              - /url: "#/devbbdc5ce4f"
+              - generic: What is app thinning?
+          - treeitem [ref=e711]:
+            - link [ref=e712] [cursor=pointer]:
+              - /url: "#/dev067853c94"
+              - generic: Distribute through the App Store
+          - treeitem [ref=e713]:
+            - link [ref=e714] [cursor=pointer]:
+              - /url: "#/dev37441e273"
+              - generic: Validate an app
+          - treeitem [ref=e715]:
+            - link [ref=e716] [cursor=pointer]:
+              - /url: "#/dev442d7f2ca"
+              - generic: Upload an app
+          - treeitem [ref=e717]:
+            - link [ref=e718] [cursor=pointer]:
+              - /url: "#/dev285fb60ce"
+              - generic: Upload in-app purchase content
+          - treeitem [ref=e719]:
+            - link [ref=e720] [cursor=pointer]:
+              - /url: "#/dev34b59f90c"
+              - generic: Verify the build settings
+        - treeitem "View crash, energy, and metrics reports" [ref=e721]:
+          - generic [ref=e722] [cursor=pointer]:
+            - generic: View crash, energy, and metrics reports
+          - treeitem [ref=e724]:
+            - link [ref=e725] [cursor=pointer]:
+              - /url: "#/dev861f46ea8"
+              - generic: Crashes organizer
+          - treeitem [ref=e726]:
+            - link [ref=e727] [cursor=pointer]:
+              - /url: "#/dev36a5a9141"
+              - generic: Energy organizer
+          - treeitem [ref=e728]:
+            - link [ref=e729] [cursor=pointer]:
+              - /url: "#/devb642b28ac"
+              - generic: Metrics organizer
+          - treeitem [ref=e730]:
+            - link [ref=e731] [cursor=pointer]:
+              - /url: "#/dev675635e70"
+              - generic: How are reports created?
+          - treeitem [ref=e732]:
+            - link [ref=e733] [cursor=pointer]:
+              - /url: "#/devc8ced2ea3"
+              - generic: Select a crash or energy report
+          - treeitem [ref=e734]:
+            - link [ref=e735] [cursor=pointer]:
+              - /url: "#/devbc41e8c1a"
+              - generic: Select a category of metric reports
+          - treeitem [ref=e736]:
+            - link [ref=e737] [cursor=pointer]:
+              - /url: "#/dev2a39eafb2"
+              - generic: View a crash or energy report
+          - treeitem [ref=e738]:
+            - link [ref=e739] [cursor=pointer]:
+              - /url: "#/dev7bc5245c1"
+              - generic: Inspect a crash or energy report
+          - treeitem [ref=e740]:
+            - link [ref=e741] [cursor=pointer]:
+              - /url: "#/devae6c358e4"
+              - generic: View crash or energy report statistics
+          - treeitem [ref=e742]:
+            - link [ref=e743] [cursor=pointer]:
+              - /url: "#/dev81bf07c68"
+              - generic: About metric report data
+          - treeitem [ref=e744]:
+            - generic [ref=e745] [cursor=pointer]:
+              - generic: Symbolicate crash and energy logs
+            - treeitem [ref=e747]:
+              - link [ref=e748] [cursor=pointer]:
+                - /url: "#/dev709125d2e"
+                - generic: What is symbolication?
+            - treeitem [ref=e749]:
+              - link [ref=e750] [cursor=pointer]:
+                - /url: "#/devef5928039"
+                - generic: Download debug symbols
+            - treeitem [ref=e751]:
+              - link [ref=e752] [cursor=pointer]:
+                - /url: "#/dev5d9904b70"
+                - generic: If logs aren’t symbolicated
+          - treeitem [ref=e753]:
+            - link [ref=e754] [cursor=pointer]:
+              - /url: "#/deve2819c518"
+              - generic: Share crash data and statistics with developers
+          - treeitem [ref=e755]:
+            - link [ref=e756] [cursor=pointer]:
+              - /url: "#/dev9a80ab71d"
+              - generic: If no reports appear in the organizer
+          - treeitem [ref=e757]:
+            - link [ref=e758] [cursor=pointer]:
+              - /url: "#/deved2cca77d"
+              - generic: Supported crash reports
+          - treeitem [ref=e759]:
+            - link [ref=e760] [cursor=pointer]:
+              - /url: "#/dev02a8296dd"
+              - generic: Supported energy reports
+          - treeitem [ref=e761]:
+            - link [ref=e762] [cursor=pointer]:
+              - /url: "#/dev3e489135f"
+              - generic: Supported metric reports
+        - treeitem "Perform continuous integration" [ref=e763]:
+          - generic [ref=e764] [cursor=pointer]:
+            - generic: Perform continuous integration
+          - treeitem [ref=e766]:
+            - link [ref=e767] [cursor=pointer]:
+              - /url: "#/dev466720061"
+              - generic: Continuous integration overview
+          - treeitem [ref=e768]:
+            - generic [ref=e769] [cursor=pointer]:
+              - generic: Configure Xcode Server
+            - treeitem [ref=e771]:
+              - link [ref=e772] [cursor=pointer]:
+                - /url: "#/dev399fc6efa"
+                - generic: Set up Xcode Server
+            - treeitem [ref=e773]:
+              - link [ref=e774] [cursor=pointer]:
+                - /url: "#/dev025d18730"
+                - generic: Start and stop Xcode Server
+          - treeitem [ref=e775]:
+            - link [ref=e776] [cursor=pointer]:
+              - /url: "#/dev01043b473"
+              - generic: Connect to Xcode Server
+          - treeitem [ref=e777]:
+            - link [ref=e778] [cursor=pointer]:
+              - /url: "#/deve6016ddfb"
+              - generic: Share schemes with Xcode Server
+          - treeitem [ref=e779]:
+            - link [ref=e780] [cursor=pointer]:
+              - /url: "#/devc4a08a3ef"
+              - generic: Create a bot
+          - treeitem [ref=e781]:
+            - generic [ref=e782] [cursor=pointer]:
+              - generic: Configure bots
+            - treeitem [ref=e784]:
+              - link [ref=e785] [cursor=pointer]:
+                - /url: "#/devd973b5e39"
+                - generic: Bot scheme and action settings
+            - treeitem [ref=e786]:
+              - link [ref=e787] [cursor=pointer]:
+                - /url: "#/devda3d905f4"
+                - generic: Allow Xcode Server to manage signing
+            - treeitem [ref=e788]:
+              - link [ref=e789] [cursor=pointer]:
+                - /url: "#/dev809c53bf9"
+                - generic: Create bot triggers
+            - treeitem [ref=e790]:
+              - link [ref=e791] [cursor=pointer]:
+                - /url: "#/devbc64a648f"
+                - generic: Configure a bot to run app on multiple devices
+            - treeitem [ref=e792]:
+              - link [ref=e793] [cursor=pointer]:
+                - /url: "#/dev86f8cf93d"
+                - generic: Configure a bot to create iOS App files
+            - treeitem [ref=e794]:
+              - link [ref=e795] [cursor=pointer]:
+                - /url: "#/deva7ef4be12"
+                - generic: Xcode Server environment variables
+          - treeitem [ref=e796]:
+            - link [ref=e797] [cursor=pointer]:
+              - /url: "#/dev82675e0d3"
+              - generic: Duplicate, edit, and delete bots
+          - treeitem [ref=e798]:
+            - link [ref=e799] [cursor=pointer]:
+              - /url: "#/dev80490452b"
+              - generic: Run, cancel, and delete integrations
+          - treeitem [ref=e800]:
+            - link [ref=e801] [cursor=pointer]:
+              - /url: "#/dev768c3f33c"
+              - generic: View bot integration results
+        - treeitem "Troubleshoot build failures" [ref=e802]:
+          - generic [ref=e803] [cursor=pointer]:
+            - generic: Troubleshoot build failures
+          - treeitem [ref=e805]:
+            - link [ref=e806] [cursor=pointer]:
+              - /url: "#/dev621201fb0"
+              - generic: If your project has a target dependency cycle
+          - treeitem [ref=e807]:
+            - link [ref=e808] [cursor=pointer]:
+              - /url: "#/dev14a2fd0c0"
+              - generic: If multiple commands produce the same output
+          - treeitem [ref=e809]:
+            - link [ref=e810] [cursor=pointer]:
+              - /url: "#/deva4f22d670"
+              - generic: If you use the deprecated Always Search User Paths build setting
+        - treeitem "Create playgrounds" [ref=e811]:
+          - generic [ref=e812] [cursor=pointer]:
+            - generic: Create playgrounds
+          - treeitem [ref=e814]:
+            - link [ref=e815] [cursor=pointer]:
+              - /url: "#/dev188e45167"
+              - generic: Create, edit, and execute
+          - treeitem [ref=e816]:
+            - link [ref=e817] [cursor=pointer]:
+              - /url: "#/devfa5bea3af"
+              - generic: Add auxiliary code
+          - treeitem [ref=e818]:
+            - link [ref=e819] [cursor=pointer]:
+              - /url: "#/dev5516dfe72"
+              - generic: Add resources
+          - treeitem [ref=e820]:
+            - link [ref=e821] [cursor=pointer]:
+              - /url: "#/dev113294b84"
+              - generic: Use rich comments
+          - treeitem [ref=e822]:
+            - link [ref=e823] [cursor=pointer]:
+              - /url: "#/dev53d8265e4"
+              - generic: Add, move, and rename pages
+          - treeitem [ref=e824]:
+            - link [ref=e825] [cursor=pointer]:
+              - /url: "#/devd21db684c"
+              - generic: Copy pages between playgrounds
+          - treeitem [ref=e826]:
+            - link [ref=e827] [cursor=pointer]:
+              - /url: "#/devab506297c"
+              - generic: View results of a statement
+          - treeitem [ref=e828]:
+            - link [ref=e829] [cursor=pointer]:
+              - /url: "#/dev5d9411fd2"
+              - generic: Add a live view
+          - treeitem [ref=e830]:
+            - link [ref=e831] [cursor=pointer]:
+              - /url: "#/dev4c60242fc"
+              - generic: Add a literal to a playground
+        - treeitem "Customize Xcode" [ref=e832]:
+          - generic [ref=e833] [cursor=pointer]:
+            - generic: Customize Xcode
+          - treeitem [ref=e835]:
+            - link [ref=e836] [cursor=pointer]:
+              - /url: "#/dev9d00ebc70"
+              - generic: Manage general settings
+          - treeitem [ref=e837]:
+            - link [ref=e838] [cursor=pointer]:
+              - /url: "#/devc6700ab7d"
+              - generic: Add accounts, servers, and repositories
+          - treeitem [ref=e839]:
+            - link [ref=e840] [cursor=pointer]:
+              - /url: "#/devaf282080a"
+              - generic: Add an Apple ID
+          - treeitem [ref=e841]:
+            - link [ref=e842] [cursor=pointer]:
+              - /url: "#/devb4d6e8810"
+              - generic: Configure actions for events
+          - treeitem [ref=e843]:
+            - link [ref=e844] [cursor=pointer]:
+              - /url: "#/dev02ea29e68"
+              - generic: Configure how files are displayed
+          - treeitem [ref=e845]:
+            - link [ref=e846] [cursor=pointer]:
+              - /url: "#/dev0125622ec"
+              - generic: Manage fonts and colors
+          - treeitem [ref=e847]:
+            - link [ref=e848] [cursor=pointer]:
+              - /url: "#/dev8669bf801"
+              - generic: Configure code editing and indentation
+          - treeitem [ref=e849]:
+            - link [ref=e850] [cursor=pointer]:
+              - /url: "#/devcaba3b7d4"
+              - generic: Customize keyboard shortcuts
+          - treeitem [ref=e851]:
+            - link [ref=e852] [cursor=pointer]:
+              - /url: "#/devaf1c0585a"
+              - generic: Customize the Touch Bar controls
+          - treeitem [ref=e853]:
+            - link [ref=e854] [cursor=pointer]:
+              - /url: "#/dev7ef1e7406"
+              - generic: Configure source control
+          - treeitem [ref=e855]:
+            - link [ref=e856] [cursor=pointer]:
+              - /url: "#/dev91a7a31fc"
+              - generic: Customize text macros
+          - treeitem [ref=e857]:
+            - link [ref=e858] [cursor=pointer]:
+              - /url: "#/dev882f4ad3d"
+              - generic: Customize the new file header
+          - treeitem [ref=e859]:
+            - generic [ref=e860] [cursor=pointer]:
+              - generic: Manage simulators and toolchains
+            - treeitem [ref=e862]:
+              - link [ref=e863] [cursor=pointer]:
+                - /url: "#/deva7379ae35"
+                - generic: Install simulator runtimes
+            - treeitem [ref=e864]:
+              - link [ref=e865] [cursor=pointer]:
+                - /url: "#/dev05f62dd59"
+                - generic: Switch toolchains
+            - treeitem [ref=e866]:
+              - link [ref=e867] [cursor=pointer]:
+                - /url: "#/dev128b6c856"
+                - generic: Verify, reveal, and delete toolchains
+          - treeitem [ref=e868]:
+            - link [ref=e869] [cursor=pointer]:
+              - /url: "#/deva52afe8a4"
+              - generic: Specify locations of project files
+          - treeitem [ref=e870]:
+            - link [ref=e871] [cursor=pointer]:
+              - /url: "#/dev396bc94c7"
+              - generic: Choose the build system
+        - treeitem "Reference" [ref=e872]:
+          - generic [ref=e873] [cursor=pointer]:
+            - generic: Reference
+          - treeitem [ref=e875]:
+            - link [ref=e876] [cursor=pointer]:
+              - /url: "#/deva1f2ab5a2"
+              - generic: Archive export files
+          - treeitem [ref=e877]:
+            - link [ref=e878] [cursor=pointer]:
+              - /url: "#/itcaec37c2a6"
+              - generic: Build settings
+          - treeitem [ref=e879]:
+            - link [ref=e880] [cursor=pointer]:
+              - /url: "#/dev745c5c974"
+              - generic: Configuration Settings File
+          - treeitem [ref=e881]:
+            - generic [ref=e882] [cursor=pointer]:
+              - generic: Text Macros
+            - treeitem [ref=e884]:
+              - link [ref=e885] [cursor=pointer]:
+                - /url: "#/devc8a500cb9"
+                - generic: Text macro format
+            - treeitem [ref=e886]:
+              - link [ref=e887] [cursor=pointer]:
+                - /url: "#/dev7fe737ce0"
+                - generic: Text macros
+    - main [ref=e944]:
+      - article [ref=e945]:
+        - generic [ref=e947]:
+          - generic [ref=e948]: MANAGE SCHEMES
+          - generic [ref=e949]:
+            - heading "Configure schemes" [active] [level=1] [ref=e950]
+            - paragraph [ref=e951]:
+              - text: Use the
+              - emphasis [ref=e952]: scheme editor
+              - text: to configure the
+              - link "schemes" [ref=e953] [cursor=pointer]:
+                - /url: "#/dev6fd4476d7"
+              - text: in your project.
+            - figure [ref=e954]
+            - paragraph [ref=e956]:
+              - strong [ref=e957]: "Open the scheme editor:"
+              - text: Choose Edit Scheme from the
+              - link "scheme menu" [ref=e958] [cursor=pointer]:
+                - /url: "#/dev8aeb22505"
+              - text: in the toolbar.
+            - paragraph [ref=e960]:
+              - strong [ref=e961]: "Configure the current scheme:"
+              - text: Select a
+              - link "scheme action" [ref=e962] [cursor=pointer]:
+                - /url: "#/devd9c8382e7"
+              - text: on the left. Adjust its settings on the right. When you change a setting, the change takes effect immediately.
+            - paragraph [ref=e964]:
+              - strong [ref=e965]: "Configure a different scheme:"
+              - text: Choose a scheme from the pop-up menu at the top of the scheme editor. When you switch schemes, the settings for that scheme load and you can change them.
+            - paragraph [ref=e967]:
+              - strong [ref=e968]: "Duplicate the current scheme:"
+              - text: Click the Duplicate Scheme button. When you duplicate a scheme, all of its settings are retained in the duplicate.
+            - paragraph [ref=e970]:
+              - strong [ref=e971]: "Share the current scheme:"
+              - text: Select the Shared checkbox.
+            - paragraph [ref=e973]:
+              - strong [ref=e974]: "Add, delete, and rename schemes:"
+              - text: Click Manage Schemes.
+            - paragraph [ref=e976]:
+              - strong [ref=e977]: "Tip:"
+              - text: You can set a scheme action to run a script or send an email before or after it completes. Expand the disclosure triangle (
+              - generic [ref=e978]: )
+              - text: next to the action, select Pre-actions or Post-actions, and add a script or email action.
+            - generic [ref=e979]:
+              - strong [ref=e980]: See also
+              - link "Switch schemes and destinations" [ref=e981] [cursor=pointer]:
+                - /url: "#/dev40e0a11aa"
+              - link "Add, delete, rename, and share schemes" [ref=e982] [cursor=pointer]:
+                - /url: "#/dev5426ddfcf"
+              - link "Build multiple targets" [ref=e983] [cursor=pointer]:
+                - /url: "#/dev38419576c"
+              - link "Share schemes with Xcode Server" [ref=e984] [cursor=pointer]:
+                - /url: "#/deve6016ddfb"
+          - generic [ref=e985]: Copyright © 2020 Apple Inc. All rights reserved.

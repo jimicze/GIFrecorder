@@ -1,0 +1,376 @@
+- generic [active] [ref=e1]:
+  - generic:
+    - generic:
+      - link "Skip to main content" [ref=e2] [cursor=pointer]
+      - link "Accessibility help" [ref=e3] [cursor=pointer]:
+        - /url: https://support.google.com/websearch/answer/181196?hl=en-CZ
+  - generic [ref=e8]:
+    - search [ref=e9]:
+      - generic [ref=e11]:
+        - link "Go to Google Home" [ref=e13] [cursor=pointer]:
+          - /url: https://www.google.com/webhp?hl=en&sa=X&ved=0ahUKEwjTncHLj9WUAxUvR_EDHXDJHkIQPAgI
+          - img [ref=e14]
+        - generic [ref=e21]:
+          - generic [ref=e22]:
+            - combobox "Search" [ref=e25]: Xcode Attach to Process by PID or Name help.apple.com Xcode Attach to Process by PID or Name help.apple.com
+            - generic [ref=e26]:
+              - button "Clear" [ref=e28] [cursor=pointer]:
+                - img [ref=e30]
+              - generic [ref=e33]:
+                - button "Search by voice" [ref=e34] [cursor=pointer]:
+                  - img [ref=e35]
+                - button "Search by image" [ref=e37] [cursor=pointer]:
+                  - img [ref=e38]
+          - button "Search" [ref=e40] [cursor=pointer]:
+            - img [ref=e43]
+    - generic [ref=e45]:
+      - button "Settings" [ref=e47] [cursor=pointer]:
+        - img [ref=e50]
+      - generic [ref=e53]:
+        - button "Google apps" [ref=e55] [cursor=pointer]:
+          - img [ref=e56]
+        - link "Sign in" [ref=e60] [cursor=pointer]:
+          - /url: https://accounts.google.com/ServiceLogin?hl=en&passive=true&continue=https://www.google.com/search%3Fhl%3Den%26q%3DXcode%2BAttach%2Bto%2BProcess%2Bby%2BPID%2Bor%2BName%2Bhelp.apple.com&ec=futura_srp_og_si_72236_p
+  - generic [ref=e62]:
+    - navigation [ref=e68]:
+      - generic [ref=e74]:
+        - list [ref=e75]:
+          - listitem [ref=e76]:
+            - link "AI Mode" [ref=e79] [cursor=pointer]:
+              - /url: /search?q=Xcode+Attach+to+Process+by+PID+or+Name+help.apple.com&sca_esv=f21e304c56ab1b64&hl=en&udm=50&fbs=ADc_l-aN0CWEZBOHjofHoaMMDiKpFZYo9qIX3pM4_jubAu4b8LAEc4zefCeZKlQmOh9fsFWPhl6vgfl42sPHd149dVjW-eI2El9vd4TJzR6nd1fpS2lxfnDL27b-TK_VeL22d8N93ztlFqKgioVPDHxvSa-u9yeaNM0DI_FB3o-5UR0Tcb_ZpkJfX4eJy1avmLJXJH40_yga&aep=1&ntc=1&sa=X&ved=2ahUKEwjTncHLj9WUAxUvR_EDHXDJHkIQ2J8OegQIDxAD
+              - generic [ref=e82]: AI Mode
+          - listitem [ref=e83]:
+            - link "All" [disabled] [ref=e84]:
+              - generic [ref=e86]: All
+          - listitem [ref=e87]:
+            - link "Forums" [ref=e88] [cursor=pointer]:
+              - /url: /search?sca_esv=f21e304c56ab1b64&hl=en&udm=18&fbs=ADc_l-aN0CWEZBOHjofHoaMMDiKpFZYo9qIX3pM4_jubAu4b8LAEc4zefCeZKlQmOh9fsFWPhl6vgfl42sPHd149dVjW-eI2El9vd4TJzR6nd1fpS2lxfnDL27b-TK_VeL22d8N93ztlFqKgioVPDHxvSa-u9yeaNM0DI_FB3o-5UR0Tcb_ZpkJfX4eJy1avmLJXJH40_yga&q=Xcode+Attach+to+Process+by+PID+or+Name+help.apple.com&sa=X&ved=2ahUKEwjTncHLj9WUAxUvR_EDHXDJHkIQs6gLegQIFRAB
+              - generic [ref=e90]: Forums
+          - listitem [ref=e91]:
+            - link "Images" [ref=e92] [cursor=pointer]:
+              - /url: /search?sca_esv=f21e304c56ab1b64&hl=en&udm=2&fbs=ADc_l-aN0CWEZBOHjofHoaMMDiKpFZYo9qIX3pM4_jubAu4b8LAEc4zefCeZKlQmOh9fsFWPhl6vgfl42sPHd149dVjW-eI2El9vd4TJzR6nd1fpS2lxfnDL27b-TK_VeL22d8N93ztlFqKgioVPDHxvSa-u9yeaNM0DI_FB3o-5UR0Tcb_ZpkJfX4eJy1avmLJXJH40_yga&q=Xcode+Attach+to+Process+by+PID+or+Name+help.apple.com&sa=X&ved=2ahUKEwjTncHLj9WUAxUvR_EDHXDJHkIQtKgLegQIFBAB
+              - generic [ref=e94]: Images
+          - listitem [ref=e95]:
+            - link "Videos" [ref=e96] [cursor=pointer]:
+              - /url: /search?sca_esv=f21e304c56ab1b64&hl=en&udm=7&fbs=ADc_l-aN0CWEZBOHjofHoaMMDiKpFZYo9qIX3pM4_jubAu4b8LAEc4zefCeZKlQmOh9fsFWPhl6vgfl42sPHd149dVjW-eI2El9vd4TJzR6nd1fpS2lxfnDL27b-TK_VeL22d8N93ztlFqKgioVPDHxvSa-u9yeaNM0DI_FB3o-5UR0Tcb_ZpkJfX4eJy1avmLJXJH40_yga&q=Xcode+Attach+to+Process+by+PID+or+Name+help.apple.com&sa=X&ved=2ahUKEwjTncHLj9WUAxUvR_EDHXDJHkIQtKgLegQIExAB
+              - generic [ref=e98]: Videos
+          - listitem [ref=e99]:
+            - link "Short videos" [ref=e100] [cursor=pointer]:
+              - /url: /search?sca_esv=f21e304c56ab1b64&hl=en&udm=39&fbs=ADc_l-aN0CWEZBOHjofHoaMMDiKpFZYo9qIX3pM4_jubAu4b8LAEc4zefCeZKlQmOh9fsFWPhl6vgfl42sPHd149dVjW-eI2El9vd4TJzR6nd1fpS2lxfnDL27b-TK_VeL22d8N93ztlFqKgioVPDHxvSa-u9yeaNM0DI_FB3o-5UR0Tcb_ZpkJfX4eJy1avmLJXJH40_yga&q=Xcode+Attach+to+Process+by+PID+or+Name+help.apple.com&sa=X&ved=2ahUKEwjTncHLj9WUAxUvR_EDHXDJHkIQs6gLegQIEhAB
+              - generic [ref=e102]: Short videos
+          - listitem [ref=e103]:
+            - link "News" [ref=e104] [cursor=pointer]:
+              - /url: /search?sca_esv=f21e304c56ab1b64&hl=en&q=Xcode+Attach+to+Process+by+PID+or+Name+help.apple.com&tbm=nws&source=lnms&fbs=ADc_l-aN0CWEZBOHjofHoaMMDiKpFZYo9qIX3pM4_jubAu4b8LAEc4zefCeZKlQmOh9fsFWPhl6vgfl42sPHd149dVjW-eI2El9vd4TJzR6nd1fpS2lxfnDL27b-TK_VeL22d8N93ztlFqKgioVPDHxvSa-u9yeaNM0DI_FB3o-5UR0Tcb_ZpkJfX4eJy1avmLJXJH40_yga&sa=X&ved=2ahUKEwjTncHLj9WUAxUvR_EDHXDJHkIQ0pQJegQIERAB
+              - generic [ref=e106]: News
+          - listitem [ref=e107]:
+            - button "More filters" [ref=e108] [cursor=pointer]:
+              - generic "More filters" [ref=e109]:
+                - generic [ref=e110]:
+                  - generic [ref=e111]: More
+                  - img [ref=e113]
+        - button "Tools" [ref=e116] [cursor=pointer]:
+          - generic [ref=e118]:
+            - generic [ref=e119]: Tools
+            - img [ref=e121]
+    - heading "Search Results" [level=1] [ref=e123]
+    - main [ref=e129]:
+      - generic [ref=e133]:
+        - generic [ref=e136]:
+          - heading "Web results" [level=2] [ref=e137]
+          - generic [ref=e138]:
+            - generic [ref=e141]:
+              - link "Failed to Attach to Process ID Xcode Stack Overflow 30+ answers · 13 years ago" [ref=e143] [cursor=pointer]:
+                - /url: https://stackoverflow.com/questions/11535844/failed-to-attach-to-process-id-xcode
+                - heading "Failed to Attach to Process ID Xcode" [level=3] [ref=e144]
+                - generic [ref=e149]:
+                  - generic [ref=e151]: Stack Overflow
+                  - generic [ref=e153]: 30+ answers · 13 years ago
+              - button "About this result" [ref=e154] [cursor=pointer]:
+                - img [ref=e157]
+            - generic [ref=e160]: Anyone has experienced this problem? Yesterday I still can run my app in simulator but now I cannot run my app since Xcode prints this error in ...
+            - generic [ref=e165]:
+              - link "39 answers" [ref=e166] [cursor=pointer]:
+                - /url: https://stackoverflow.com/a/12819757
+              - generic [ref=e167]: ·
+              - generic [ref=e168]: "Top answer:"
+              - generic [ref=e169]: Resetting the content and settings in the simulator worked for me. This is available in ...
+            - generic [ref=e172]:
+              - generic [ref=e173]:
+                - link "Cannot hit breakpoints after \"Attach to Process by PID ..." [ref=e176] [cursor=pointer]:
+                  - /url: https://stackoverflow.com/questions/52667477/cannot-hit-breakpoints-after-attach-to-process-by-pid-or-name-from-a-custom-e
+                  - generic [ref=e177]:
+                    - text: Cannot hit breakpoints after "
+                    - emphasis [ref=e178]: Attach to Process by PID
+                    - text: ...
+                - generic [ref=e180]: 2 answers
+                - generic [ref=e182]: 5 Oct 2018
+              - generic [ref=e183]:
+                - link "Failed to Attach to Process ID Xcode for Live ..." [ref=e186] [cursor=pointer]:
+                  - /url: https://stackoverflow.com/questions/35557389/failed-to-attach-to-process-id-xcode-for-live-application-from-store
+                  - generic [ref=e187]:
+                    - text: Failed to
+                    - emphasis [ref=e188]: Attach to Process ID Xcode
+                    - text: for Live ...
+                - generic [ref=e190]: 1 answer
+                - generic [ref=e192]: 22 Feb 2016
+              - link "More results from stackoverflow.com" [ref=e196] [cursor=pointer]:
+                - /url: /search?q=Xcode+Attach+to+Process+by+PID+or+Name+help.apple.com+site:stackoverflow.com&sca_esv=f21e304c56ab1b64&hl=en&sa=X&ved=2ahUKEwjTncHLj9WUAxUvR_EDHXDJHkIQrQIoAnoECCgQAw
+        - generic [ref=e200]:
+          - generic [ref=e203]:
+            - 'link "Xcode error: failed to attach to process ID xxx Apple Discussions https://discussions.apple.com › thread" [ref=e205] [cursor=pointer]':
+              - /url: https://discussions.apple.com/thread/4276753
+              - 'heading "Xcode error: failed to attach to process ID xxx" [level=3] [ref=e206]'
+              - generic [ref=e211]:
+                - generic [ref=e213]: Apple Discussions
+                - generic [ref=e215]: https://discussions.apple.com › thread
+            - button "About this result" [ref=e216] [cursor=pointer]:
+              - img [ref=e219]
+          - generic [ref=e222]:
+            - generic [ref=e223]: 8 Sept 2012 —
+            - generic [ref=e224]:
+              - text: I'm working on an
+              - emphasis [ref=e225]: Xcode
+              - text: project running on
+              - emphasis [ref=e226]: Xcode
+              - text: 4.4.1 and Mountain Lion OSX 10.8.1, trying to get it to run on iPhone Simulator 5.1.
+            - link "Read more" [ref=e227] [cursor=pointer]:
+              - /url: https://discussions.apple.com/thread/4276753#:~:text=I'm%20working%20on%20an%20Xcode,run%20on%20iPhone%20Simulator%205.1.
+          - generic [ref=e229]:
+            - text: "Missing: Name ‎| Show results with:"
+            - link "Name" [ref=e230] [cursor=pointer]:
+              - /url: /search?sca_esv=f21e304c56ab1b64&hl=en&q=Xcode+Attach+to+Process+by+PID+or+%22Name%22+help.apple.com&sa=X&ved=2ahUKEwjTncHLj9WUAxUvR_EDHXDJHkIQ5t4CegQIIhAB
+        - generic [ref=e234]:
+          - generic [ref=e237]:
+            - link "How to debug plugins from XCode 15? - macOS - iPlug2 Forum iPlug2 Forum https://iplug2.discourse.group › how-to-debug-plugins-..." [ref=e239] [cursor=pointer]:
+              - /url: https://iplug2.discourse.group/t/how-to-debug-plugins-from-xcode-15/909
+              - heading "How to debug plugins from XCode 15? - macOS - iPlug2 Forum" [level=3] [ref=e240]
+              - generic [ref=e245]:
+                - generic [ref=e247]: iPlug2 Forum
+                - generic [ref=e249]: https://iplug2.discourse.group › how-to-debug-plugins-...
+            - button "About this result" [ref=e250] [cursor=pointer]:
+              - img [ref=e253]
+          - generic [ref=e256]:
+            - generic [ref=e257]: 19 May 2024 —
+            - generic [ref=e258]:
+              - emphasis [ref=e259]: “Attach to process by PID or Name” is greyed out
+              - text: . I have System Integrity Protection temporarily turned OFF so that should not be the problem.
+            - link "Read more" [ref=e260] [cursor=pointer]:
+              - /url: https://iplug2.discourse.group/t/how-to-debug-plugins-from-xcode-15/909#:~:text=%E2%80%9CAttach%20to%20process%20by%20PID,should%20not%20be%20the%20problem.
+        - generic [ref=e264]:
+          - generic [ref=e267]:
+            - link "Debugging Binaries in Xcode. Attach, Break, Remap Medium · Soumya Mahunt 5 months ago" [ref=e269] [cursor=pointer]:
+              - /url: https://soumyamahunt.medium.com/debugging-binaries-in-xcode-c40625a2ed5b
+              - heading "Debugging Binaries in Xcode. Attach, Break, Remap" [level=3] [ref=e270]
+              - generic [ref=e275]:
+                - generic [ref=e277]: Medium · Soumya Mahunt
+                - generic [ref=e279]: 5 months ago
+            - button "About this result" [ref=e280] [cursor=pointer]:
+              - img [ref=e283]
+          - generic [ref=e286]:
+            - generic [ref=e287]:
+              - text: "Method 2:"
+              - emphasis [ref=e288]: Attach to Process by PID or Name
+              - text: . From the menu, choose Debug > Attach to Process by PID or Name.
+            - link "Read more" [ref=e289] [cursor=pointer]:
+              - /url: https://soumyamahunt.medium.com/debugging-binaries-in-xcode-c40625a2ed5b#:~:text=Method%202%3A%20Attach%20to%20Process,Process%20by%20PID%20or%20Name.
+        - generic [ref=e293]:
+          - generic [ref=e296]:
+            - 'link "How to attach to running app · Issue #525 · ios-control/ios- ... GitHub https://github.com › ios-control › ios-deploy › issues" [ref=e298] [cursor=pointer]':
+              - /url: https://github.com/ios-control/ios-deploy/issues/525
+              - 'heading "How to attach to running app · Issue #525 · ios-control/ios- ..." [level=3] [ref=e299]'
+              - generic [ref=e304]:
+                - generic [ref=e306]: GitHub
+                - generic [ref=e308]: https://github.com › ios-control › ios-deploy › issues
+            - button "About this result" [ref=e309] [cursor=pointer]:
+              - img [ref=e312]
+          - generic [ref=e315]:
+            - generic [ref=e316]: 7 Jul 2021 —
+            - generic [ref=e317]:
+              - text: As for
+              - emphasis [ref=e318]: attaching
+              - text: to a running app, you can
+              - emphasis [ref=e319]: attach
+              - text: to a running
+              - emphasis [ref=e320]: process
+              - text: by
+              - emphasis [ref=e321]: name
+              - text: eg
+              - emphasis [ref=e322]: process attach
+              - text: "--"
+              - emphasis [ref=e323]: name
+              - text: MyApp. These instructions should
+              - emphasis [ref=e324]: help
+              - text: .
+            - link "Read more" [ref=e325] [cursor=pointer]:
+              - /url: https://github.com/ios-control/ios-deploy/issues/525#:~:text=As%20for%20attaching%20to%20a,.%20These%20instructions%20should%20help
+        - generic [ref=e329]:
+          - generic [ref=e332]:
+            - link "processName | Apple Developer Documentation Apple Developer https://developer.apple.com › foundation › processinfo" [ref=e334] [cursor=pointer]:
+              - /url: https://developer.apple.com/documentation/foundation/processinfo/processname
+              - heading "processName | Apple Developer Documentation" [level=3] [ref=e335]
+              - generic [ref=e340]:
+                - generic [ref=e342]: Apple Developer
+                - generic [ref=e344]: https://developer.apple.com › foundation › processinfo
+            - button "About this result" [ref=e345] [cursor=pointer]:
+              - img [ref=e348]
+          - generic [ref=e351]:
+            - generic [ref=e352]:
+              - text: The
+              - emphasis [ref=e353]: process name
+              - text: is used to register application defaults and is used in error messages. It does not uniquely identify the
+              - emphasis [ref=e354]: process
+              - text: .
+            - link "Read more" [ref=e355] [cursor=pointer]:
+              - /url: https://developer.apple.com/documentation/foundation/processinfo/processname#:~:text=The%20process%20name%20is%20used,not%20uniquely%20identify%20the%20process.
+        - generic [ref=e359]:
+          - generic [ref=e362]:
+            - link "Is there any way to debug plugin in Logic Pro on Apple M1? JUCE https://forum.juce.com › is-there-any-way-to-debug-plu..." [ref=e364] [cursor=pointer]:
+              - /url: https://forum.juce.com/t/is-there-any-way-to-debug-plugin-in-logic-pro-on-apple-m1/50576
+              - heading "Is there any way to debug plugin in Logic Pro on Apple M1?" [level=3] [ref=e365]
+              - generic [ref=e370]:
+                - generic [ref=e372]: JUCE
+                - generic [ref=e374]: https://forum.juce.com › is-there-any-way-to-debug-plu...
+            - button "About this result" [ref=e375] [cursor=pointer]:
+              - img [ref=e378]
+          - generic [ref=e381]:
+            - generic [ref=e382]: 13 Mar 2022 —
+            - generic [ref=e383]:
+              - emphasis [ref=e384]: Select Debug->Attach to process by PID or name
+              - text: and you'll get a popup. Paste AUHostingServiceXPC_arrow in the textbox named Pid Or Process Name.
+            - link "Read more" [ref=e385] [cursor=pointer]:
+              - /url: https://forum.juce.com/t/is-there-any-way-to-debug-plugin-in-logic-pro-on-apple-m1/50576#:~:text=Select%20Debug%2D%3EAttach%20to%20process%20by,named%20Pid%20Or%20Process%20Name.
+        - generic [ref=e390]:
+          - heading "People also ask" [level=2] [ref=e392]
+          - generic [ref=e393]:
+            - generic [ref=e397]:
+              - button "How to attach process in Xcode?" [ref=e399] [cursor=pointer]:
+                - generic [ref=e401]: How to attach process in Xcode?
+                - img [ref=e404]
+              - text: "\"... ...\" \"... ...\""
+            - button "Why is my iPhone busy fetching debug symbols for iPhone?" [ref=e413] [cursor=pointer]:
+              - generic [ref=e415]: Why is my iPhone busy fetching debug symbols for iPhone?
+              - img [ref=e418]
+            - button "How do I connect my iPhone with Xcode?" [ref=e427] [cursor=pointer]:
+              - generic [ref=e429]: How do I connect my iPhone with Xcode?
+              - img [ref=e432]
+            - generic [ref=e438]:
+              - button "How to debug Xcode Simulator in Safari?" [ref=e441] [cursor=pointer]:
+                - generic [ref=e443]: How to debug Xcode Simulator in Safari?
+                - img [ref=e446]
+              - text: "\"... ...\" \"... ...\""
+        - generic [ref=e451]:
+          - heading "Web results" [level=2] [ref=e452]
+          - generic [ref=e453]:
+            - generic [ref=e456]:
+              - link "Attach a Debugger to Your iOS App Whenever You Want Better Programming https://betterprogramming.pub › attach-a-debugger-to-..." [ref=e458] [cursor=pointer]:
+                - /url: https://betterprogramming.pub/attach-a-debugger-to-your-ios-app-whenever-you-want-feca0c4f336b
+                - heading "Attach a Debugger to Your iOS App Whenever You Want" [level=3] [ref=e459]
+                - generic [ref=e464]:
+                  - generic [ref=e466]: Better Programming
+                  - generic [ref=e468]: https://betterprogramming.pub › attach-a-debugger-to-...
+              - button "About this result" [ref=e469] [cursor=pointer]:
+                - img [ref=e472]
+            - generic [ref=e475]:
+              - generic [ref=e476]: 6 Jan 2020 —
+              - generic [ref=e477]:
+                - emphasis [ref=e478]: Select Attach to Process by PID or Name
+                - text: . You'll get a popup, where by entering PID or name you can attach to the debugger. As soon as you ...
+              - link "Read more" [ref=e479] [cursor=pointer]:
+                - /url: https://betterprogramming.pub/attach-a-debugger-to-your-ios-app-whenever-you-want-feca0c4f336b#:~:text=Select%20Attach%20to%20Process%20by,to%20easily%20select%20the%20option
+        - generic [ref=e483]:
+          - generic [ref=e486]:
+            - link "Process | Apple Developer Documentation Apple Developer https://developer.apple.com › documentation › Foundation" [ref=e488] [cursor=pointer]:
+              - /url: https://developer.apple.com/documentation/Foundation/Process
+              - heading "Process | Apple Developer Documentation" [level=3] [ref=e489]
+              - generic [ref=e494]:
+                - generic [ref=e496]: Apple Developer
+                - generic [ref=e498]: https://developer.apple.com › documentation › Foundation
+            - button "About this result" [ref=e499] [cursor=pointer]:
+              - img [ref=e502]
+          - generic [ref=e505]:
+            - text: Overview. Using this class, your program can run another program as a subprocess and monitor that program's execution. Unlike Thread , it doesn't share ...
+            - link "Read more" [ref=e506] [cursor=pointer]:
+              - /url: https://developer.apple.com/documentation/Foundation/Process#:~:text=Overview,the%20process%20that%20creates%20it.
+        - generic [ref=e510]:
+          - generic [ref=e513]:
+            - link "Attach to Multiple Processes | Indie Stack indiestack.com https://indiestack.com › 2025/11 › attach-to-multiple-pro..." [ref=e515] [cursor=pointer]:
+              - /url: https://indiestack.com/2025/11/attach-to-multiple-processes/
+              - heading "Attach to Multiple Processes | Indie Stack" [level=3] [ref=e516]
+              - generic [ref=e518]:
+                - img [ref=e522]
+                - generic [ref=e524]:
+                  - generic [ref=e526]: indiestack.com
+                  - generic [ref=e528]: https://indiestack.com › 2025/11 › attach-to-multiple-pro...
+            - button "About this result" [ref=e529] [cursor=pointer]:
+              - img [ref=e532]
+          - generic [ref=e535]:
+            - generic [ref=e536]: 17 Nov 2025 —
+            - generic [ref=e537]:
+              - text: If your app spawns other subprocesses that are not XPC services, you have to laboriously ask it to
+              - emphasis [ref=e538]: attach
+              - text: to your
+              - emphasis [ref=e539]: process
+              - text: by
+              - emphasis [ref=e540]: name
+              - text: or by
+              - emphasis [ref=e541]: process
+              - text: ...
+            - link "Read more" [ref=e542] [cursor=pointer]:
+              - /url: https://indiestack.com/2025/11/attach-to-multiple-processes/#:~:text=If%20your%20app%20spawns%20other,name%20or%20by%20process%20ID.
+      - navigation [ref=e545]:
+        - heading "Page navigation" [level=1] [ref=e546]
+        - text: "1"
+        - link "Page 2" [ref=e549] [cursor=pointer]:
+          - /url: /search?q=Xcode+Attach+to+Process+by+PID+or+Name+help.apple.com&sca_esv=f21e304c56ab1b64&hl=en&ei=AZwUapOZCK-Oxc8P8JL7kAQ&start=10&sa=N&sstk=AU9db-C1IQrwjnpOg7NuRLpD-vlwmOH-mIJsjf443_3r-cTPKjl6FWG5gldCCtk4jCD8nC8VpikPJMPwlqIhfjA7hVq2sQL3kWdN8Q&ved=2ahUKEwjTncHLj9WUAxUvR_EDHXDJHkIQ8tMDegQIKxAE
+          - text: "2"
+        - link "Page 3" [ref=e551] [cursor=pointer]:
+          - /url: /search?q=Xcode+Attach+to+Process+by+PID+or+Name+help.apple.com&sca_esv=f21e304c56ab1b64&hl=en&ei=AZwUapOZCK-Oxc8P8JL7kAQ&start=20&sa=N&sstk=AU9db-C1IQrwjnpOg7NuRLpD-vlwmOH-mIJsjf443_3r-cTPKjl6FWG5gldCCtk4jCD8nC8VpikPJMPwlqIhfjA7hVq2sQL3kWdN8Q&ved=2ahUKEwjTncHLj9WUAxUvR_EDHXDJHkIQ8tMDegQIKxAG
+          - text: "3"
+        - link "Page 4" [ref=e553] [cursor=pointer]:
+          - /url: /search?q=Xcode+Attach+to+Process+by+PID+or+Name+help.apple.com&sca_esv=f21e304c56ab1b64&hl=en&ei=AZwUapOZCK-Oxc8P8JL7kAQ&start=30&sa=N&sstk=AU9db-C1IQrwjnpOg7NuRLpD-vlwmOH-mIJsjf443_3r-cTPKjl6FWG5gldCCtk4jCD8nC8VpikPJMPwlqIhfjA7hVq2sQL3kWdN8Q&ved=2ahUKEwjTncHLj9WUAxUvR_EDHXDJHkIQ8tMDegQIKxAI
+          - text: "4"
+        - link "Page 5" [ref=e555] [cursor=pointer]:
+          - /url: /search?q=Xcode+Attach+to+Process+by+PID+or+Name+help.apple.com&sca_esv=f21e304c56ab1b64&hl=en&ei=AZwUapOZCK-Oxc8P8JL7kAQ&start=40&sa=N&sstk=AU9db-C1IQrwjnpOg7NuRLpD-vlwmOH-mIJsjf443_3r-cTPKjl6FWG5gldCCtk4jCD8nC8VpikPJMPwlqIhfjA7hVq2sQL3kWdN8Q&ved=2ahUKEwjTncHLj9WUAxUvR_EDHXDJHkIQ8tMDegQIKxAK
+          - text: "5"
+        - link "Page 6" [ref=e557] [cursor=pointer]:
+          - /url: /search?q=Xcode+Attach+to+Process+by+PID+or+Name+help.apple.com&sca_esv=f21e304c56ab1b64&hl=en&ei=AZwUapOZCK-Oxc8P8JL7kAQ&start=50&sa=N&sstk=AU9db-C1IQrwjnpOg7NuRLpD-vlwmOH-mIJsjf443_3r-cTPKjl6FWG5gldCCtk4jCD8nC8VpikPJMPwlqIhfjA7hVq2sQL3kWdN8Q&ved=2ahUKEwjTncHLj9WUAxUvR_EDHXDJHkIQ8tMDegQIKxAM
+          - text: "6"
+        - link "Page 7" [ref=e559] [cursor=pointer]:
+          - /url: /search?q=Xcode+Attach+to+Process+by+PID+or+Name+help.apple.com&sca_esv=f21e304c56ab1b64&hl=en&ei=AZwUapOZCK-Oxc8P8JL7kAQ&start=60&sa=N&sstk=AU9db-C1IQrwjnpOg7NuRLpD-vlwmOH-mIJsjf443_3r-cTPKjl6FWG5gldCCtk4jCD8nC8VpikPJMPwlqIhfjA7hVq2sQL3kWdN8Q&ved=2ahUKEwjTncHLj9WUAxUvR_EDHXDJHkIQ8tMDegQIKxAO
+          - text: "7"
+        - link "Page 8" [ref=e561] [cursor=pointer]:
+          - /url: /search?q=Xcode+Attach+to+Process+by+PID+or+Name+help.apple.com&sca_esv=f21e304c56ab1b64&hl=en&ei=AZwUapOZCK-Oxc8P8JL7kAQ&start=70&sa=N&sstk=AU9db-C1IQrwjnpOg7NuRLpD-vlwmOH-mIJsjf443_3r-cTPKjl6FWG5gldCCtk4jCD8nC8VpikPJMPwlqIhfjA7hVq2sQL3kWdN8Q&ved=2ahUKEwjTncHLj9WUAxUvR_EDHXDJHkIQ8tMDegQIKxAQ
+          - text: "8"
+        - link "Page 9" [ref=e563] [cursor=pointer]:
+          - /url: /search?q=Xcode+Attach+to+Process+by+PID+or+Name+help.apple.com&sca_esv=f21e304c56ab1b64&hl=en&ei=AZwUapOZCK-Oxc8P8JL7kAQ&start=80&sa=N&sstk=AU9db-C1IQrwjnpOg7NuRLpD-vlwmOH-mIJsjf443_3r-cTPKjl6FWG5gldCCtk4jCD8nC8VpikPJMPwlqIhfjA7hVq2sQL3kWdN8Q&ved=2ahUKEwjTncHLj9WUAxUvR_EDHXDJHkIQ8tMDegQIKxAS
+          - text: "9"
+        - link "Page 10" [ref=e565] [cursor=pointer]:
+          - /url: /search?q=Xcode+Attach+to+Process+by+PID+or+Name+help.apple.com&sca_esv=f21e304c56ab1b64&hl=en&ei=AZwUapOZCK-Oxc8P8JL7kAQ&start=90&sa=N&sstk=AU9db-C1IQrwjnpOg7NuRLpD-vlwmOH-mIJsjf443_3r-cTPKjl6FWG5gldCCtk4jCD8nC8VpikPJMPwlqIhfjA7hVq2sQL3kWdN8Q&ved=2ahUKEwjTncHLj9WUAxUvR_EDHXDJHkIQ8tMDegQIKxAU
+          - text: "10"
+        - heading "Next" [level=2] [ref=e567]:
+          - link "Next" [ref=e568] [cursor=pointer]:
+            - /url: /search?q=Xcode+Attach+to+Process+by+PID+or+Name+help.apple.com&sca_esv=f21e304c56ab1b64&hl=en&ei=AZwUapOZCK-Oxc8P8JL7kAQ&start=10&sa=N&sstk=AU9db-C1IQrwjnpOg7NuRLpD-vlwmOH-mIJsjf443_3r-cTPKjl6FWG5gldCCtk4jCD8nC8VpikPJMPwlqIhfjA7hVq2sQL3kWdN8Q&ved=2ahUKEwjTncHLj9WUAxUvR_EDHXDJHkIQ8NMDegQIKxAW
+            - generic [ref=e570]: Next
+      - navigation
+    - contentinfo [ref=e571]:
+      - heading "Footer links" [level=1] [ref=e572]
+      - generic [ref=e576]:
+        - generic [ref=e578]:
+          - text: Czechia
+          - generic [ref=e580]:
+            - button "143 00, Prague 12 - Based on your past activity" [ref=e582] [cursor=pointer]:
+              - generic [ref=e583]: 143 00, Prague 12
+              - generic [ref=e585]:
+                - text: "-"
+                - generic [ref=e586]: Based on your past activity
+            - text: "-"
+            - button "Update location" [ref=e588] [cursor=pointer]: Update location
+        - generic [ref=e591]:
+          - link "Help" [ref=e592] [cursor=pointer]:
+            - /url: https://support.google.com/websearch/?p=ws_results_help&hl=en-CZ&fg=1
+          - link "Send feedback" [ref=e593] [cursor=pointer]:
+            - /url: "#"
+          - link "Privacy" [ref=e594] [cursor=pointer]:
+            - /url: https://policies.google.com/privacy?hl=en-CZ&fg=1
+          - link "Terms" [ref=e595] [cursor=pointer]:
+            - /url: https://policies.google.com/terms?hl=en-CZ&fg=1

@@ -1,0 +1,727 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		013A6966D78ADC24B5A3862D /* StreamDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6869464327D46C13752E3B /* StreamDelegate.swift */; };
+		03E9074874E8E844AA76B76D /* RecordingCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EB929968B9E583C6B290AC0 /* RecordingCoordinator.swift */; };
+		0430EF3911B309AC87991A61 /* GIFExporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 168FE28F2C17B95E94D16629 /* GIFExporter.swift */; };
+		27B05E98AE3B4A2ECBB7F4DA /* ExportManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164272C7B7A240E4254A460F /* ExportManager.swift */; };
+		2A892A823FE9AA79F611C09E /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30CA48EB43449BE3B4F1A0DF /* AppState.swift */; };
+		2D073DC47269B3440CF4176B /* RecordingSessionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 732AF30F79EE733FA2ED4917 /* RecordingSessionTests.swift */; };
+		2D8E9645524619881E7D0874 /* RecordingEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42585CB3F8FA189713D56B6 /* RecordingEngine.swift */; };
+		34A4963DC99EFE3A58AC2D9C /* CountdownOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = B65BA6A657FF0CF43DA3A768 /* CountdownOverlay.swift */; };
+		3751228B93881153FE01D31B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A428610408A483DD6CC2D1B /* Assets.xcassets */; };
+		462E37AD174DCF55C56AE745 /* GIFrecorderUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6512DEEC89344C17E0AB0CD1 /* GIFrecorderUITests.swift */; };
+		48293BD5370999A7DC6EEC25 /* RecordingSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 379B87ED3D7BD2B1EEFA3D93 /* RecordingSession.swift */; };
+		51B36B48D16DF7262CCBDAFF /* WindowSnapManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B28ECA020812E059719EFE6 /* WindowSnapManager.swift */; };
+		5975A680C0D79E5CAD09BEB1 /* SelectionWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3F0C6C148BE8DA280B7C70E /* SelectionWindow.swift */; };
+		62B4697CCA165A539FAE664D /* ExportFormat+UTType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89478859E3CC7B0B22435C67 /* ExportFormat+UTType.swift */; };
+		65F0AF2AAD09439B22133C28 /* ExportFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48229557738F3D7267CA3026 /* ExportFormat.swift */; };
+		8430EECDC23066C7CD45A972 /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCA629E340E34540B9A50BB /* AppSettings.swift */; };
+		86B1BC4315237E9310220643 /* AppSettingsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D752AD68B50501093CD63C66 /* AppSettingsTests.swift */; };
+		89996CDD87C41F5D3A501BB6 /* GlobalHotkeyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6484BF8A816A50BA4971F738 /* GlobalHotkeyManager.swift */; };
+		8AFBADB636FF885AA6996BC3 /* ExportManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 204DE170822E8ACCC9787858 /* ExportManagerTests.swift */; };
+		A0D5D5CA02DDC134D7632812 /* MenuBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4BEAEDC998C107E59A43368 /* MenuBarView.swift */; };
+		AF83A0DCCBBAE1910C182BC4 /* SelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CEEB7F12D86F2CCE408F7E /* SelectionView.swift */; };
+		B98901E657F9B7DDBF608B0A /* MP4Exporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A6E4F7A62F8108F46F3B8DD /* MP4Exporter.swift */; };
+		BEECC49900C4D7B1E737B97C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A878D61E7C863CB1F676DA9C /* AppDelegate.swift */; };
+		C0C42F7BEAA9B2A29491C56D /* RecordingEngineTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F72CA2F8F7183656B19C635 /* RecordingEngineTests.swift */; };
+		C2279A2291FFB30FC4111DFB /* GIFrecorderApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC62BAFDB3E5B84B8975C8F9 /* GIFrecorderApp.swift */; };
+		C74885312FBC38A2D338421C /* GIFExporterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3793B9B5890E772328454D7E /* GIFExporterTests.swift */; };
+		C81FC271564EB7E6C3AE95BE /* AssetWriterSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = C65C1EE78A636751F080EA8A /* AssetWriterSession.swift */; };
+		CB1FE8B365BDDA0C8E0A24A0 /* WindowSnapManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4239AF619966A5BFA273E516 /* WindowSnapManagerTests.swift */; };
+		D7EB030C36466D014CE8C2D4 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6DC8EBBDE8928D60F61D7ED /* SettingsView.swift */; };
+		EBA65A2BC6EED5E9D702F0C6 /* MOVExporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3792351521906D0BF17E7BBB /* MOVExporter.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		384F7C20030C8B3504EE2E72 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4EA3810A3BFB28E6D6BBC2FE /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 23D6B8BD3E6E7AC1C442CD45;
+			remoteInfo = GIFrecorder;
+		};
+		84C5B32622E64C5D428C6070 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4EA3810A3BFB28E6D6BBC2FE /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 23D6B8BD3E6E7AC1C442CD45;
+			remoteInfo = GIFrecorder;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		0CCA629E340E34540B9A50BB /* AppSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettings.swift; sourceTree = "<group>"; };
+		164272C7B7A240E4254A460F /* ExportManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExportManager.swift; sourceTree = "<group>"; };
+		168FE28F2C17B95E94D16629 /* GIFExporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GIFExporter.swift; sourceTree = "<group>"; };
+		1A6E4F7A62F8108F46F3B8DD /* MP4Exporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MP4Exporter.swift; sourceTree = "<group>"; };
+		204DE170822E8ACCC9787858 /* ExportManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExportManagerTests.swift; sourceTree = "<group>"; };
+		2E764B04E7603E9C6B89FFDE /* GIFrecorder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GIFrecorder.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		30CA48EB43449BE3B4F1A0DF /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
+		3792351521906D0BF17E7BBB /* MOVExporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MOVExporter.swift; sourceTree = "<group>"; };
+		3793B9B5890E772328454D7E /* GIFExporterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GIFExporterTests.swift; sourceTree = "<group>"; };
+		379B87ED3D7BD2B1EEFA3D93 /* RecordingSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordingSession.swift; sourceTree = "<group>"; };
+		3A428610408A483DD6CC2D1B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		3F72CA2F8F7183656B19C635 /* RecordingEngineTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordingEngineTests.swift; sourceTree = "<group>"; };
+		4239AF619966A5BFA273E516 /* WindowSnapManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowSnapManagerTests.swift; sourceTree = "<group>"; };
+		48229557738F3D7267CA3026 /* ExportFormat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExportFormat.swift; sourceTree = "<group>"; };
+		4F416258EB72BF41269A9E58 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		6484BF8A816A50BA4971F738 /* GlobalHotkeyManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalHotkeyManager.swift; sourceTree = "<group>"; };
+		6512DEEC89344C17E0AB0CD1 /* GIFrecorderUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GIFrecorderUITests.swift; sourceTree = "<group>"; };
+		732AF30F79EE733FA2ED4917 /* RecordingSessionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordingSessionTests.swift; sourceTree = "<group>"; };
+		7B28ECA020812E059719EFE6 /* WindowSnapManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowSnapManager.swift; sourceTree = "<group>"; };
+		89478859E3CC7B0B22435C67 /* ExportFormat+UTType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ExportFormat+UTType.swift"; sourceTree = "<group>"; };
+		8C34DCB759F2E142A4151EE3 /* GIFrecorder.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = GIFrecorder.entitlements; sourceTree = "<group>"; };
+		9EB929968B9E583C6B290AC0 /* RecordingCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordingCoordinator.swift; sourceTree = "<group>"; };
+		A42585CB3F8FA189713D56B6 /* RecordingEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordingEngine.swift; sourceTree = "<group>"; };
+		A878D61E7C863CB1F676DA9C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		AC6869464327D46C13752E3B /* StreamDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreamDelegate.swift; sourceTree = "<group>"; };
+		B0AED7F8D7EB2A52F93F8968 /* GIFrecorderUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GIFrecorderUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		B65BA6A657FF0CF43DA3A768 /* CountdownOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountdownOverlay.swift; sourceTree = "<group>"; };
+		B8CEEB7F12D86F2CCE408F7E /* SelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionView.swift; sourceTree = "<group>"; };
+		BC62BAFDB3E5B84B8975C8F9 /* GIFrecorderApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GIFrecorderApp.swift; sourceTree = "<group>"; };
+		C4BEAEDC998C107E59A43368 /* MenuBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBarView.swift; sourceTree = "<group>"; };
+		C65C1EE78A636751F080EA8A /* AssetWriterSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetWriterSession.swift; sourceTree = "<group>"; };
+		D3F0C6C148BE8DA280B7C70E /* SelectionWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionWindow.swift; sourceTree = "<group>"; };
+		D752AD68B50501093CD63C66 /* AppSettingsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettingsTests.swift; sourceTree = "<group>"; };
+		E6DC8EBBDE8928D60F61D7ED /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		EFF53E8E96F02FF559C6D9D3 /* GIFrecorderTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GIFrecorderTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		06F9804B1E5750EB8AE2AA9A /* Fixtures */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Fixtures;
+			sourceTree = "<group>";
+		};
+		0C48D9BC70CF0A3C1C97CB7F /* GIFrecorderTests */ = {
+			isa = PBXGroup;
+			children = (
+				D752AD68B50501093CD63C66 /* AppSettingsTests.swift */,
+				204DE170822E8ACCC9787858 /* ExportManagerTests.swift */,
+				3793B9B5890E772328454D7E /* GIFExporterTests.swift */,
+				3F72CA2F8F7183656B19C635 /* RecordingEngineTests.swift */,
+				732AF30F79EE733FA2ED4917 /* RecordingSessionTests.swift */,
+				4239AF619966A5BFA273E516 /* WindowSnapManagerTests.swift */,
+				06F9804B1E5750EB8AE2AA9A /* Fixtures */,
+			);
+			path = GIFrecorderTests;
+			sourceTree = "<group>";
+		};
+		212942344924763CA8896AAA /* App */ = {
+			isa = PBXGroup;
+			children = (
+				A878D61E7C863CB1F676DA9C /* AppDelegate.swift */,
+				30CA48EB43449BE3B4F1A0DF /* AppState.swift */,
+				BC62BAFDB3E5B84B8975C8F9 /* GIFrecorderApp.swift */,
+				6484BF8A816A50BA4971F738 /* GlobalHotkeyManager.swift */,
+				9EB929968B9E583C6B290AC0 /* RecordingCoordinator.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		2709F3FB06AF880A91EF4561 = {
+			isa = PBXGroup;
+			children = (
+				8FB6F03C9BEE1AA0114222AB /* GIFrecorder */,
+				0C48D9BC70CF0A3C1C97CB7F /* GIFrecorderTests */,
+				39BDD6430C0E1095FB294A02 /* GIFrecorderUITests */,
+				F0A9B5850822710B2DECBE92 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		39BDD6430C0E1095FB294A02 /* GIFrecorderUITests */ = {
+			isa = PBXGroup;
+			children = (
+				6512DEEC89344C17E0AB0CD1 /* GIFrecorderUITests.swift */,
+			);
+			path = GIFrecorderUITests;
+			sourceTree = "<group>";
+		};
+		5B56B022879151D3CF160B47 /* Export */ = {
+			isa = PBXGroup;
+			children = (
+				164272C7B7A240E4254A460F /* ExportManager.swift */,
+				168FE28F2C17B95E94D16629 /* GIFExporter.swift */,
+				3792351521906D0BF17E7BBB /* MOVExporter.swift */,
+				1A6E4F7A62F8108F46F3B8DD /* MP4Exporter.swift */,
+			);
+			path = Export;
+			sourceTree = "<group>";
+		};
+		61CFB158A89D0B3AE222B4A2 /* SelectionOverlay */ = {
+			isa = PBXGroup;
+			children = (
+				B8CEEB7F12D86F2CCE408F7E /* SelectionView.swift */,
+				D3F0C6C148BE8DA280B7C70E /* SelectionWindow.swift */,
+				7B28ECA020812E059719EFE6 /* WindowSnapManager.swift */,
+			);
+			path = SelectionOverlay;
+			sourceTree = "<group>";
+		};
+		69BE2DD59A95E1E104A9F258 /* Recording */ = {
+			isa = PBXGroup;
+			children = (
+				C65C1EE78A636751F080EA8A /* AssetWriterSession.swift */,
+				A42585CB3F8FA189713D56B6 /* RecordingEngine.swift */,
+				AC6869464327D46C13752E3B /* StreamDelegate.swift */,
+			);
+			path = Recording;
+			sourceTree = "<group>";
+		};
+		8734268BEB448B6CAEE8DC48 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				3A428610408A483DD6CC2D1B /* Assets.xcassets */,
+				8C34DCB759F2E142A4151EE3 /* GIFrecorder.entitlements */,
+				4F416258EB72BF41269A9E58 /* Info.plist */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		8FB6F03C9BEE1AA0114222AB /* GIFrecorder */ = {
+			isa = PBXGroup;
+			children = (
+				212942344924763CA8896AAA /* App */,
+				5B56B022879151D3CF160B47 /* Export */,
+				B9EE13B4E774B81BF7A1C950 /* Models */,
+				69BE2DD59A95E1E104A9F258 /* Recording */,
+				8734268BEB448B6CAEE8DC48 /* Resources */,
+				BD694E88EA8FF114B34CA9A2 /* UI */,
+			);
+			path = GIFrecorder;
+			sourceTree = "<group>";
+		};
+		B9EE13B4E774B81BF7A1C950 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				0CCA629E340E34540B9A50BB /* AppSettings.swift */,
+				48229557738F3D7267CA3026 /* ExportFormat.swift */,
+				89478859E3CC7B0B22435C67 /* ExportFormat+UTType.swift */,
+				379B87ED3D7BD2B1EEFA3D93 /* RecordingSession.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		BD694E88EA8FF114B34CA9A2 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				B65BA6A657FF0CF43DA3A768 /* CountdownOverlay.swift */,
+				C4BEAEDC998C107E59A43368 /* MenuBarView.swift */,
+				E6DC8EBBDE8928D60F61D7ED /* SettingsView.swift */,
+				61CFB158A89D0B3AE222B4A2 /* SelectionOverlay */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		F0A9B5850822710B2DECBE92 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				2E764B04E7603E9C6B89FFDE /* GIFrecorder.app */,
+				EFF53E8E96F02FF559C6D9D3 /* GIFrecorderTests.xctest */,
+				B0AED7F8D7EB2A52F93F8968 /* GIFrecorderUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		23D6B8BD3E6E7AC1C442CD45 /* GIFrecorder */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 12DF9CDBF011C1579BED719C /* Build configuration list for PBXNativeTarget "GIFrecorder" */;
+			buildPhases = (
+				C2CEDBFC42BC6AF74BE03960 /* Sources */,
+				3BA36D180D22A75C6CB3E673 /* Resources */,
+				1CC6B17046B020BF04C46DC7 /* Export .app to project build folder */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = GIFrecorder;
+			packageProductDependencies = (
+			);
+			productName = GIFrecorder;
+			productReference = 2E764B04E7603E9C6B89FFDE /* GIFrecorder.app */;
+			productType = "com.apple.product-type.application";
+		};
+		4FAA7EF9DE7A9AB1C1CF62B1 /* GIFrecorderTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C1D65B9B6EDC2B4A3FB9D31D /* Build configuration list for PBXNativeTarget "GIFrecorderTests" */;
+			buildPhases = (
+				DE2511A435A43E250A732737 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				517B62F3B0860EC7E1ECF5DD /* PBXTargetDependency */,
+			);
+			name = GIFrecorderTests;
+			packageProductDependencies = (
+			);
+			productName = GIFrecorderTests;
+			productReference = EFF53E8E96F02FF559C6D9D3 /* GIFrecorderTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		B3CBE003AB5E4730B3F4268E /* GIFrecorderUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3851DF159E7F771F2A40F36C /* Build configuration list for PBXNativeTarget "GIFrecorderUITests" */;
+			buildPhases = (
+				90142B02CA1D16841F3BB9C3 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				6503B93827CBD92CD5602D32 /* PBXTargetDependency */,
+			);
+			name = GIFrecorderUITests;
+			packageProductDependencies = (
+			);
+			productName = GIFrecorderUITests;
+			productReference = B0AED7F8D7EB2A52F93F8968 /* GIFrecorderUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		4EA3810A3BFB28E6D6BBC2FE /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1600;
+				TargetAttributes = {
+					23D6B8BD3E6E7AC1C442CD45 = {
+						ProvisioningStyle = Automatic;
+					};
+					B3CBE003AB5E4730B3F4268E = {
+						TestTargetID = 23D6B8BD3E6E7AC1C442CD45;
+					};
+				};
+			};
+			buildConfigurationList = C78E646FF3E0C1402B2282B0 /* Build configuration list for PBXProject "GIFrecorder" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = 2709F3FB06AF880A91EF4561;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = F0A9B5850822710B2DECBE92 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				23D6B8BD3E6E7AC1C442CD45 /* GIFrecorder */,
+				4FAA7EF9DE7A9AB1C1CF62B1 /* GIFrecorderTests */,
+				B3CBE003AB5E4730B3F4268E /* GIFrecorderUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		3BA36D180D22A75C6CB3E673 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3751228B93881153FE01D31B /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		1CC6B17046B020BF04C46DC7 /* Export .app to project build folder */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Export .app to project build folder";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "set -e\nDEST=\"$PROJECT_DIR/build/$CONFIGURATION\"\nmkdir -p \"$DEST\"\nrm -rf \"$DEST/$FULL_PRODUCT_NAME\"\n# ditto preserves symlinks and resource forks but may not preserve the\n# code signature in all Xcode/macOS versions. Re-sign explicitly below.\nditto \"$BUILT_PRODUCTS_DIR/$FULL_PRODUCT_NAME\" \"$DEST/$FULL_PRODUCT_NAME\"\n# Ad-hoc re-sign so the copy is launchable on macOS 13+.\n# --deep ensures nested helpers/frameworks are also signed.\n/usr/bin/codesign --force --deep --sign - \"$DEST/$FULL_PRODUCT_NAME\"\necho \"Exported and signed $FULL_PRODUCT_NAME → build/$CONFIGURATION/$FULL_PRODUCT_NAME\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		90142B02CA1D16841F3BB9C3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				462E37AD174DCF55C56AE745 /* GIFrecorderUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C2CEDBFC42BC6AF74BE03960 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BEECC49900C4D7B1E737B97C /* AppDelegate.swift in Sources */,
+				8430EECDC23066C7CD45A972 /* AppSettings.swift in Sources */,
+				2A892A823FE9AA79F611C09E /* AppState.swift in Sources */,
+				C81FC271564EB7E6C3AE95BE /* AssetWriterSession.swift in Sources */,
+				34A4963DC99EFE3A58AC2D9C /* CountdownOverlay.swift in Sources */,
+				62B4697CCA165A539FAE664D /* ExportFormat+UTType.swift in Sources */,
+				65F0AF2AAD09439B22133C28 /* ExportFormat.swift in Sources */,
+				27B05E98AE3B4A2ECBB7F4DA /* ExportManager.swift in Sources */,
+				0430EF3911B309AC87991A61 /* GIFExporter.swift in Sources */,
+				C2279A2291FFB30FC4111DFB /* GIFrecorderApp.swift in Sources */,
+				89996CDD87C41F5D3A501BB6 /* GlobalHotkeyManager.swift in Sources */,
+				EBA65A2BC6EED5E9D702F0C6 /* MOVExporter.swift in Sources */,
+				B98901E657F9B7DDBF608B0A /* MP4Exporter.swift in Sources */,
+				A0D5D5CA02DDC134D7632812 /* MenuBarView.swift in Sources */,
+				03E9074874E8E844AA76B76D /* RecordingCoordinator.swift in Sources */,
+				2D8E9645524619881E7D0874 /* RecordingEngine.swift in Sources */,
+				48293BD5370999A7DC6EEC25 /* RecordingSession.swift in Sources */,
+				AF83A0DCCBBAE1910C182BC4 /* SelectionView.swift in Sources */,
+				5975A680C0D79E5CAD09BEB1 /* SelectionWindow.swift in Sources */,
+				D7EB030C36466D014CE8C2D4 /* SettingsView.swift in Sources */,
+				013A6966D78ADC24B5A3862D /* StreamDelegate.swift in Sources */,
+				51B36B48D16DF7262CCBDAFF /* WindowSnapManager.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DE2511A435A43E250A732737 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				86B1BC4315237E9310220643 /* AppSettingsTests.swift in Sources */,
+				8AFBADB636FF885AA6996BC3 /* ExportManagerTests.swift in Sources */,
+				C74885312FBC38A2D338421C /* GIFExporterTests.swift in Sources */,
+				C0C42F7BEAA9B2A29491C56D /* RecordingEngineTests.swift in Sources */,
+				2D073DC47269B3440CF4176B /* RecordingSessionTests.swift in Sources */,
+				CB1FE8B365BDDA0C8E0A24A0 /* WindowSnapManagerTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		517B62F3B0860EC7E1ECF5DD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 23D6B8BD3E6E7AC1C442CD45 /* GIFrecorder */;
+			targetProxy = 384F7C20030C8B3504EE2E72 /* PBXContainerItemProxy */;
+		};
+		6503B93827CBD92CD5602D32 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 23D6B8BD3E6E7AC1C442CD45 /* GIFrecorder */;
+			targetProxy = 84C5B32622E64C5D428C6070 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		0113ED7D7C7AA1BCCFAC36CC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = arm64;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_STRICT_CONCURRENCY = targeted;
+				SWIFT_VERSION = 5.9;
+				VALID_ARCHS = arm64;
+			};
+			name = Release;
+		};
+		1529C2C349177116CAA104B1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = arm64;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.gifrecorder.app.tests;
+				SDKROOT = macosx;
+				SWIFT_VERSION = 5.9;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GIFrecorder.app/Contents/MacOS/GIFrecorder";
+			};
+			name = Debug;
+		};
+		27A45E9F04BEB7ED183ACBE8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = arm64;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = GIFrecorder/Resources/GIFrecorder.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				INFOPLIST_FILE = GIFrecorder/Resources/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.gifrecorder.app;
+				PRODUCT_NAME = GIFrecorder;
+				SDKROOT = macosx;
+				SWIFT_VERSION = 5.9;
+				VALID_ARCHS = arm64;
+			};
+			name = Debug;
+		};
+		57C00DE16165BD284A9DF75C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = arm64;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.gifrecorder.app.tests;
+				SDKROOT = macosx;
+				SWIFT_VERSION = 5.9;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GIFrecorder.app/Contents/MacOS/GIFrecorder";
+			};
+			name = Release;
+		};
+		5E8E3626EE6A367215EF71B3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = arm64;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.gifrecorder.app.uitests;
+				SDKROOT = macosx;
+				SWIFT_VERSION = 5.9;
+				TEST_TARGET_NAME = GIFrecorder;
+			};
+			name = Release;
+		};
+		7A7C788E8AD06F09FF55F054 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = arm64;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = GIFrecorder/Resources/GIFrecorder.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				INFOPLIST_FILE = GIFrecorder/Resources/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.gifrecorder.app;
+				PRODUCT_NAME = GIFrecorder;
+				SDKROOT = macosx;
+				SWIFT_VERSION = 5.9;
+				VALID_ARCHS = arm64;
+			};
+			name = Release;
+		};
+		A61E9ADE650EB925EA67EF26 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = arm64;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_STRICT_CONCURRENCY = targeted;
+				SWIFT_VERSION = 5.9;
+				VALID_ARCHS = arm64;
+			};
+			name = Debug;
+		};
+		D344BDBF4C1743D33CFD34E9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = arm64;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.gifrecorder.app.uitests;
+				SDKROOT = macosx;
+				SWIFT_VERSION = 5.9;
+				TEST_TARGET_NAME = GIFrecorder;
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		12DF9CDBF011C1579BED719C /* Build configuration list for PBXNativeTarget "GIFrecorder" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				27A45E9F04BEB7ED183ACBE8 /* Debug */,
+				7A7C788E8AD06F09FF55F054 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		3851DF159E7F771F2A40F36C /* Build configuration list for PBXNativeTarget "GIFrecorderUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D344BDBF4C1743D33CFD34E9 /* Debug */,
+				5E8E3626EE6A367215EF71B3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		C1D65B9B6EDC2B4A3FB9D31D /* Build configuration list for PBXNativeTarget "GIFrecorderTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1529C2C349177116CAA104B1 /* Debug */,
+				57C00DE16165BD284A9DF75C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		C78E646FF3E0C1402B2282B0 /* Build configuration list for PBXProject "GIFrecorder" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A61E9ADE650EB925EA67EF26 /* Debug */,
+				0113ED7D7C7AA1BCCFAC36CC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 4EA3810A3BFB28E6D6BBC2FE /* Project object */;
+}

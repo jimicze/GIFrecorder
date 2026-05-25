@@ -1,0 +1,26 @@
+# Xcode build output
+DerivedData/
+
+# Xcode user-specific settings
+*.xcuserstate
+xcuserdata/
+*.xcodeproj/xcuserdata/
+
+# xcodegen (don't commit the generated project, source of truth is project.yml)
+# NOTE: uncomment the line below if you prefer to regenerate on checkout
+# GIFrecorder.xcodeproj/
+
+# Build archives
+build/
+*.xcarchive
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# SPM resolved versions (commit this so builds are reproducible)
+# GIFrecorder.xcodeproj/project.xcworkspace/xcshareddata/swiftpm/Package.resolved
+
+# Temp recordings (in case any leak out of /tmp)
+*.gifrecorder-tmp.mov

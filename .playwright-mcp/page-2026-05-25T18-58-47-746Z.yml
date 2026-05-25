@@ -1,0 +1,133 @@
+- generic [active] [ref=e1]:
+  - generic:
+    - generic:
+      - link "Přeskočit na hlavní obsah" [ref=e2] [cursor=pointer]
+      - link "Nápověda k přístupnosti" [ref=e3] [cursor=pointer]:
+        - /url: https://support.google.com/websearch/answer/181196?hl=cs
+  - generic [ref=e8]:
+    - search [ref=e9]:
+      - generic [ref=e11]:
+        - link "Jít na hlavní stránku Google" [ref=e13] [cursor=pointer]:
+          - /url: https://www.google.com/webhp?hl=cs&sa=X&ved=0ahUKEwjMn4G_j9WUAxXTBtsEHdmUMrAQPAgI
+          - img [ref=e14]
+        - generic [ref=e21]:
+          - generic [ref=e22]:
+            - combobox "Najít" [ref=e25]: site:help.apple.com/xcode "Wait for the executable to be launched" Xcode site:help.apple.com/xcode "Wait for the executable to be launched" Xcode
+            - generic [ref=e26]:
+              - button "Vymazat" [ref=e28] [cursor=pointer]:
+                - img [ref=e30]
+              - generic [ref=e33]:
+                - button "Nástroje pro zadávání textu" [ref=e34] [cursor=pointer]:
+                  - img [ref=e36]
+                - button "Vyhledávejte hlasem" [ref=e38] [cursor=pointer]:
+                  - img [ref=e39]
+                - button "Vyhledávání pomocí obrázku" [ref=e41] [cursor=pointer]:
+                  - img [ref=e42]
+          - button "Hledat" [ref=e44] [cursor=pointer]:
+            - img [ref=e47]
+    - generic [ref=e49]:
+      - button "Nastavení" [ref=e51] [cursor=pointer]:
+        - img [ref=e54]
+      - generic [ref=e57]:
+        - button "Aplikace Google" [ref=e59] [cursor=pointer]:
+          - img [ref=e60]
+        - link "Přihlásit" [ref=e64] [cursor=pointer]:
+          - /url: https://accounts.google.com/ServiceLogin?hl=cs&passive=true&continue=https://www.google.com/search%3Fq%3Dsite%253Ahelp.apple.com%252Fxcode%2B%2522Wait%2Bfor%2Bthe%2Bexecutable%2Bto%2Bbe%2Blaunched%2522%2BXcode%26sei%3D5psUao-lKLKVhbIP-uGuaA&ec=futura_srp_og_si_72236_p
+  - generic [ref=e66]:
+    - navigation [ref=e72]:
+      - generic [ref=e78]:
+        - list [ref=e79]:
+          - listitem [ref=e80]:
+            - link "Režim AI" [ref=e83] [cursor=pointer]:
+              - /url: /search?q=site:help.apple.com/xcode+Wait+for+the+executable+to+be+launched+Xcode&sca_esv=f21e304c56ab1b64&udm=50&fbs=ADc_l-ZseckkBJUFopaGDNYa-HGjs8TBAvqoC9-yPsp40uKyMrJrZotp3-_TGJiLDhWaAUNTUubO9qS7eUveTkUS_ounmHGyFDVlVSB7CbkOpt5FWo_MYwJPphFb1kPW6z1gyUTlbLZNygGCZY025TcrVqtwQ-DDCbI50CA0KCL1gigP5fQe2STW12ImpBp1g7T-EkyyOwMY&aep=1&ntc=1&sa=X&ved=2ahUKEwjMn4G_j9WUAxXTBtsEHdmUMrAQ2J8OegQIDxAD
+              - generic [ref=e86]: Režim AI
+          - listitem [ref=e87]:
+            - link "Vše" [disabled] [ref=e88]:
+              - generic [ref=e90]: Vše
+          - listitem [ref=e91]:
+            - link "Videa" [ref=e92] [cursor=pointer]:
+              - /url: /search?sca_esv=f21e304c56ab1b64&udm=7&fbs=ADc_l-ZseckkBJUFopaGDNYa-HGjs8TBAvqoC9-yPsp40uKyMrJrZotp3-_TGJiLDhWaAUNTUubO9qS7eUveTkUS_ounmHGyFDVlVSB7CbkOpt5FWo_MYwJPphFb1kPW6z1gyUTlbLZNygGCZY025TcrVqtwQ-DDCbI50CA0KCL1gigP5fQe2STW12ImpBp1g7T-EkyyOwMY&q=site:help.apple.com/xcode+Wait+for+the+executable+to+be+launched+Xcode&sa=X&ved=2ahUKEwjMn4G_j9WUAxXTBtsEHdmUMrAQtKgLegQIFRAB
+              - generic [ref=e94]: Videa
+          - listitem [ref=e95]:
+            - link "Obrázky" [ref=e96] [cursor=pointer]:
+              - /url: /search?sca_esv=f21e304c56ab1b64&udm=2&fbs=ADc_l-ZseckkBJUFopaGDNYa-HGjs8TBAvqoC9-yPsp40uKyMrJrZotp3-_TGJiLDhWaAUNTUubO9qS7eUveTkUS_ounmHGyFDVlVSB7CbkOpt5FWo_MYwJPphFb1kPW6z1gyUTlbLZNygGCZY025TcrVqtwQ-DDCbI50CA0KCL1gigP5fQe2STW12ImpBp1g7T-EkyyOwMY&q=site:help.apple.com/xcode+Wait+for+the+executable+to+be+launched+Xcode&sa=X&ved=2ahUKEwjMn4G_j9WUAxXTBtsEHdmUMrAQtKgLegQIFBAB
+              - generic [ref=e98]: Obrázky
+          - listitem [ref=e99]:
+            - link "Krátká videa" [ref=e100] [cursor=pointer]:
+              - /url: /search?sca_esv=f21e304c56ab1b64&udm=39&fbs=ADc_l-ZseckkBJUFopaGDNYa-HGjs8TBAvqoC9-yPsp40uKyMrJrZotp3-_TGJiLDhWaAUNTUubO9qS7eUveTkUS_ounmHGyFDVlVSB7CbkOpt5FWo_MYwJPphFb1kPW6z1gyUTlbLZNygGCZY025TcrVqtwQ-DDCbI50CA0KCL1gigP5fQe2STW12ImpBp1g7T-EkyyOwMY&q=site:help.apple.com/xcode+Wait+for+the+executable+to+be+launched+Xcode&sa=X&ved=2ahUKEwjMn4G_j9WUAxXTBtsEHdmUMrAQs6gLegQIExAB
+              - generic [ref=e102]: Krátká videa
+          - listitem [ref=e103]:
+            - link "Web" [ref=e104] [cursor=pointer]:
+              - /url: /search?sca_esv=f21e304c56ab1b64&udm=web&fbs=ADc_l-ZseckkBJUFopaGDNYa-HGjs8TBAvqoC9-yPsp40uKyMrJrZotp3-_TGJiLDhWaAUNTUubO9qS7eUveTkUS_ounmHGyFDVlVSB7CbkOpt5FWo_MYwJPphFb1kPW6z1gyUTlbLZNygGCZY025TcrVqtwQ-DDCbI50CA0KCL1gigP5fQe2STW12ImpBp1g7T-EkyyOwMY&q=site:help.apple.com/xcode+Wait+for+the+executable+to+be+launched+Xcode&sa=X&ved=2ahUKEwjMn4G_j9WUAxXTBtsEHdmUMrAQs6gLegQIERAB
+              - generic [ref=e106]: Web
+          - listitem [ref=e107]:
+            - link "Knihy" [ref=e108] [cursor=pointer]:
+              - /url: /search?sca_esv=f21e304c56ab1b64&q=site:help.apple.com/xcode+Wait+for+the+executable+to+be+launched+Xcode&udm=36&source=lnms&fbs=ADc_l-ZseckkBJUFopaGDNYa-HGjs8TBAvqoC9-yPsp40uKyMrJrZotp3-_TGJiLDhWaAUNTUubO9qS7eUveTkUS_ounmHGyFDVlVSB7CbkOpt5FWo_MYwJPphFb1kPW6z1gyUTlbLZNygGCZY025TcrVqtwQ-DDCbI50CA0KCL1gigP5fQe2STW12ImpBp1g7T-EkyyOwMY&sa=X&ved=2ahUKEwjMn4G_j9WUAxXTBtsEHdmUMrAQ0pQJegQIEhAB
+              - generic [ref=e110]: Knihy
+          - listitem [ref=e111]:
+            - button "Další filtry" [ref=e112] [cursor=pointer]:
+              - generic "Další filtry" [ref=e113]:
+                - generic [ref=e114]:
+                  - generic [ref=e115]: Více
+                  - img [ref=e117]
+        - button "Nástroje" [ref=e120] [cursor=pointer]:
+          - generic [ref=e122]:
+            - generic [ref=e123]: Nástroje
+            - img [ref=e125]
+    - heading "Výsledky hledání" [level=1] [ref=e127]
+    - generic [ref=e133]:
+      - generic [ref=e134]: Looking for results in English?
+      - link [ref=e135] [cursor=pointer]:
+        - /url: "#"
+        - img [ref=e137]
+      - link "Change to English" [ref=e139] [cursor=pointer]:
+        - /url: /setprefs?sig=0_imJRmaSkxSaUvBPmf6OdxIow0xg%3D&source=en_ignored_notification&prev=https://www.google.com/search?q%3Dsite:help.apple.com/xcode%2B%2522Wait%2Bfor%2Bthe%2Bexecutable%2Bto%2Bbe%2Blaunched%2522%2BXcode%26sei%3D5psUao-lKLKVhbIP-uGuaA&hl=en&sa=X&ved=2ahUKEwjMn4G_j9WUAxXTBtsEHdmUMrAQhoQCKAF6BAgNEAQ
+      - link "Ponechat v jazyce čeština" [ref=e140] [cursor=pointer]:
+        - /url: "#"
+      - link "Nastavení jazyka" [ref=e142] [cursor=pointer]:
+        - /url: /preferences?lang=1&hl=cs&sa=X&ved=2ahUKEwjMn4G_j9WUAxXTBtsEHdmUMrAQiIQCKAN6BAgNEAY#languages
+    - main [ref=e144]:
+      - generic [ref=e149]:
+        - heading "Nebyly nalezeny žádné výsledky pro site:help.apple.com/xcode \"Wait for the executable to be launched\" Xcode." [level=2] [ref=e150]
+        - text: Výsledky pro
+        - link "site:help.apple.com/xcode Wait for the executable to be launched Xcode" [ref=e151] [cursor=pointer]:
+          - /url: /search?sca_esv=f21e304c56ab1b64&q=site:help.apple.com/xcode+Wait+for+the+executable+to+be+launched+Xcode&sa=X&ved=2ahUKEwjMn4G_j9WUAxXTBtsEHdmUMrAQgwN6BAgOEAE
+        - text: "(bez uvozovek):"
+      - generic [ref=e153]:
+        - generic [ref=e155]:
+          - heading "Na váš předmět vyhledávání - site:help.apple.com/xcode Wait for the executable to be launched Xcode - nebyl nalezen žádný odkaz." [level=3] [ref=e156]:
+            - text: Na váš předmět vyhledávání -
+            - emphasis [ref=e158]: site:help.apple.com/xcode Wait for the executable to be launched Xcode
+            - text: "- nebyl nalezen žádný odkaz."
+          - paragraph [ref=e159]: "Návrhy:"
+          - list [ref=e160]:
+            - listitem [ref=e161]: Ujistěte se, že všechna slova jsou napsána správně.
+            - listitem [ref=e162]: Zkuste jiná klíčová slova.
+            - listitem [ref=e163]: Zkuste obecnější klíčová slova.
+            - listitem [ref=e164]: Zkuste použít méně klíčových slov.
+          - img "Obrázek yettiho rybařícího na ledu" [ref=e168]:
+            - img [ref=e172]
+        - navigation
+      - navigation
+    - contentinfo [ref=e255]:
+      - heading "Odkazy v zápatí" [level=1] [ref=e256]
+      - generic [ref=e260]:
+        - generic [ref=e262]:
+          - text: Česko
+          - generic [ref=e264]:
+            - button "Praha 12 - Z vaší IP adresy" [ref=e266] [cursor=pointer]:
+              - generic [ref=e267]: Praha 12
+              - generic [ref=e269]:
+                - text: "-"
+                - generic [ref=e270]: Z vaší IP adresy
+            - text: "-"
+            - button "Aktualizovat polohu" [ref=e272] [cursor=pointer]: Aktualizovat polohu
+        - generic [ref=e275]:
+          - link "Nápověda" [ref=e276] [cursor=pointer]:
+            - /url: https://support.google.com/websearch/?p=ws_results_help&hl=cs&fg=1
+          - link "Odeslat zpětnou vazbu" [ref=e277] [cursor=pointer]:
+            - /url: "#"
+          - link "Ochrana soukromí" [ref=e278] [cursor=pointer]:
+            - /url: https://policies.google.com/privacy?hl=cs&fg=1
+          - link "Smluvní podmínky" [ref=e279] [cursor=pointer]:
+            - /url: https://policies.google.com/terms?hl=cs&fg=1

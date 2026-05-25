@@ -1,0 +1,350 @@
+- generic [active] [ref=e1]:
+  - generic:
+    - generic:
+      - link "Skip to main content" [ref=e2] [cursor=pointer]
+      - link "Accessibility help" [ref=e3] [cursor=pointer]:
+        - /url: https://support.google.com/websearch/answer/181196?hl=en-CZ
+  - generic [ref=e8]:
+    - search [ref=e9]:
+      - generic [ref=e11]:
+        - link "Go to Google Home" [ref=e13] [cursor=pointer]:
+          - /url: https://www.google.com/webhp?hl=en&sa=X&ved=0ahUKEwi0nJSckdWUAxXmQPEDHU2fHUcQPAgI
+          - img [ref=e14]
+        - generic [ref=e21]:
+          - generic [ref=e22]:
+            - combobox "Search" [ref=e25]: site:lldb.llvm.org process attach waitfor name lldb site:lldb.llvm.org process attach waitfor name lldb
+            - generic [ref=e26]:
+              - button "Clear" [ref=e28] [cursor=pointer]:
+                - img [ref=e30]
+              - generic [ref=e33]:
+                - button "Search by voice" [ref=e34] [cursor=pointer]:
+                  - img [ref=e35]
+                - button "Search by image" [ref=e37] [cursor=pointer]:
+                  - img [ref=e38]
+          - button "Search" [ref=e40] [cursor=pointer]:
+            - img [ref=e43]
+    - generic [ref=e45]:
+      - button "Settings" [ref=e47] [cursor=pointer]:
+        - img [ref=e50]
+      - generic [ref=e53]:
+        - button "Google apps" [ref=e55] [cursor=pointer]:
+          - img [ref=e56]
+        - link "Sign in" [ref=e60] [cursor=pointer]:
+          - /url: https://accounts.google.com/ServiceLogin?hl=en&passive=true&continue=https://www.google.com/search%3Fhl%3Den%26q%3Dsite%253Alldb.llvm.org%2Bprocess%2Battach%2Bwaitfor%2Bname%2Blldb&ec=futura_srp_og_si_72236_p
+  - generic [ref=e62]:
+    - navigation [ref=e68]:
+      - generic [ref=e74]:
+        - list [ref=e75]:
+          - listitem [ref=e76]:
+            - link "AI Mode" [ref=e79] [cursor=pointer]:
+              - /url: /search?q=site:lldb.llvm.org+process+attach+waitfor+name+lldb&sca_esv=f21e304c56ab1b64&hl=en&udm=50&fbs=ADc_l-aN0CWEZBOHjofHoaMMDiKpmAsnXCN5UBx17opt8eaTX-kA7ovRmAIYWC70eULDzbpKhLTwdBViyqaMPX_061dAgd37eU5luz7G45E606qxTofQ_QJcO60LG9wcR5r2ya8sPUTmP6hZkR3o6_qi4Jg3QmUTGJs6ZHfQudwjgkSfC3VNhmjAvJhvGkXWcraNjYAfzWNH&aep=1&ntc=1&sa=X&ved=2ahUKEwi0nJSckdWUAxXmQPEDHU2fHUcQ2J8OegQIExAD
+              - generic [ref=e82]: AI Mode
+          - listitem [ref=e83]:
+            - link "All" [disabled] [ref=e84]:
+              - generic [ref=e86]: All
+          - listitem [ref=e87]:
+            - link "Videos" [ref=e88] [cursor=pointer]:
+              - /url: /search?sca_esv=f21e304c56ab1b64&hl=en&udm=7&fbs=ADc_l-aN0CWEZBOHjofHoaMMDiKpmAsnXCN5UBx17opt8eaTX-kA7ovRmAIYWC70eULDzbpKhLTwdBViyqaMPX_061dAgd37eU5luz7G45E606qxTofQ_QJcO60LG9wcR5r2ya8sPUTmP6hZkR3o6_qi4Jg3QmUTGJs6ZHfQudwjgkSfC3VNhmjAvJhvGkXWcraNjYAfzWNH&q=site:lldb.llvm.org+process+attach+waitfor+name+lldb&sa=X&ved=2ahUKEwi0nJSckdWUAxXmQPEDHU2fHUcQtKgLegQIGBAB
+              - generic [ref=e90]: Videos
+          - listitem [ref=e91]:
+            - link "Images" [ref=e92] [cursor=pointer]:
+              - /url: /search?sca_esv=f21e304c56ab1b64&hl=en&udm=2&fbs=ADc_l-aN0CWEZBOHjofHoaMMDiKpmAsnXCN5UBx17opt8eaTX-kA7ovRmAIYWC70eULDzbpKhLTwdBViyqaMPX_061dAgd37eU5luz7G45E606qxTofQ_QJcO60LG9wcR5r2ya8sPUTmP6hZkR3o6_qi4Jg3QmUTGJs6ZHfQudwjgkSfC3VNhmjAvJhvGkXWcraNjYAfzWNH&q=site:lldb.llvm.org+process+attach+waitfor+name+lldb&sa=X&ved=2ahUKEwi0nJSckdWUAxXmQPEDHU2fHUcQtKgLegQIGRAB
+              - generic [ref=e94]: Images
+          - listitem [ref=e95]:
+            - link "Forums" [ref=e96] [cursor=pointer]:
+              - /url: /search?sca_esv=f21e304c56ab1b64&hl=en&udm=18&fbs=ADc_l-aN0CWEZBOHjofHoaMMDiKpmAsnXCN5UBx17opt8eaTX-kA7ovRmAIYWC70eULDzbpKhLTwdBViyqaMPX_061dAgd37eU5luz7G45E606qxTofQ_QJcO60LG9wcR5r2ya8sPUTmP6hZkR3o6_qi4Jg3QmUTGJs6ZHfQudwjgkSfC3VNhmjAvJhvGkXWcraNjYAfzWNH&q=site:lldb.llvm.org+process+attach+waitfor+name+lldb&sa=X&ved=2ahUKEwi0nJSckdWUAxXmQPEDHU2fHUcQs6gLegQIFRAB
+              - generic [ref=e98]: Forums
+          - listitem [ref=e99]:
+            - link "Short videos" [ref=e100] [cursor=pointer]:
+              - /url: /search?sca_esv=f21e304c56ab1b64&hl=en&udm=39&fbs=ADc_l-aN0CWEZBOHjofHoaMMDiKpmAsnXCN5UBx17opt8eaTX-kA7ovRmAIYWC70eULDzbpKhLTwdBViyqaMPX_061dAgd37eU5luz7G45E606qxTofQ_QJcO60LG9wcR5r2ya8sPUTmP6hZkR3o6_qi4Jg3QmUTGJs6ZHfQudwjgkSfC3VNhmjAvJhvGkXWcraNjYAfzWNH&q=site:lldb.llvm.org+process+attach+waitfor+name+lldb&sa=X&ved=2ahUKEwi0nJSckdWUAxXmQPEDHU2fHUcQs6gLegQIFhAB
+              - generic [ref=e102]: Short videos
+          - listitem [ref=e103]:
+            - link "Web" [ref=e104] [cursor=pointer]:
+              - /url: /search?sca_esv=f21e304c56ab1b64&hl=en&udm=web&fbs=ADc_l-aN0CWEZBOHjofHoaMMDiKpmAsnXCN5UBx17opt8eaTX-kA7ovRmAIYWC70eULDzbpKhLTwdBViyqaMPX_061dAgd37eU5luz7G45E606qxTofQ_QJcO60LG9wcR5r2ya8sPUTmP6hZkR3o6_qi4Jg3QmUTGJs6ZHfQudwjgkSfC3VNhmjAvJhvGkXWcraNjYAfzWNH&q=site:lldb.llvm.org+process+attach+waitfor+name+lldb&sa=X&ved=2ahUKEwi0nJSckdWUAxXmQPEDHU2fHUcQs6gLegQIFxAB
+              - generic [ref=e106]: Web
+          - listitem [ref=e107]:
+            - button "More filters" [ref=e108] [cursor=pointer]:
+              - generic "More filters" [ref=e109]:
+                - generic [ref=e110]:
+                  - generic [ref=e111]: More
+                  - img [ref=e113]
+        - button "Tools" [ref=e116] [cursor=pointer]:
+          - generic [ref=e118]:
+            - generic [ref=e119]: Tools
+            - img [ref=e121]
+    - heading "Search Results" [level=1] [ref=e123]
+    - main [ref=e129]:
+      - generic [ref=e133]:
+        - generic [ref=e136]:
+          - heading "Web results" [level=2] [ref=e137]
+          - generic [ref=e138]:
+            - generic [ref=e141]:
+              - link "Tutorial - 🐛 LLDB LLVM https://lldb.llvm.org › use › tutorial" [ref=e143] [cursor=pointer]:
+                - /url: https://lldb.llvm.org/use/tutorial.html
+                - heading "Tutorial - 🐛 LLDB" [level=3] [ref=e144]
+                - generic [ref=e146]:
+                  - img [ref=e150]
+                  - generic [ref=e152]:
+                    - generic [ref=e154]: LLVM
+                    - generic [ref=e156]: https://lldb.llvm.org › use › tutorial
+              - button "About this result" [ref=e157] [cursor=pointer]:
+                - img [ref=e160]
+            - generic [ref=e163]:
+              - generic [ref=e164]:
+                - text: ... process attach --name Sketch (lldb)
+                - emphasis [ref=e165]: process attach --name Sketch --waitfor
+                - text: ". After you launch or attach to a process, your process might stop somewhere: (lldb) ..."
+              - link "Read more" [ref=e166] [cursor=pointer]:
+                - /url: https://lldb.llvm.org/use/tutorial.html#:~:text=process%20attach%20%2D%2Dname%20Sketch%20(lldb),(lldb
+        - generic [ref=e170]:
+          - generic [ref=e173]:
+            - link "GDB to LLDB command map LLVM https://lldb.llvm.org › use › map" [ref=e175] [cursor=pointer]:
+              - /url: https://lldb.llvm.org/use/map.html
+              - heading "GDB to LLDB command map" [level=3] [ref=e176]
+              - generic [ref=e178]:
+                - img [ref=e182]
+                - generic [ref=e184]:
+                  - generic [ref=e186]: LLVM
+                  - generic [ref=e188]: https://lldb.llvm.org › use › map
+            - button "About this result" [ref=e189] [cursor=pointer]:
+              - img [ref=e192]
+          - generic [ref=e195]:
+            - generic [ref=e196]:
+              - text: Wait for a process named a.out to launch and attach#. (gdb) attach -waitfor a.out. (lldb)
+              - emphasis [ref=e197]: process attach --name a.out
+              - text: "--waitfor (lldb) pro at -n a.out ..."
+            - link "Read more" [ref=e198] [cursor=pointer]:
+              - /url: https://lldb.llvm.org/use/map.html#:~:text=Wait%20for%20a%20process%20named,pro%20at%20%2Dn%20a.out%20%2Dw
+        - generic [ref=e202]:
+          - generic [ref=e205]:
+            - link "lldb – The Debugger - LLVM.org LLVM https://lldb.llvm.org › man › lldb" [ref=e207] [cursor=pointer]:
+              - /url: https://lldb.llvm.org/man/lldb.html
+              - heading "lldb – The Debugger - LLVM.org" [level=3] [ref=e208]
+              - generic [ref=e210]:
+                - img [ref=e214]
+                - generic [ref=e216]:
+                  - generic [ref=e218]: LLVM
+                  - generic [ref=e220]: https://lldb.llvm.org › man › lldb
+            - button "About this result" [ref=e221] [cursor=pointer]:
+              - img [ref=e224]
+          - generic [ref=e227]:
+            - generic [ref=e228]:
+              - emphasis [ref=e229]: Tells the debugger to wait for a process with the given pid or name to launch
+              - text: before attaching. ... Passing one of the attach options causes lldb to immediately ...
+            - link "Read more" [ref=e230] [cursor=pointer]:
+              - /url: https://lldb.llvm.org/man/lldb.html#:~:text=Tells%20the%20debugger%20to%20wait,name%20to%20launch%20before%20attaching.&text=Passing%20one%20of%20the%20attach,attach%20to%20the%20given%20process.
+        - generic [ref=e234]:
+          - generic [ref=e237]:
+            - link "lldb_private::Process Class Reference LLVM https://lldb.llvm.org › classlldb__private_1_1Process" [ref=e239] [cursor=pointer]:
+              - /url: https://lldb.llvm.org/cpp_reference/classlldb__private_1_1Process.html
+              - heading "lldb_private::Process Class Reference" [level=3] [ref=e240]
+              - generic [ref=e242]:
+                - img [ref=e246]
+                - generic [ref=e248]:
+                  - generic [ref=e250]: LLVM
+                  - generic [ref=e252]: https://lldb.llvm.org › classlldb__private_1_1Process
+            - button "About this result" [ref=e253] [cursor=pointer]:
+              - img [ref=e256]
+          - generic [ref=e259]:
+            - generic [ref=e260]:
+              - emphasis [ref=e261]: Attach
+              - text: to an existing
+              - emphasis [ref=e262]: process
+              - text: using a
+              - emphasis [ref=e263]: process
+              - text: ID. virtual Status, DoAttachToProcessWithName (const char *process_name, const
+              - emphasis [ref=e264]: ProcessAttachInfo
+              - text: "&attach_info)."
+            - link "Read more" [ref=e265] [cursor=pointer]:
+              - /url: https://lldb.llvm.org/cpp_reference/classlldb__private_1_1Process.html#:~:text=Attach%20to%20an%20existing%20process,char%20*process_name%2C%20const%20ProcessAttachInfo%20%26attach_info)
+        - generic [ref=e269]:
+          - generic [ref=e272]:
+            - link "Remote Debugging LLVM https://lldb.llvm.org › use › remote" [ref=e274] [cursor=pointer]:
+              - /url: https://lldb.llvm.org/use/remote.html
+              - heading "Remote Debugging" [level=3] [ref=e275]
+              - generic [ref=e277]:
+                - img [ref=e281]
+                - generic [ref=e283]:
+                  - generic [ref=e285]: LLVM
+                  - generic [ref=e287]: https://lldb.llvm.org › use › remote
+            - button "About this result" [ref=e288] [cursor=pointer]:
+              - img [ref=e291]
+          - generic [ref=e294]:
+            - generic [ref=e295]:
+              - text: You can use the
+              - emphasis [ref=e296]: process attach
+              - text: to attach to an existing remote process or target create, process launch to start a new one. The platform plugin will ...
+            - link "Read more" [ref=e297] [cursor=pointer]:
+              - /url: https://lldb.llvm.org/use/remote.html#:~:text=You%20can%20use%20the%20process,to%20be%20able%20to%20debug.
+        - generic [ref=e301]:
+          - generic [ref=e304]:
+            - link "SBAttachInfo - 🐛 LLDB LLVM https://lldb.llvm.org › python_api › lldb.SBAttachInfo.ht..." [ref=e306] [cursor=pointer]:
+              - /url: https://lldb.llvm.org/python_api/lldb.SBAttachInfo.html
+              - heading "SBAttachInfo - 🐛 LLDB" [level=3] [ref=e307]
+              - generic [ref=e309]:
+                - img [ref=e313]
+                - generic [ref=e315]:
+                  - generic [ref=e317]: LLVM
+                  - generic [ref=e319]: https://lldb.llvm.org › python_api › lldb.SBAttachInfo.ht...
+            - button "About this result" [ref=e320] [cursor=pointer]:
+              - img [ref=e323]
+          - generic [ref=e326]:
+            - generic [ref=e327]:
+              - text: b (boolean, in) – If false,
+              - emphasis [ref=e328]: attach
+              - text: to an existing
+              - emphasis [ref=e329]: process
+              - text: whose
+              - emphasis [ref=e330]: name
+              - text: matches. If true, then
+              - emphasis [ref=e331]: wait for
+              - text: the next
+              - emphasis [ref=e332]: process
+              - text: whose
+              - emphasis [ref=e333]: name
+              - text: "matches. Overload 2: Set"
+              - emphasis [ref=e334]: attach
+              - text: ...
+            - link "Read more" [ref=e335] [cursor=pointer]:
+              - /url: https://lldb.llvm.org/python_api/lldb.SBAttachInfo.html#:~:text=b%20(boolean%2C%20in)%20%E2%80%93%20If,attach%20by%20process%20name%20settings.
+        - generic [ref=e339]:
+          - generic [ref=e342]:
+            - link "SBAttachInfo Class Reference LLVM https://lldb.llvm.org › cpp_reference › classlldb_1_1SBA..." [ref=e344] [cursor=pointer]:
+              - /url: https://lldb.llvm.org/cpp_reference/classlldb_1_1SBAttachInfo.html
+              - heading "SBAttachInfo Class Reference" [level=3] [ref=e345]
+              - generic [ref=e347]:
+                - img [ref=e351]
+                - generic [ref=e353]:
+                  - generic [ref=e355]: LLVM
+                  - generic [ref=e357]: https://lldb.llvm.org › cpp_reference › classlldb_1_1SBA...
+            - button "About this result" [ref=e358] [cursor=pointer]:
+              - img [ref=e361]
+          - generic [ref=e364]:
+            - generic [ref=e365]:
+              - text: A full or partial
+              - emphasis [ref=e366]: name
+              - text: for the
+              - emphasis [ref=e367]: process
+              - text: to
+              - emphasis [ref=e368]: attach
+              - text: to. [in], wait_for, If false,
+              - emphasis [ref=e369]: attach
+              - text: to an existing
+              - emphasis [ref=e370]: process
+              - text: whose
+              - emphasis [ref=e371]: name
+              - text: matches. If true, then
+              - emphasis [ref=e372]: wait for
+              - text: the next ...
+            - link "Read more" [ref=e373] [cursor=pointer]:
+              - /url: https://lldb.llvm.org/cpp_reference/classlldb_1_1SBAttachInfo.html#:~:text=A%20full%20or%20partial%20name,next%20process%20whose%20name%20matches.
+        - generic [ref=e377]:
+          - generic [ref=e380]:
+            - link "Settings LLVM https://lldb.llvm.org › use › settings" [ref=e382] [cursor=pointer]:
+              - /url: https://lldb.llvm.org/use/settings.html
+              - heading "Settings" [level=3] [ref=e383]
+              - generic [ref=e385]:
+                - img [ref=e389]
+                - generic [ref=e391]:
+                  - generic [ref=e393]: LLVM
+                  - generic [ref=e395]: https://lldb.llvm.org › use › settings
+            - button "About this result" [ref=e396] [cursor=pointer]:
+              - img [ref=e399]
+          - generic [ref=e402]:
+            - generic [ref=e403]: 1 day ago —
+            - generic [ref=e404]:
+              - text: Settings can be set using settings set <
+              - emphasis [ref=e405]: name
+              - text: "> <value> . Values can be added to arrays and dictionaries with settings"
+              - emphasis [ref=e406]: append
+              - text: "-- <"
+              - emphasis [ref=e407]: name
+              - text: "> <value> ."
+            - link "Read more" [ref=e408] [cursor=pointer]:
+              - /url: https://lldb.llvm.org/use/settings.html#:~:text=Settings%20can%20be%20set%20using,append%20%2D%2D%20%3Cname%3E%20%3Cvalue%3E%20.
+        - generic [ref=e412]:
+          - generic [ref=e415]:
+            - link "SBTarget - 🐛 LLDB LLVM https://lldb.llvm.org › python_api › lldb.SBTarget.html" [ref=e417] [cursor=pointer]:
+              - /url: https://lldb.llvm.org/python_api/lldb.SBTarget.html
+              - heading "SBTarget - 🐛 LLDB" [level=3] [ref=e418]
+              - generic [ref=e420]:
+                - img [ref=e424]
+                - generic [ref=e426]:
+                  - generic [ref=e428]: LLVM
+                  - generic [ref=e430]: https://lldb.llvm.org › python_api › lldb.SBTarget.html
+            - button "About this result" [ref=e431] [cursor=pointer]:
+              - img [ref=e434]
+          - generic [ref=e437]:
+            - generic [ref=e438]:
+              - text: Basename of
+              - emphasis [ref=e439]: process
+              - text: to
+              - emphasis [ref=e440]: attach
+              - text: to. @param[in] wait_for. If true
+              - emphasis [ref=e441]: wait for
+              - text: a new instance of '
+              - emphasis [ref=e442]: name
+              - text: "' to be launched. @param[ ..."
+            - link "Read more" [ref=e443] [cursor=pointer]:
+              - /url: https://lldb.llvm.org/python_api/lldb.SBTarget.html#:~:text=Basename%20of%20process%20to%20attach,%40param%5Bout%5D
+        - generic [ref=e447]:
+          - generic [ref=e450]:
+            - link "Getting started with lldb-dap - LLVM.org LLVM https://lldb.llvm.org › use › lldbdap" [ref=e452] [cursor=pointer]:
+              - /url: https://lldb.llvm.org/use/lldbdap.html
+              - heading "Getting started with lldb-dap - LLVM.org" [level=3] [ref=e453]
+              - generic [ref=e455]:
+                - img [ref=e459]
+                - generic [ref=e461]:
+                  - generic [ref=e463]: LLVM
+                  - generic [ref=e465]: https://lldb.llvm.org › use › lldbdap
+            - button "About this result" [ref=e466] [cursor=pointer]:
+              - img [ref=e469]
+          - generic [ref=e472]:
+            - generic [ref=e473]:
+              - text: If pid is omitted, the debugger will attempt to
+              - emphasis [ref=e474]: attach
+              - text: to the program by finding a
+              - emphasis [ref=e475]: process
+              - text: whose file
+              - emphasis [ref=e476]: name
+              - text: matches the file
+              - emphasis [ref=e477]: name
+              - text: from program. Setting this ...
+            - link "Read more" [ref=e478] [cursor=pointer]:
+              - /url: https://lldb.llvm.org/use/lldbdap.html#:~:text=If%20pid%20is%20omitted%2C%20the,in%20the%20Visual%20Studio%20Code.
+      - navigation [ref=e481]:
+        - heading "Page navigation" [level=1] [ref=e482]
+        - text: "1"
+        - link "Page 2" [ref=e485] [cursor=pointer]:
+          - /url: /search?q=site:lldb.llvm.org+process+attach+waitfor+name+lldb&sca_esv=f21e304c56ab1b64&hl=en&ei=tp0UarTpKuaBxc8Pzb72uAQ&start=10&sa=N&sstk=AU9db-AKjrVKqpyApuWq9zkvcTBNdRftM7Js1rzfbYO95POxUiCY5eE9eSM312FWvbMs6hiAwwiXf7bgY22KZITiKHbubUBKJgmzmg&ved=2ahUKEwi0nJSckdWUAxXmQPEDHU2fHUcQ8tMDegQILBAE
+          - text: "2"
+        - link "Page 3" [ref=e487] [cursor=pointer]:
+          - /url: /search?q=site:lldb.llvm.org+process+attach+waitfor+name+lldb&sca_esv=f21e304c56ab1b64&hl=en&ei=tp0UarTpKuaBxc8Pzb72uAQ&start=20&sa=N&sstk=AU9db-AKjrVKqpyApuWq9zkvcTBNdRftM7Js1rzfbYO95POxUiCY5eE9eSM312FWvbMs6hiAwwiXf7bgY22KZITiKHbubUBKJgmzmg&ved=2ahUKEwi0nJSckdWUAxXmQPEDHU2fHUcQ8tMDegQILBAG
+          - text: "3"
+        - heading "Next" [level=2] [ref=e489]:
+          - link "Next" [ref=e490] [cursor=pointer]:
+            - /url: /search?q=site:lldb.llvm.org+process+attach+waitfor+name+lldb&sca_esv=f21e304c56ab1b64&hl=en&ei=tp0UarTpKuaBxc8Pzb72uAQ&start=10&sa=N&sstk=AU9db-AKjrVKqpyApuWq9zkvcTBNdRftM7Js1rzfbYO95POxUiCY5eE9eSM312FWvbMs6hiAwwiXf7bgY22KZITiKHbubUBKJgmzmg&ved=2ahUKEwi0nJSckdWUAxXmQPEDHU2fHUcQ8NMDegQILBAI
+            - generic [ref=e492]: Next
+      - navigation
+    - contentinfo [ref=e493]:
+      - heading "Footer links" [level=1] [ref=e494]
+      - generic [ref=e498]:
+        - generic [ref=e500]:
+          - text: Czechia
+          - generic [ref=e502]:
+            - button "143 00, Prague 12 - Based on your past activity" [ref=e504] [cursor=pointer]:
+              - generic [ref=e505]: 143 00, Prague 12
+              - generic [ref=e507]:
+                - text: "-"
+                - generic [ref=e508]: Based on your past activity
+            - text: "-"
+            - button "Update location" [ref=e510] [cursor=pointer]: Update location
+        - generic [ref=e513]:
+          - link "Help" [ref=e514] [cursor=pointer]:
+            - /url: https://support.google.com/websearch/?p=ws_results_help&hl=en-CZ&fg=1
+          - link "Send feedback" [ref=e515] [cursor=pointer]:
+            - /url: "#"
+          - link "Privacy" [ref=e516] [cursor=pointer]:
+            - /url: https://policies.google.com/privacy?hl=en-CZ&fg=1
+          - link "Terms" [ref=e517] [cursor=pointer]:
+            - /url: https://policies.google.com/terms?hl=en-CZ&fg=1

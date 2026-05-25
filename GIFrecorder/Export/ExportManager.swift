@@ -1,0 +1,52 @@
+import AVFoundation
+
+/// Typed errors for the export pipeline.
+enum ExportError: LocalizedError {
+    case writerFailed(String)
+    case readerFailed(String)
+    case exportFailed(String)
+    case gifskiFailed(String)
+    case unsupportedFormat
+
+    var errorDescription: String? {
+        switch self {
+        case .writerFailed(let msg): return "Writer failed: \(msg)"
+        case .readerFailed(let msg): return "Reader failed: \(msg)"
+        case .exportFailed(let msg): return "Export failed: \(msg)"
+        case .gifskiFailed(let msg): return "GIF export failed: \(msg)"
+        case .unsupportedFormat: return "Unsupported export format."
+        }
+    }
+}
+
+/// Dispatches export to format-specific exporters.
+final class ExportManager {
+
+    static let shared = ExportManager()
+    private init() {}
+
+    /// Export a recorded .mov file to the given format and destination URL.
+    /// - Parameters:
+    ///   - sourceURL: Temporary .mov file from RecordingEngine
+    ///   - format: Target format (mp4, mov, gif)
+    ///   - destinationURL: Final output path (chosen by user via save dialog)
+    ///   - progressHandler: Reports progress 0.0–1.0 (GIF only)
+    func export(
+        from sourceURL: URL,
+        to format: ExportFormat,
+        destination destinationURL: URL,
+        progressHandler: ((Double) -> Void)? = nil
+    ) async throws {
+        // Delete existing file at destination
+        try? FileManager.default.removeItem(at: destinationURL)
+
+        switch format {
+        case .mp4:
+            try await MP4Exporter.export(from: sourceURL, to: destinationURL)
+        case .mov:
+            try await MOVExporter.export(from: sourceURL, to: destinationURL)
+        case .gif:
+            try await GIFExporter.export(from: sourceURL, to: destinationURL, progressHandler: progressHandler)
+        }
+    }
+}
