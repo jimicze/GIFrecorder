@@ -50,7 +50,15 @@ struct MenuBarView: View {
         case .idle: return "Ready to record"
         case .selectingRegion: return "Select region..."
         case .countdown(let n): return "Starting in \(n)..."
-        case .recording: return "Recording..."
+        case .recording:
+            if appState.currentRecordingBytes > 0 {
+                let formatted = ByteCountFormatter.string(
+                    fromByteCount: appState.currentRecordingBytes,
+                    countStyle: .file
+                )
+                return "Recording... ~\(formatted)"
+            }
+            return "Recording..."
         case .stopping: return "Stopping..."
         case .exporting(let fmt): return "Exporting \(fmt.displayName)..."
         }

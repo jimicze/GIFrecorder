@@ -14,6 +14,13 @@ final class AssetWriterSession {
     // MARK: - Properties
 
     let outputURL: URL
+
+    /// Approximate size of the in-progress recording file, in bytes.
+    /// Returns 0 if the file does not yet exist or metadata read fails.
+    var estimatedFileSize: Int64 {
+        (try? FileManager.default.attributesOfItem(atPath: outputURL.path)[.size] as? Int64) ?? 0
+    }
+
     private let writer: AVAssetWriter
     private let videoInput: AVAssetWriterInput
     private let audioInput: AVAssetWriterInput?

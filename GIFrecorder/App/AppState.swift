@@ -33,6 +33,8 @@ final class AppState: ObservableObject {
     @Published var screenRecordingPermission: ScreenRecordingPermission = .unknown
     /// 0.0–1.0 progress during `.exporting`; reset to 0 at start of each export.
     @Published var exportProgress: Double = 0
+    /// Approximate size of the in-progress recording, in bytes. 0 when not recording.
+    @Published var currentRecordingBytes: Int64 = 0
 
     // MARK: Derived
 

@@ -48,6 +48,11 @@ final class RecordingEngine: @unchecked Sendable {
     /// Set by RecordingCoordinator before each recording; cleared after stop/error.
     var onUnexpectedStop: ((Error) -> Void)?
 
+    /// Returns the current size of the temp recording file in bytes. 0 when not recording.
+    var currentRecordingBytes: Int64 {
+        writerSession?.estimatedFileSize ?? 0
+    }
+
     private init() {}
 
     // MARK: - Start

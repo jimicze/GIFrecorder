@@ -17,10 +17,19 @@ final class RecordingCoordinator {
     private var countdownWindow: CountdownWindow?
     private var currentSession: RecordingSession?
     private var selectionBridge: SelectionCoordinatorBridge?  // strong ref to delegate bridge
+    private var fileSizeTimer: Timer?
 
     /// Weak references set at recording start so the unexpected-stop handler can reach them.
     private weak var currentAppState: AppState?
     private weak var currentSettings: AppSettings?
+
+    // MARK: - File Size Timer
+
+    private func stopFileSizeTimer() {
+        fileSizeTimer?.invalidate()
+        fileSizeTimer = nil
+        currentAppState?.currentRecordingBytes = 0
+    }
 
     // MARK: - Permission Check
 
@@ -171,6 +180,10 @@ final class RecordingCoordinator {
 
         do {
             try await RecordingEngine.shared.start(region: region, config: config)
+            fileSizeTimer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [weak self] _ in
+                guard let self, self.fileSizeTimer != nil else { return }
+                self.currentAppState?.currentRecordingBytes = RecordingEngine.shared.currentRecordingBytes
+            }
         } catch {
             RecordingEngine.shared.onUnexpectedStop = nil
             currentAppState = nil
@@ -191,6 +204,7 @@ final class RecordingCoordinator {
         guard case .recording = appState.recordingState else { return }
         logger.info("stopRecording() — initiating stop")
 
+        stopFileSizeTimer()
         appState.recordingState = .stopping
 
         // Clear the unexpected-stop handler — we're stopping intentionally.
@@ -282,6 +296,7 @@ final class RecordingCoordinator {
     private func handleUnexpectedStreamStop(error: Error) {
         // RecordingEngine already cancelled writing internally.
         logger.error("unexpected stream stop: \(error.localizedDescription, privacy: .public)")
+        stopFileSizeTimer()
         currentSession = nil
         currentAppState?.recordingState = .idle
         currentAppState?.setError("Recording stopped unexpectedly: \(error.localizedDescription)")
