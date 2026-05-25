@@ -16,6 +16,7 @@ enum GIFExporter {
         from sourceURL: URL,
         to destinationURL: URL,
         options: GIFExportOptions = .default,
+        timeRange: CMTimeRange? = nil,
         progressHandler: ((Double) -> Void)? = nil
     ) async throws {
         let asset = AVURLAsset(url: sourceURL)
@@ -36,12 +37,23 @@ enum GIFExporter {
             height: (naturalSize.height * scale).rounded()
         )
 
+        // Apply trim range if provided.
+        let startSeconds: Double
+        let encodeDuration: Double
+        if let range = timeRange {
+            startSeconds = CMTimeGetSeconds(range.start)
+            encodeDuration = min(CMTimeGetSeconds(range.duration), Double(options.maxDurationSeconds))
+        } else {
+            startSeconds = 0
+            encodeDuration = durationSeconds
+        }
+
         // Build frame timestamps at options.fps
         let gifFPS: Double = Double(options.fps)
-        let frameCount = max(1, Int(durationSeconds * gifFPS))
+        let frameCount = max(1, Int(encodeDuration * gifFPS))
         let frameDuration: TimeInterval = 1.0 / gifFPS
         let times: [CMTime] = (0..<frameCount).map {
-            CMTime(seconds: Double($0) * frameDuration, preferredTimescale: 600)
+            CMTime(seconds: startSeconds + Double($0) * frameDuration, preferredTimescale: 600)
         }
 
         // Configure image generator

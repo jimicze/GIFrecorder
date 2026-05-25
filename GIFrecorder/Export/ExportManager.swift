@@ -30,11 +30,13 @@ final class ExportManager {
     ///   - sourceURL: Temporary .mov file from RecordingEngine
     ///   - format: Target format (mp4, mov, gif)
     ///   - destinationURL: Final output path (chosen by user via save dialog)
+    ///   - timeRange: Optional trim range; nil exports the full duration
     ///   - progressHandler: Reports progress 0.0–1.0 (GIF only)
     func export(
         from sourceURL: URL,
         to format: ExportFormat,
         destination destinationURL: URL,
+        timeRange: CMTimeRange? = nil,
         progressHandler: ((Double) -> Void)? = nil
     ) async throws {
         // Delete existing file at destination
@@ -42,14 +44,15 @@ final class ExportManager {
 
         switch format {
         case .mp4:
-            try await MP4Exporter.export(from: sourceURL, to: destinationURL)
+            try await MP4Exporter.export(from: sourceURL, to: destinationURL, timeRange: timeRange)
         case .mov:
-            try await MOVExporter.export(from: sourceURL, to: destinationURL)
+            try await MOVExporter.export(from: sourceURL, to: destinationURL, timeRange: timeRange)
         case .gif:
             try await GIFExporter.export(
                 from: sourceURL,
                 to: destinationURL,
                 options: AppSettings.shared.gifExportOptions,
+                timeRange: timeRange,
                 progressHandler: progressHandler
             )
         }

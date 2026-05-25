@@ -4,7 +4,7 @@ import AVFoundation
 /// Exports a recorded .mov by copying/remuxing to a new .mov destination.
 enum MOVExporter {
 
-    static func export(from sourceURL: URL, to destinationURL: URL) async throws {
+    static func export(from sourceURL: URL, to destinationURL: URL, timeRange: CMTimeRange? = nil) async throws {
         let asset = AVURLAsset(url: sourceURL)
 
         guard let session = AVAssetExportSession(
@@ -16,6 +16,9 @@ enum MOVExporter {
 
         session.outputURL = destinationURL
         session.outputFileType = .mov
+        if let range = timeRange {
+            session.timeRange = range
+        }
 
         await session.export()
 

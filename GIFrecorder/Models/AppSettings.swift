@@ -43,6 +43,10 @@ final class AppSettings: ObservableObject {
         didSet { defaults.set(autoCopyOnExport, forKey: Keys.autoCopyOnExport) }
     }
 
+    @Published var showTrimUI: Bool {
+        didSet { defaults.set(showTrimUI, forKey: Keys.showTrimUI) }
+    }
+
     @Published var gifFPS: Int {
         didSet { defaults.set(gifFPS, forKey: Keys.gifFPS) }
     }
@@ -63,6 +67,7 @@ final class AppSettings: ObservableObject {
         static let showCountdown = "showCountdown"
         static let globalHotkeyEnabled = "globalHotkeyEnabled"
         static let autoCopyOnExport = "autoCopyOnExport"
+        static let showTrimUI = "showTrimUI"
         static let gifFPS = "gifFPS"
         static let gifMaxWidth = "gifMaxWidth"
         static let gifMaxDurationSeconds = "gifMaxDurationSeconds"
@@ -85,6 +90,7 @@ final class AppSettings: ObservableObject {
         self.showCountdown = defaults.object(forKey: Keys.showCountdown) as? Bool ?? true
         self.globalHotkeyEnabled = defaults.object(forKey: Keys.globalHotkeyEnabled) as? Bool ?? true
         self.autoCopyOnExport = defaults.object(forKey: Keys.autoCopyOnExport) as? Bool ?? false
+        self.showTrimUI = defaults.object(forKey: Keys.showTrimUI) as? Bool ?? false
 
         if let raw = defaults.string(forKey: Keys.defaultFormat),
            let format = ExportFormat(rawValue: raw) {

@@ -1,6 +1,9 @@
 import AppKit
+import AVKit
 import CoreGraphics
+import ObjectiveC
 @preconcurrency import ScreenCaptureKit
+import SwiftUI
 import UserNotifications
 import os
 
@@ -239,13 +242,32 @@ final class RecordingCoordinator {
                 return
             }
 
+            // Present trim sheet if enabled.
+            var trimRange: TrimRange?
+            if settings.showTrimUI {
+                do {
+                    trimRange = try await presentTrimSheet(for: sourceURL)
+                } catch is CancellationError {
+                    try? FileManager.default.removeItem(at: sourceURL)
+                    appState.recordingState = .idle
+                    return
+                } catch {
+                    // Unexpected error — continue without trim.
+                }
+            }
+
             // Export
             let format = formatFromExtension(destinationURL) ?? defaultFormat
             logger.info("exporting — format=\(format.rawValue, privacy: .public) dest=\(destinationURL.lastPathComponent, privacy: .public)")
             appState.recordingState = .exporting(format)
             appState.exportProgress = 0
 
-            try await ExportManager.shared.export(from: sourceURL, to: format, destination: destinationURL) { progress in
+            try await ExportManager.shared.export(
+                from: sourceURL,
+                to: format,
+                destination: destinationURL,
+                timeRange: trimRange?.cmTimeRange
+            ) { progress in
                 DispatchQueue.main.async {
                     appState.exportProgress = progress
                 }
@@ -353,6 +375,51 @@ final class RecordingCoordinator {
         let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: nil)
         UNUserNotificationCenter.current().add(request)
     }
+
+    // MARK: - Trim Sheet
+
+    @MainActor
+    private func presentTrimSheet(for url: URL) async throws -> TrimRange? {
+        try await withCheckedThrowingContinuation { continuation in
+            // Wrap continuation to guarantee at-most-once resume.
+            var resumed = false
+            let resume: (Result<TrimRange?, Error>) -> Void = { result in
+                guard !resumed else { return }
+                resumed = true
+                switch result {
+                case .success(let v): continuation.resume(returning: v)
+                case .failure(let e): continuation.resume(throwing: e)
+                }
+            }
+
+            let delegate = TrimWindowDelegate { resume(.failure(CancellationError())) }
+            var window: NSWindow?
+
+            let sheet = TrimSheet(
+                sourceURL: url,
+                onConfirm: { [weak window] trimRange in
+                    window?.close()
+                    resume(.success(trimRange))
+                },
+                onCancel: { [weak window] in
+                    window?.close()
+                    resume(.failure(CancellationError()))
+                }
+            )
+
+            let hosting = NSHostingController(rootView: sheet)
+            let w = NSWindow(contentViewController: hosting)
+            w.title = "Trim Recording"
+            w.styleMask = [.titled, .closable]
+            w.delegate = delegate
+            w.center()
+            window = w
+            // Keep delegate alive for the window's lifetime.
+            objc_setAssociatedObject(w, &TrimWindowDelegate.key, delegate, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+            w.makeKeyAndOrderFront(nil)
+            NSApp.activate(ignoringOtherApps: true)
+        }
+    }
 }
 
 // MARK: - Bridge (avoids @MainActor on NSObject subclass)
@@ -379,5 +446,21 @@ private final class SelectionCoordinatorBridge: NSObject, SelectionWindowDelegat
         Task { @MainActor in
             self.appState.recordingState = .idle
         }
+    }
+}
+
+// MARK: - TrimWindowDelegate
+
+/// NSWindowDelegate that fires a callback when the window is about to close.
+private final class TrimWindowDelegate: NSObject, NSWindowDelegate {
+    static var key: UInt8 = 0
+    private let onClose: () -> Void
+
+    init(onClose: @escaping () -> Void) {
+        self.onClose = onClose
+    }
+
+    func windowWillClose(_ notification: Notification) {
+        onClose()
     }
 }

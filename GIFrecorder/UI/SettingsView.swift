@@ -37,6 +37,14 @@ struct SettingsView: View {
                 // Auto-copy Toggle
                 Toggle("Copy to Clipboard After Export", isOn: $settings.autoCopyOnExport)
 
+                // Trim UI Toggle
+                VStack(alignment: .leading, spacing: 4) {
+                    Toggle("Show Trim UI After Recording", isOn: $settings.showTrimUI)
+                    Text("Opens a trim sheet to clip the start and end before exporting.")
+                        .font(.caption)
+                        .foregroundStyle(.secondary)
+                }
+
                 // Global Hotkey
                 VStack(alignment: .leading, spacing: 4) {
                     Toggle("Global Keyboard Shortcut", isOn: $settings.globalHotkeyEnabled)
@@ -92,7 +100,7 @@ struct SettingsView: View {
             }
         }
         .padding()
-        .frame(width: 380, height: 520)
+        .frame(width: 380, height: 590)
     }
 
     private var saveDirLabel: String {
