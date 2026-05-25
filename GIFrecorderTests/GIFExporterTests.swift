@@ -17,13 +17,18 @@ final class GIFExporterTests: XCTestCase {
         try await super.tearDown()
     }
 
-    func testGIFExporterMaxDuration() {
-        // Ensure max duration constant is reasonable
-        XCTAssertEqual(GIFExporter.maxDuration, 30)
+    func testGIFExporterDefaultOptionsMaxDuration() {
+        // Ensure default options max duration is reasonable
+        XCTAssertEqual(GIFExportOptions.default.maxDurationSeconds, 30)
     }
 
-    func testGIFExporterMaxWidth() {
-        // Ensure max width constant is set
-        XCTAssertEqual(GIFExporter.maxWidth, 1280)
+    func testGIFExporterDefaultOptionsMaxWidth() {
+        // Ensure default options max width is set
+        XCTAssertEqual(GIFExportOptions.default.maxWidth, 1280)
+    }
+
+    func testGIFExporterDefaultOptionsFPS() {
+        // Ensure default options fps is set
+        XCTAssertEqual(GIFExportOptions.default.fps, 15)
     }
 }

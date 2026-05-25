@@ -12,19 +12,17 @@ import UniformTypeIdentifiers
 ///   - lets the progress callback be called on the calling actor without synchronisation
 enum GIFExporter {
 
-    static let maxDuration: TimeInterval = 30
-    static let maxWidth: CGFloat = 1280
-
     static func export(
         from sourceURL: URL,
         to destinationURL: URL,
+        options: GIFExportOptions = .default,
         progressHandler: ((Double) -> Void)? = nil
     ) async throws {
         let asset = AVURLAsset(url: sourceURL)
 
-        // Clamp duration to maxDuration
+        // Clamp duration to options.maxDurationSeconds
         let duration = try await asset.load(.duration)
-        let durationSeconds = min(CMTimeGetSeconds(duration), maxDuration)
+        let durationSeconds = min(CMTimeGetSeconds(duration), Double(options.maxDurationSeconds))
 
         // Determine output dimensions
         let tracks = try await asset.loadTracks(withMediaType: .video)
@@ -32,14 +30,14 @@ enum GIFExporter {
             throw ExportError.readerFailed("No video track found")
         }
         let naturalSize = try await track.load(.naturalSize)
-        let scale = min(1.0, maxWidth / max(naturalSize.width, 1))
+        let scale = min(1.0, CGFloat(options.maxWidth) / max(naturalSize.width, 1))
         let outputSize = CGSize(
             width: (naturalSize.width * scale).rounded(),
             height: (naturalSize.height * scale).rounded()
         )
 
-        // Build frame timestamps (15 fps cap keeps GIF file sizes reasonable)
-        let gifFPS: Double = 15
+        // Build frame timestamps at options.fps
+        let gifFPS: Double = Double(options.fps)
         let frameCount = max(1, Int(durationSeconds * gifFPS))
         let frameDuration: TimeInterval = 1.0 / gifFPS
         let times: [CMTime] = (0..<frameCount).map {

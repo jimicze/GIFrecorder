@@ -46,7 +46,12 @@ final class ExportManager {
         case .mov:
             try await MOVExporter.export(from: sourceURL, to: destinationURL)
         case .gif:
-            try await GIFExporter.export(from: sourceURL, to: destinationURL, progressHandler: progressHandler)
+            try await GIFExporter.export(
+                from: sourceURL,
+                to: destinationURL,
+                options: AppSettings.shared.gifExportOptions,
+                progressHandler: progressHandler
+            )
         }
     }
 }

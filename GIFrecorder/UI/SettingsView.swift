@@ -54,6 +54,32 @@ struct SettingsView: View {
                     }
                     .buttonStyle(.link)
                 }
+
+                // GIF Quality
+                Section("GIF Export") {
+                    Picker("Frame Rate", selection: $settings.gifFPS) {
+                        Text("5 FPS").tag(5)
+                        Text("10 FPS").tag(10)
+                        Text("15 FPS (default)").tag(15)
+                        Text("24 FPS").tag(24)
+                        Text("30 FPS").tag(30)
+                    }
+
+                    Picker("Max Width", selection: $settings.gifMaxWidth) {
+                        Text("480 px").tag(480)
+                        Text("720 px").tag(720)
+                        Text("1080 px").tag(1080)
+                        Text("1280 px (default)").tag(1280)
+                        Text("Original").tag(9999)
+                    }
+
+                    Stepper(
+                        "Max Duration: \(settings.gifMaxDurationSeconds)s",
+                        value: $settings.gifMaxDurationSeconds,
+                        in: 5...60,
+                        step: 5
+                    )
+                }
             }
             .formStyle(.grouped)
 
@@ -66,7 +92,7 @@ struct SettingsView: View {
             }
         }
         .padding()
-        .frame(width: 380, height: 390)
+        .frame(width: 380, height: 520)
     }
 
     private var saveDirLabel: String {

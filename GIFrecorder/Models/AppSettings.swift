@@ -43,6 +43,18 @@ final class AppSettings: ObservableObject {
         didSet { defaults.set(autoCopyOnExport, forKey: Keys.autoCopyOnExport) }
     }
 
+    @Published var gifFPS: Int {
+        didSet { defaults.set(gifFPS, forKey: Keys.gifFPS) }
+    }
+
+    @Published var gifMaxWidth: Int {
+        didSet { defaults.set(gifMaxWidth, forKey: Keys.gifMaxWidth) }
+    }
+
+    @Published var gifMaxDurationSeconds: Int {
+        didSet { defaults.set(gifMaxDurationSeconds, forKey: Keys.gifMaxDurationSeconds) }
+    }
+
     private enum Keys {
         static let fps = "fps"
         static let defaultFormat = "defaultFormat"
@@ -51,6 +63,9 @@ final class AppSettings: ObservableObject {
         static let showCountdown = "showCountdown"
         static let globalHotkeyEnabled = "globalHotkeyEnabled"
         static let autoCopyOnExport = "autoCopyOnExport"
+        static let gifFPS = "gifFPS"
+        static let gifMaxWidth = "gifMaxWidth"
+        static let gifMaxDurationSeconds = "gifMaxDurationSeconds"
     }
 
     private init() {
@@ -58,6 +73,15 @@ final class AppSettings: ObservableObject {
 
         self.fps = defaults.integer(forKey: Keys.fps).nonZero ?? 30
         self.capturesAudio = defaults.object(forKey: Keys.capturesAudio) as? Bool ?? true
+
+        let storedGIFFPS = defaults.integer(forKey: Keys.gifFPS)
+        self.gifFPS = storedGIFFPS > 0 ? storedGIFFPS : 15
+
+        let storedWidth = defaults.integer(forKey: Keys.gifMaxWidth)
+        self.gifMaxWidth = storedWidth > 0 ? storedWidth : 1280
+
+        let storedDuration = defaults.integer(forKey: Keys.gifMaxDurationSeconds)
+        self.gifMaxDurationSeconds = storedDuration > 0 ? storedDuration : 30
         self.showCountdown = defaults.object(forKey: Keys.showCountdown) as? Bool ?? true
         self.globalHotkeyEnabled = defaults.object(forKey: Keys.globalHotkeyEnabled) as? Bool ?? true
         self.autoCopyOnExport = defaults.object(forKey: Keys.autoCopyOnExport) as? Bool ?? false
@@ -78,6 +102,14 @@ final class AppSettings: ObservableObject {
 
     var recordingConfig: RecordingConfig {
         RecordingConfig(fps: fps, capturesAudio: capturesAudio, exportFormat: defaultFormat)
+    }
+
+    var gifExportOptions: GIFExportOptions {
+        GIFExportOptions(
+            fps: gifFPS,
+            maxWidth: gifMaxWidth,
+            maxDurationSeconds: gifMaxDurationSeconds
+        )
     }
 }
 
