@@ -26,7 +26,6 @@ build/
 *.gifrecorder-tmp.mov
 
 # OpenCode agent files
-AGENTS.md
 .opencode/
 .superpowers/
 
