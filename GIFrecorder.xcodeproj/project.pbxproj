@@ -23,11 +23,13 @@
 		51B36B48D16DF7262CCBDAFF /* WindowSnapManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B28ECA020812E059719EFE6 /* WindowSnapManager.swift */; };
 		5975A680C0D79E5CAD09BEB1 /* SelectionWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3F0C6C148BE8DA280B7C70E /* SelectionWindow.swift */; };
 		62B4697CCA165A539FAE664D /* ExportFormat+UTType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89478859E3CC7B0B22435C67 /* ExportFormat+UTType.swift */; };
+		63FB193390A0B593538DB013 /* WindowTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6F13919A5B4C92DCD23983 /* WindowTracker.swift */; };
 		65F0AF2AAD09439B22133C28 /* ExportFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48229557738F3D7267CA3026 /* ExportFormat.swift */; };
 		6C84BDD65AEAAB149D917D11 /* TrimRange.swift in Sources */ = {isa = PBXBuildFile; fileRef = F14890A9D77C3AD7E143EB02 /* TrimRange.swift */; };
 		6E9B4A1FAB5637A0A83F103C /* GIFExportOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 965186C5468F10ACB14BD79B /* GIFExportOptions.swift */; };
 		7AF61EBA5131350A8221A1B2 /* ThumbnailGeneratorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9320BC32AB8A268DD1D9557E /* ThumbnailGeneratorTests.swift */; };
 		8430EECDC23066C7CD45A972 /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCA629E340E34540B9A50BB /* AppSettings.swift */; };
+		84B83B3FE2387C0E472234DA /* WindowTrackerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94AF87025FCFCC013D9FD4F9 /* WindowTrackerTests.swift */; };
 		86B1BC4315237E9310220643 /* AppSettingsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D752AD68B50501093CD63C66 /* AppSettingsTests.swift */; };
 		89996CDD87C41F5D3A501BB6 /* GlobalHotkeyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6484BF8A816A50BA4971F738 /* GlobalHotkeyManager.swift */; };
 		8AFBADB636FF885AA6996BC3 /* ExportManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 204DE170822E8ACCC9787858 /* ExportManagerTests.swift */; };
@@ -45,6 +47,7 @@
 		D7EB030C36466D014CE8C2D4 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6DC8EBBDE8928D60F61D7ED /* SettingsView.swift */; };
 		EBA65A2BC6EED5E9D702F0C6 /* MOVExporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3792351521906D0BF17E7BBB /* MOVExporter.swift */; };
 		F092822B789B66760101A0E9 /* TrimSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 446E5239BF41B152163FAF01 /* TrimSheet.swift */; };
+		FFC80141276009A596695E8A /* FileLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = C29C2A645A0417F216B59556 /* FileLogger.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -90,6 +93,7 @@
 		8C34DCB759F2E142A4151EE3 /* GIFrecorder.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = GIFrecorder.entitlements; sourceTree = "<group>"; };
 		92C28A75F7A0E915705351A1 /* ThumbnailGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThumbnailGenerator.swift; sourceTree = "<group>"; };
 		9320BC32AB8A268DD1D9557E /* ThumbnailGeneratorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThumbnailGeneratorTests.swift; sourceTree = "<group>"; };
+		94AF87025FCFCC013D9FD4F9 /* WindowTrackerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowTrackerTests.swift; sourceTree = "<group>"; };
 		965186C5468F10ACB14BD79B /* GIFExportOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GIFExportOptions.swift; sourceTree = "<group>"; };
 		9EB0DFC159DD40A80ED2B997 /* GifskiExporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GifskiExporter.swift; sourceTree = "<group>"; };
 		9EB929968B9E583C6B290AC0 /* RecordingCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordingCoordinator.swift; sourceTree = "<group>"; };
@@ -100,6 +104,7 @@
 		B65BA6A657FF0CF43DA3A768 /* CountdownOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountdownOverlay.swift; sourceTree = "<group>"; };
 		B8CEEB7F12D86F2CCE408F7E /* SelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionView.swift; sourceTree = "<group>"; };
 		BC62BAFDB3E5B84B8975C8F9 /* GIFrecorderApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GIFrecorderApp.swift; sourceTree = "<group>"; };
+		C29C2A645A0417F216B59556 /* FileLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileLogger.swift; sourceTree = "<group>"; };
 		C4BEAEDC998C107E59A43368 /* MenuBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBarView.swift; sourceTree = "<group>"; };
 		C65C1EE78A636751F080EA8A /* AssetWriterSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetWriterSession.swift; sourceTree = "<group>"; };
 		CEAB69375F1231B39F2C0F9A /* TrimRangeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrimRangeTests.swift; sourceTree = "<group>"; };
@@ -109,6 +114,7 @@
 		E7F834ACA6F57A52F906CFF8 /* gifski */ = {isa = PBXFileReference; path = gifski; sourceTree = "<group>"; };
 		EFF53E8E96F02FF559C6D9D3 /* GIFrecorderTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GIFrecorderTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F14890A9D77C3AD7E143EB02 /* TrimRange.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrimRange.swift; sourceTree = "<group>"; };
+		FA6F13919A5B4C92DCD23983 /* WindowTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowTracker.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
@@ -131,6 +137,7 @@
 				9320BC32AB8A268DD1D9557E /* ThumbnailGeneratorTests.swift */,
 				CEAB69375F1231B39F2C0F9A /* TrimRangeTests.swift */,
 				4239AF619966A5BFA273E516 /* WindowSnapManagerTests.swift */,
+				94AF87025FCFCC013D9FD4F9 /* WindowTrackerTests.swift */,
 				06F9804B1E5750EB8AE2AA9A /* Fixtures */,
 			);
 			path = GIFrecorderTests;
@@ -156,6 +163,14 @@
 				39BDD6430C0E1095FB294A02 /* GIFrecorderUITests */,
 				F0A9B5850822710B2DECBE92 /* Products */,
 			);
+			sourceTree = "<group>";
+		};
+		2F66AE80C81076EBFA67F536 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				C29C2A645A0417F216B59556 /* FileLogger.swift */,
+			);
+			path = Utilities;
 			sourceTree = "<group>";
 		};
 		39BDD6430C0E1095FB294A02 /* GIFrecorderUITests */ = {
@@ -195,6 +210,7 @@
 				C65C1EE78A636751F080EA8A /* AssetWriterSession.swift */,
 				A42585CB3F8FA189713D56B6 /* RecordingEngine.swift */,
 				AC6869464327D46C13752E3B /* StreamDelegate.swift */,
+				FA6F13919A5B4C92DCD23983 /* WindowTracker.swift */,
 			);
 			path = Recording;
 			sourceTree = "<group>";
@@ -227,6 +243,7 @@
 				69BE2DD59A95E1E104A9F258 /* Recording */,
 				8734268BEB448B6CAEE8DC48 /* Resources */,
 				BD694E88EA8FF114B34CA9A2 /* UI */,
+				2F66AE80C81076EBFA67F536 /* Utilities */,
 			);
 			path = GIFrecorder;
 			sourceTree = "<group>";
@@ -334,9 +351,16 @@
 				LastUpgradeCheck = 1600;
 				TargetAttributes = {
 					23D6B8BD3E6E7AC1C442CD45 = {
-						ProvisioningStyle = Automatic;
+						DevelopmentTeam = R9QY8Q23A2;
+						ProvisioningStyle = Manual;
+					};
+					4FAA7EF9DE7A9AB1C1CF62B1 = {
+						DevelopmentTeam = R9QY8Q23A2;
+						ProvisioningStyle = Manual;
 					};
 					B3CBE003AB5E4730B3F4268E = {
+						DevelopmentTeam = R9QY8Q23A2;
+						ProvisioningStyle = Manual;
 						TestTargetID = 23D6B8BD3E6E7AC1C442CD45;
 					};
 				};
@@ -391,7 +415,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "set -e\nDEST=\"$PROJECT_DIR/build/$CONFIGURATION\"\nmkdir -p \"$DEST\"\nrm -rf \"$DEST/$FULL_PRODUCT_NAME\"\n# ditto preserves symlinks and resource forks but may not preserve the\n# code signature in all Xcode/macOS versions. Re-sign explicitly below.\nditto \"$BUILT_PRODUCTS_DIR/$FULL_PRODUCT_NAME\" \"$DEST/$FULL_PRODUCT_NAME\"\n# Embed bundled binary — gifski is not picked up by Copy Bundle Resources\n# for extensionless binaries in xcodegen, so we inject it manually here.\nGIFSKI_SRC=\"$PROJECT_DIR/GIFrecorder/Resources/Tools/gifski\"\nif [ -f \"$GIFSKI_SRC\" ]; then\n  cp \"$GIFSKI_SRC\" \"$DEST/$FULL_PRODUCT_NAME/Contents/Resources/gifski\"\n  chmod +x \"$DEST/$FULL_PRODUCT_NAME/Contents/Resources/gifski\"\nfi\n# Ad-hoc re-sign so the copy is launchable on macOS 13+.\n# --deep ensures nested helpers/frameworks are also signed.\n# When xctest plugins are embedded (from a previous test run), codesign --deep\n# fails on the xctest bundle. Skip signing if any .xctest plugin is present.\nif [ -z \"$(find \"$DEST/$FULL_PRODUCT_NAME/Contents/PlugIns\" -name \"*.xctest\" 2>/dev/null | head -1)\" ]; then\n  /usr/bin/codesign --force --deep --sign - \"$DEST/$FULL_PRODUCT_NAME\"\nelse\n  echo \"Skipping deep codesign — xctest plugins embedded (test build)\"\nfi\necho \"Exported and signed $FULL_PRODUCT_NAME → build/$CONFIGURATION/$FULL_PRODUCT_NAME\"\n";
+			shellScript = "set -e\nDEST=\"$PROJECT_DIR/build/$CONFIGURATION\"\nmkdir -p \"$DEST\"\nrm -rf \"$DEST/$FULL_PRODUCT_NAME\"\n# ditto preserves symlinks and resource forks but may not preserve the\n# code signature in all Xcode/macOS versions. Re-sign explicitly below.\nditto \"$BUILT_PRODUCTS_DIR/$FULL_PRODUCT_NAME\" \"$DEST/$FULL_PRODUCT_NAME\"\n# Embed bundled binary — gifski is not picked up by Copy Bundle Resources\n# for extensionless binaries in xcodegen, so we inject it manually here.\nGIFSKI_SRC=\"$PROJECT_DIR/GIFrecorder/Resources/Tools/gifski\"\nif [ -f \"$GIFSKI_SRC\" ]; then\n  cp \"$GIFSKI_SRC\" \"$DEST/$FULL_PRODUCT_NAME/Contents/Resources/gifski\"\n  chmod +x \"$DEST/$FULL_PRODUCT_NAME/Contents/Resources/gifski\"\nfi\n# Re-sign using the same identity Xcode used (real Developer cert in Release,\n# ad-hoc in Debug). This preserves TCC-compatible signatures on macOS 15.\nSIGN_ID=\"${CODE_SIGN_IDENTITY:-Apple Development: jimicze@gmail.com (C3URWP759G)}\"\nif [ -z \"$(find \"$DEST/$FULL_PRODUCT_NAME/Contents/PlugIns\" -name \"*.xctest\" 2>/dev/null | head -1)\" ]; then\n  /usr/bin/codesign --force --deep --sign \"$SIGN_ID\" \"$DEST/$FULL_PRODUCT_NAME\"\nelse\n  echo \"Skipping deep codesign — xctest plugins embedded (test build)\"\nfi\necho \"Exported and signed $FULL_PRODUCT_NAME → build/$CONFIGURATION/$FULL_PRODUCT_NAME\"\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -416,6 +440,7 @@
 				62B4697CCA165A539FAE664D /* ExportFormat+UTType.swift in Sources */,
 				65F0AF2AAD09439B22133C28 /* ExportFormat.swift in Sources */,
 				27B05E98AE3B4A2ECBB7F4DA /* ExportManager.swift in Sources */,
+				FFC80141276009A596695E8A /* FileLogger.swift in Sources */,
 				6E9B4A1FAB5637A0A83F103C /* GIFExportOptions.swift in Sources */,
 				0430EF3911B309AC87991A61 /* GIFExporter.swift in Sources */,
 				C2279A2291FFB30FC4111DFB /* GIFrecorderApp.swift in Sources */,
@@ -435,6 +460,7 @@
 				6C84BDD65AEAAB149D917D11 /* TrimRange.swift in Sources */,
 				F092822B789B66760101A0E9 /* TrimSheet.swift in Sources */,
 				51B36B48D16DF7262CCBDAFF /* WindowSnapManager.swift in Sources */,
+				63FB193390A0B593538DB013 /* WindowTracker.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -451,6 +477,7 @@
 				7AF61EBA5131350A8221A1B2 /* ThumbnailGeneratorTests.swift in Sources */,
 				D1355A53F3EFAD6D8914A94D /* TrimRangeTests.swift in Sources */,
 				CB1FE8B365BDDA0C8E0A24A0 /* WindowSnapManagerTests.swift in Sources */,
+				84B83B3FE2387C0E472234DA /* WindowTrackerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -535,7 +562,10 @@
 			buildSettings = {
 				ARCHS = arm64;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "Apple Development: jimicze@gmail.com (C3URWP759G)";
+				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = R9QY8Q23A2;
 				GENERATE_INFOPLIST_FILE = YES;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -543,7 +573,8 @@
 					"@loader_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 13.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.gifrecorder.app.tests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.lasakondrej.gifrecorder.tests;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = macosx;
 				SWIFT_VERSION = 5.9;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GIFrecorder.app/Contents/MacOS/GIFrecorder";
@@ -556,8 +587,10 @@
 				ARCHS = arm64;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = GIFrecorder/Resources/GIFrecorder.entitlements;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "Apple Development: jimicze@gmail.com (C3URWP759G)";
+				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = R9QY8Q23A2;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				INFOPLIST_FILE = GIFrecorder/Resources/Info.plist;
@@ -566,8 +599,9 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 13.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.gifrecorder.app;
+				PRODUCT_BUNDLE_IDENTIFIER = com.lasakondrej.gifrecorder;
 				PRODUCT_NAME = GIFrecorder;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = macosx;
 				SWIFT_VERSION = 5.9;
 				VALID_ARCHS = arm64;
@@ -579,7 +613,10 @@
 			buildSettings = {
 				ARCHS = arm64;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "Apple Development: jimicze@gmail.com (C3URWP759G)";
+				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = R9QY8Q23A2;
 				GENERATE_INFOPLIST_FILE = YES;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -587,7 +624,8 @@
 					"@loader_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 13.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.gifrecorder.app.tests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.lasakondrej.gifrecorder.tests;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = macosx;
 				SWIFT_VERSION = 5.9;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GIFrecorder.app/Contents/MacOS/GIFrecorder";
@@ -599,7 +637,10 @@
 			buildSettings = {
 				ARCHS = arm64;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "Apple Development: jimicze@gmail.com (C3URWP759G)";
+				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = R9QY8Q23A2;
 				GENERATE_INFOPLIST_FILE = YES;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -607,7 +648,8 @@
 					"@loader_path/Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 13.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.gifrecorder.app.uitests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.lasakondrej.gifrecorder.uitests;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = macosx;
 				SWIFT_VERSION = 5.9;
 				TEST_TARGET_NAME = GIFrecorder;
@@ -620,8 +662,10 @@
 				ARCHS = arm64;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = GIFrecorder/Resources/GIFrecorder.entitlements;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "Apple Development: jimicze@gmail.com (C3URWP759G)";
+				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = R9QY8Q23A2;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				INFOPLIST_FILE = GIFrecorder/Resources/Info.plist;
@@ -630,8 +674,9 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 13.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.gifrecorder.app;
+				PRODUCT_BUNDLE_IDENTIFIER = com.lasakondrej.gifrecorder;
 				PRODUCT_NAME = GIFrecorder;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = macosx;
 				SWIFT_VERSION = 5.9;
 				VALID_ARCHS = arm64;
@@ -709,7 +754,10 @@
 			buildSettings = {
 				ARCHS = arm64;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "Apple Development: jimicze@gmail.com (C3URWP759G)";
+				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = R9QY8Q23A2;
 				GENERATE_INFOPLIST_FILE = YES;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -717,7 +765,8 @@
 					"@loader_path/Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 13.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.gifrecorder.app.uitests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.lasakondrej.gifrecorder.uitests;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = macosx;
 				SWIFT_VERSION = 5.9;
 				TEST_TARGET_NAME = GIFrecorder;

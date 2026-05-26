@@ -1,6 +1,6 @@
 name: GIFrecorder
 options:
-  bundleIdPrefix: com.gifrecorder
+  bundleIdPrefix: com.lasakondrej
   deploymentTarget:
     macOS: "13.0"
   xcodeVersion: "16.0"
@@ -51,7 +51,7 @@ targets:
       - path: GIFrecorder/Resources/Tools/gifski
     settings:
       base:
-        PRODUCT_BUNDLE_IDENTIFIER: com.gifrecorder.app
+        PRODUCT_BUNDLE_IDENTIFIER: com.lasakondrej.gifrecorder
         SWIFT_VERSION: "5.9"
         MACOSX_DEPLOYMENT_TARGET: "13.0"
         ARCHS: arm64
@@ -61,7 +61,17 @@ targets:
         PRODUCT_NAME: GIFrecorder
         ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
         ENABLE_HARDENED_RUNTIME: YES
-        CODE_SIGN_STYLE: Automatic
+        # Manual signing avoids xcodebuild's default search for "Mac Development" (old
+        # cert name). The cert in keychain is "Apple Development" — identical in all
+        # capability terms but Automatic mode doesn't find it on this machine.
+        CODE_SIGN_STYLE: Manual
+        # OU field in the cert is R9QY8Q23A2 — Xcode matches DEVELOPMENT_TEAM against OU, not the
+        # team ID shown in the CN display name (C3URWP759G). These must agree or xcodebuild errors.
+        DEVELOPMENT_TEAM: R9QY8Q23A2
+        CODE_SIGN_IDENTITY: "Apple Development: jimicze@gmail.com (C3URWP759G)"
+        # Manual mode does not require a provisioning profile for a non-sandboxed
+        # Mac app distributed outside the App Store.
+        PROVISIONING_PROFILE_SPECIFIER: ""
         # Xcode 16 sandboxes build scripts by default; the post-build copy script
         # needs to read/delete files outside the build directory (build/$CONFIGURATION/).
         # Disabling sandboxing restores the pre-Xcode-16 behaviour for this target only.
@@ -88,12 +98,11 @@ targets:
             cp "$GIFSKI_SRC" "$DEST/$FULL_PRODUCT_NAME/Contents/Resources/gifski"
             chmod +x "$DEST/$FULL_PRODUCT_NAME/Contents/Resources/gifski"
           fi
-          # Ad-hoc re-sign so the copy is launchable on macOS 13+.
-          # --deep ensures nested helpers/frameworks are also signed.
-          # When xctest plugins are embedded (from a previous test run), codesign --deep
-          # fails on the xctest bundle. Skip signing if any .xctest plugin is present.
+          # Re-sign using the same identity Xcode used (real Developer cert in Release,
+          # ad-hoc in Debug). This preserves TCC-compatible signatures on macOS 15.
+          SIGN_ID="${CODE_SIGN_IDENTITY:-Apple Development: jimicze@gmail.com (C3URWP759G)}"
           if [ -z "$(find "$DEST/$FULL_PRODUCT_NAME/Contents/PlugIns" -name "*.xctest" 2>/dev/null | head -1)" ]; then
-            /usr/bin/codesign --force --deep --sign - "$DEST/$FULL_PRODUCT_NAME"
+            /usr/bin/codesign --force --deep --sign "$SIGN_ID" "$DEST/$FULL_PRODUCT_NAME"
           else
             echo "Skipping deep codesign — xctest plugins embedded (test build)"
           fi
@@ -108,11 +117,17 @@ targets:
       - path: GIFrecorderTests
     settings:
       base:
-        PRODUCT_BUNDLE_IDENTIFIER: com.gifrecorder.app.tests
+        PRODUCT_BUNDLE_IDENTIFIER: com.lasakondrej.gifrecorder.tests
         SWIFT_VERSION: "5.9"
         MACOSX_DEPLOYMENT_TARGET: "13.0"
         ARCHS: arm64
         GENERATE_INFOPLIST_FILE: YES
+        # Must match the app target's signing to satisfy Team ID check when the
+        # test bundle is loaded into the app host process.
+        CODE_SIGN_STYLE: Manual
+        DEVELOPMENT_TEAM: R9QY8Q23A2
+        CODE_SIGN_IDENTITY: "Apple Development: jimicze@gmail.com (C3URWP759G)"
+        PROVISIONING_PROFILE_SPECIFIER: ""
     dependencies:
       - target: GIFrecorder
 
@@ -124,10 +139,14 @@ targets:
       - path: GIFrecorderUITests
     settings:
       base:
-        PRODUCT_BUNDLE_IDENTIFIER: com.gifrecorder.app.uitests
+        PRODUCT_BUNDLE_IDENTIFIER: com.lasakondrej.gifrecorder.uitests
         SWIFT_VERSION: "5.9"
         MACOSX_DEPLOYMENT_TARGET: "13.0"
         ARCHS: arm64
         GENERATE_INFOPLIST_FILE: YES
+        CODE_SIGN_STYLE: Manual
+        DEVELOPMENT_TEAM: R9QY8Q23A2
+        CODE_SIGN_IDENTITY: "Apple Development: jimicze@gmail.com (C3URWP759G)"
+        PROVISIONING_PROFILE_SPECIFIER: ""
     dependencies:
       - target: GIFrecorder
