@@ -38,7 +38,12 @@ enum SegmentStitcher {
         }
 
         let canvasSize = infos[0].size
-        let frameDuration = CMTime(value: 1, timescale: 30)
+        // Derive frame duration from the first segment's video track.
+        // Falls back to 30fps if the track has no min frame duration.
+        let rawFrameDuration = (try? await infos[0].videoTrack.load(.minFrameDuration)) ?? CMTime(value: 1, timescale: 30)
+        let frameDuration = rawFrameDuration.isValid && rawFrameDuration > .zero
+            ? rawFrameDuration
+            : CMTime(value: 1, timescale: 30)
 
         let composition = AVMutableComposition()
         guard let compVideoTrack = composition.addMutableTrack(
@@ -92,7 +97,6 @@ enum SegmentStitcher {
                 do {
                     fillerURL = try await makeFreezeFiller(
                         from: info.asset,
-                        duration: fillerDuration,
                         size: info.size
                     )
                 } catch {
@@ -172,7 +176,6 @@ enum SegmentStitcher {
     /// Creates a short single-frame .mov clip containing the last frame of `asset`.
     private static func makeFreezeFiller(
         from asset: AVAsset,
-        duration: CMTime,
         size: CGSize
     ) async throws -> URL {
         let generator = AVAssetImageGenerator(asset: asset)

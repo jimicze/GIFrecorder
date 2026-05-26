@@ -400,6 +400,14 @@ final class RecordingEngine: @unchecked Sendable {
             self.streamDelegate = nil
             self.writerSession?.cancelWriting()
             self.writerSession = nil
+            self.isActive = false
+            for url in self.segments { try? FileManager.default.removeItem(at: url) }
+            self.segments = []
+            self.captureDisplay = nil
+            self.captureScreen = nil
+            self.captureConfig = nil
+            self.captureRegion = .zero
+            self.isPaused = false
             throw RecordingError.streamSetupFailed(underlying: error)
         }
     }
