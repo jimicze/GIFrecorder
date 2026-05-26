@@ -21,6 +21,7 @@ final class RecordingCoordinator {
     private var currentSession: RecordingSession?
     private var selectionBridge: SelectionCoordinatorBridge?  // strong ref to delegate bridge
     private var fileSizeTimer: Timer?
+    private var windowTracker: WindowTracker?
 
     /// Weak references set at recording start so the unexpected-stop handler can reach them.
     private weak var currentAppState: AppState?
@@ -99,6 +100,8 @@ final class RecordingCoordinator {
 
     /// Cancels an in-progress region selection or countdown and resets to idle.
     func cancel(appState: AppState) {
+        windowTracker?.stop()
+        windowTracker = nil
         if selectionWindow != nil {
             selectionWindow?.cancel()
             selectionWindow = nil
@@ -114,7 +117,7 @@ final class RecordingCoordinator {
 
     // MARK: - After Region Selected
 
-    func regionSelected(_ rect: CGRect, appState: AppState, settings: AppSettings) {
+    func regionSelected(_ rect: CGRect, windowID: CGWindowID?, appState: AppState, settings: AppSettings) {
         selectionWindow = nil
         selectionBridge = nil
 
@@ -122,7 +125,17 @@ final class RecordingCoordinator {
         flog("region selected — \(rect.width)×\(rect.height) @ (\(rect.origin.x),\(rect.origin.y))")
 
         let config = settings.recordingConfig
-        let session = RecordingSession(region: rect, config: config)
+        var session = RecordingSession(region: rect, config: config)
+
+        // Store tracked window metadata for WindowTracker setup after stream start.
+        if settings.windowTrackingEnabled, let wid = windowID {
+            session.trackedWindowID = wid
+            // Look up the Quartz frame of the snapped window
+            if let screen = NSScreen.main {
+                let snapWindows = WindowSnapManager.snapWindows(for: screen)
+                session.initialQuartzFrame = snapWindows.first { $0.id == wid }?.frame
+            }
+        }
         currentSession = session
 
         if settings.showCountdown {
@@ -188,6 +201,29 @@ final class RecordingCoordinator {
                 guard let self, self.fileSizeTimer != nil else { return }
                 self.currentAppState?.currentRecordingBytes = RecordingEngine.shared.currentRecordingBytes
             }
+
+            // Start window tracker if this session has a tracked window
+            if let session = currentSession,
+               let windowID = session.trackedWindowID,
+               let quartzFrame = session.initialQuartzFrame,
+               let screen = NSScreen.main {
+                let tracker = WindowTracker(
+                    windowID: windowID,
+                    initialQuartzFrame: quartzFrame,
+                    screen: screen
+                )
+                tracker.onEvent = { [weak self] event in
+                    Task { @MainActor in
+                        guard let self,
+                              let as_ = self.currentAppState,
+                              let st = self.currentSettings else { return }
+                        await self.handleTrackerEvent(event, appState: as_, settings: st)
+                    }
+                }
+                self.windowTracker = tracker
+                tracker.start()
+                flog("windowTracker started — windowID=\(windowID) quartzFrame=\(quartzFrame)")
+            }
         } catch {
             RecordingEngine.shared.onUnexpectedStop = nil
             currentAppState = nil
@@ -209,6 +245,9 @@ final class RecordingCoordinator {
         guard case .recording = appState.recordingState else { return }
         logger.info("stopRecording() — initiating stop")
         flog("stopRecording — initiating")
+
+        windowTracker?.stop()
+        windowTracker = nil
 
         stopFileSizeTimer()
         appState.recordingState = .stopping
@@ -325,6 +364,8 @@ final class RecordingCoordinator {
         logger.error("unexpected stream stop: \(error.localizedDescription, privacy: .public)")
         flog("ERROR unexpected stream stop: \(error.localizedDescription)")
         stopFileSizeTimer()
+        windowTracker?.stop()
+        windowTracker = nil
         currentSession = nil
         currentAppState?.recordingState = .idle
         currentAppState?.setError("Recording stopped unexpectedly: \(error.localizedDescription)")
@@ -333,6 +374,42 @@ final class RecordingCoordinator {
         RecordingEngine.shared.onUnexpectedStop = nil
         if let delegate = NSApp.delegate as? AppDelegate {
             delegate.stopRecordingIndicator()
+        }
+    }
+
+    // MARK: - Window Tracker Event Handling
+
+    private func handleTrackerEvent(
+        _ event: WindowTracker.Event,
+        appState: AppState,
+        settings: AppSettings
+    ) async {
+        switch event {
+        case .moved(let region):
+            await RecordingEngine.shared.resumeCapture(newRegion: region)
+
+        case .resized(let region):
+            do {
+                try await RecordingEngine.shared.restartCapture(newRegion: region)
+            } catch {
+                flog("handleTrackerEvent .resized — restartCapture failed: \(error.localizedDescription)")
+            }
+
+        case .disappeared:
+            RecordingEngine.shared.pauseCapture()
+            if settings.windowTrackingOnClose == .stop {
+                flog("handleTrackerEvent .disappeared — auto-stopping per windowTrackingOnClose=.stop")
+                await stopRecording(appState: appState, settings: settings)
+            } else {
+                flog("handleTrackerEvent .disappeared — pausing; waiting for reappearance")
+            }
+
+        case .reappeared(let region):
+            do {
+                try await RecordingEngine.shared.restartCapture(newRegion: region)
+            } catch {
+                flog("handleTrackerEvent .reappeared — restartCapture failed: \(error.localizedDescription)")
+            }
         }
     }
 
@@ -443,11 +520,8 @@ private final class SelectionCoordinatorBridge: NSObject, SelectionWindowDelegat
     }
 
     func selectionWindow(_ window: SelectionWindow, didSelectRect rect: CGRect, windowID: CGWindowID?) {
-        let capturedWindowID = windowID  // TODO: forwarded to coordinator in Task 6
         Task { @MainActor in
-            // windowID wiring added in Task 6 (regionSelected will gain windowID: parameter)
-            _ = capturedWindowID
-            self.coordinator.regionSelected(rect, appState: self.appState, settings: self.settings)
+            self.coordinator.regionSelected(rect, windowID: windowID, appState: self.appState, settings: self.settings)
         }
     }
 
