@@ -53,6 +53,14 @@ struct SettingsView: View {
                         .foregroundStyle(.secondary)
                 }
 
+                // Dock Icon
+                VStack(alignment: .leading, spacing: 4) {
+                    Toggle("Show Dock Icon", isOn: $settings.showDockIcon)
+                    Text("Also appears in the ⌘Tab app switcher.")
+                        .font(.caption)
+                        .foregroundStyle(.secondary)
+                }
+
                 // Save Location
                 HStack {
                     Text("Save to")

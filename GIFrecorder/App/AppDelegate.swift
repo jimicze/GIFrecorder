@@ -40,9 +40,22 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
 
         NSApp.setActivationPolicy(.accessory)
         logger.info("applicationDidFinishLaunching")
+        applyDockPolicy(settings.showDockIcon)
         setupStatusItem()
         setupPopover()
         setupGlobalHotkey()
+        observeDockSetting()
+    }
+
+    private func applyDockPolicy(_ show: Bool) {
+        NSApp.setActivationPolicy(show ? .regular : .accessory)
+    }
+
+    private func observeDockSetting() {
+        settings.$showDockIcon
+            .dropFirst()
+            .sink { [weak self] show in self?.applyDockPolicy(show) }
+            .store(in: &cancellables)
     }
 
     func applicationWillTerminate(_ notification: Notification) {

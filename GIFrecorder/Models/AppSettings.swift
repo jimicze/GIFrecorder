@@ -63,6 +63,10 @@ final class AppSettings: ObservableObject {
         didSet { defaults.set(useGifski, forKey: Keys.useGifski) }
     }
 
+    @Published var showDockIcon: Bool {
+        didSet { defaults.set(showDockIcon, forKey: Keys.showDockIcon) }
+    }
+
     private enum Keys {
         static let fps = "fps"
         static let defaultFormat = "defaultFormat"
@@ -76,6 +80,7 @@ final class AppSettings: ObservableObject {
         static let gifMaxWidth = "gifMaxWidth"
         static let gifMaxDurationSeconds = "gifMaxDurationSeconds"
         static let useGifski = "useGifski"
+        static let showDockIcon = "showDockIcon"
     }
 
     private init() {
@@ -93,6 +98,7 @@ final class AppSettings: ObservableObject {
         let storedDuration = defaults.integer(forKey: Keys.gifMaxDurationSeconds)
         self.gifMaxDurationSeconds = storedDuration > 0 ? storedDuration : 30
         self.useGifski = defaults.object(forKey: Keys.useGifski) as? Bool ?? true
+        self.showDockIcon = defaults.object(forKey: Keys.showDockIcon) as? Bool ?? false
         self.showCountdown = defaults.object(forKey: Keys.showCountdown) as? Bool ?? true
         self.globalHotkeyEnabled = defaults.object(forKey: Keys.globalHotkeyEnabled) as? Bool ?? true
         self.autoCopyOnExport = defaults.object(forKey: Keys.autoCopyOnExport) as? Bool ?? false
