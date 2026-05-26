@@ -15,7 +15,9 @@
 		2D073DC47269B3440CF4176B /* RecordingSessionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 732AF30F79EE733FA2ED4917 /* RecordingSessionTests.swift */; };
 		2D8E9645524619881E7D0874 /* RecordingEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42585CB3F8FA189713D56B6 /* RecordingEngine.swift */; };
 		34A4963DC99EFE3A58AC2D9C /* CountdownOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = B65BA6A657FF0CF43DA3A768 /* CountdownOverlay.swift */; };
+		365BC8D01C6318920F08AFA8 /* GifskiExporterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392D47A19887C4021E2A24AF /* GifskiExporterTests.swift */; };
 		3751228B93881153FE01D31B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A428610408A483DD6CC2D1B /* Assets.xcassets */; };
+		390077775172E216EB93B01A /* GifskiExporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EB0DFC159DD40A80ED2B997 /* GifskiExporter.swift */; };
 		462E37AD174DCF55C56AE745 /* GIFrecorderUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6512DEEC89344C17E0AB0CD1 /* GIFrecorderUITests.swift */; };
 		48293BD5370999A7DC6EEC25 /* RecordingSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 379B87ED3D7BD2B1EEFA3D93 /* RecordingSession.swift */; };
 		51B36B48D16DF7262CCBDAFF /* WindowSnapManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B28ECA020812E059719EFE6 /* WindowSnapManager.swift */; };
@@ -73,6 +75,7 @@
 		3792351521906D0BF17E7BBB /* MOVExporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MOVExporter.swift; sourceTree = "<group>"; };
 		3793B9B5890E772328454D7E /* GIFExporterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GIFExporterTests.swift; sourceTree = "<group>"; };
 		379B87ED3D7BD2B1EEFA3D93 /* RecordingSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordingSession.swift; sourceTree = "<group>"; };
+		392D47A19887C4021E2A24AF /* GifskiExporterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GifskiExporterTests.swift; sourceTree = "<group>"; };
 		3A428610408A483DD6CC2D1B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3F72CA2F8F7183656B19C635 /* RecordingEngineTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordingEngineTests.swift; sourceTree = "<group>"; };
 		4239AF619966A5BFA273E516 /* WindowSnapManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowSnapManagerTests.swift; sourceTree = "<group>"; };
@@ -88,6 +91,7 @@
 		92C28A75F7A0E915705351A1 /* ThumbnailGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThumbnailGenerator.swift; sourceTree = "<group>"; };
 		9320BC32AB8A268DD1D9557E /* ThumbnailGeneratorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThumbnailGeneratorTests.swift; sourceTree = "<group>"; };
 		965186C5468F10ACB14BD79B /* GIFExportOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GIFExportOptions.swift; sourceTree = "<group>"; };
+		9EB0DFC159DD40A80ED2B997 /* GifskiExporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GifskiExporter.swift; sourceTree = "<group>"; };
 		9EB929968B9E583C6B290AC0 /* RecordingCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordingCoordinator.swift; sourceTree = "<group>"; };
 		A42585CB3F8FA189713D56B6 /* RecordingEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordingEngine.swift; sourceTree = "<group>"; };
 		A878D61E7C863CB1F676DA9C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -121,6 +125,7 @@
 				D752AD68B50501093CD63C66 /* AppSettingsTests.swift */,
 				204DE170822E8ACCC9787858 /* ExportManagerTests.swift */,
 				3793B9B5890E772328454D7E /* GIFExporterTests.swift */,
+				392D47A19887C4021E2A24AF /* GifskiExporterTests.swift */,
 				3F72CA2F8F7183656B19C635 /* RecordingEngineTests.swift */,
 				732AF30F79EE733FA2ED4917 /* RecordingSessionTests.swift */,
 				9320BC32AB8A268DD1D9557E /* ThumbnailGeneratorTests.swift */,
@@ -166,6 +171,7 @@
 			children = (
 				164272C7B7A240E4254A460F /* ExportManager.swift */,
 				168FE28F2C17B95E94D16629 /* GIFExporter.swift */,
+				9EB0DFC159DD40A80ED2B997 /* GifskiExporter.swift */,
 				3792351521906D0BF17E7BBB /* MOVExporter.swift */,
 				1A6E4F7A62F8108F46F3B8DD /* MP4Exporter.swift */,
 				92C28A75F7A0E915705351A1 /* ThumbnailGenerator.swift */,
@@ -385,7 +391,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "set -e\nDEST=\"$PROJECT_DIR/build/$CONFIGURATION\"\nmkdir -p \"$DEST\"\nrm -rf \"$DEST/$FULL_PRODUCT_NAME\"\n# ditto preserves symlinks and resource forks but may not preserve the\n# code signature in all Xcode/macOS versions. Re-sign explicitly below.\nditto \"$BUILT_PRODUCTS_DIR/$FULL_PRODUCT_NAME\" \"$DEST/$FULL_PRODUCT_NAME\"\n# Ad-hoc re-sign so the copy is launchable on macOS 13+.\n# --deep ensures nested helpers/frameworks are also signed.\n# When xctest plugins are embedded (from a previous test run), codesign --deep\n# fails on the xctest bundle. Skip signing if any .xctest plugin is present.\nif [ -z \"$(find \"$DEST/$FULL_PRODUCT_NAME/Contents/PlugIns\" -name \"*.xctest\" 2>/dev/null | head -1)\" ]; then\n  /usr/bin/codesign --force --deep --sign - \"$DEST/$FULL_PRODUCT_NAME\"\nelse\n  echo \"Skipping deep codesign — xctest plugins embedded (test build)\"\nfi\necho \"Exported and signed $FULL_PRODUCT_NAME → build/$CONFIGURATION/$FULL_PRODUCT_NAME\"\n";
+			shellScript = "set -e\nDEST=\"$PROJECT_DIR/build/$CONFIGURATION\"\nmkdir -p \"$DEST\"\nrm -rf \"$DEST/$FULL_PRODUCT_NAME\"\n# ditto preserves symlinks and resource forks but may not preserve the\n# code signature in all Xcode/macOS versions. Re-sign explicitly below.\nditto \"$BUILT_PRODUCTS_DIR/$FULL_PRODUCT_NAME\" \"$DEST/$FULL_PRODUCT_NAME\"\n# Embed bundled binary — gifski is not picked up by Copy Bundle Resources\n# for extensionless binaries in xcodegen, so we inject it manually here.\nGIFSKI_SRC=\"$PROJECT_DIR/GIFrecorder/Resources/Tools/gifski\"\nif [ -f \"$GIFSKI_SRC\" ]; then\n  cp \"$GIFSKI_SRC\" \"$DEST/$FULL_PRODUCT_NAME/Contents/Resources/gifski\"\n  chmod +x \"$DEST/$FULL_PRODUCT_NAME/Contents/Resources/gifski\"\nfi\n# Ad-hoc re-sign so the copy is launchable on macOS 13+.\n# --deep ensures nested helpers/frameworks are also signed.\n# When xctest plugins are embedded (from a previous test run), codesign --deep\n# fails on the xctest bundle. Skip signing if any .xctest plugin is present.\nif [ -z \"$(find \"$DEST/$FULL_PRODUCT_NAME/Contents/PlugIns\" -name \"*.xctest\" 2>/dev/null | head -1)\" ]; then\n  /usr/bin/codesign --force --deep --sign - \"$DEST/$FULL_PRODUCT_NAME\"\nelse\n  echo \"Skipping deep codesign — xctest plugins embedded (test build)\"\nfi\necho \"Exported and signed $FULL_PRODUCT_NAME → build/$CONFIGURATION/$FULL_PRODUCT_NAME\"\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -413,6 +419,7 @@
 				6E9B4A1FAB5637A0A83F103C /* GIFExportOptions.swift in Sources */,
 				0430EF3911B309AC87991A61 /* GIFExporter.swift in Sources */,
 				C2279A2291FFB30FC4111DFB /* GIFrecorderApp.swift in Sources */,
+				390077775172E216EB93B01A /* GifskiExporter.swift in Sources */,
 				89996CDD87C41F5D3A501BB6 /* GlobalHotkeyManager.swift in Sources */,
 				EBA65A2BC6EED5E9D702F0C6 /* MOVExporter.swift in Sources */,
 				B98901E657F9B7DDBF608B0A /* MP4Exporter.swift in Sources */,
@@ -438,6 +445,7 @@
 				86B1BC4315237E9310220643 /* AppSettingsTests.swift in Sources */,
 				8AFBADB636FF885AA6996BC3 /* ExportManagerTests.swift in Sources */,
 				C74885312FBC38A2D338421C /* GIFExporterTests.swift in Sources */,
+				365BC8D01C6318920F08AFA8 /* GifskiExporterTests.swift in Sources */,
 				C0C42F7BEAA9B2A29491C56D /* RecordingEngineTests.swift in Sources */,
 				2D073DC47269B3440CF4176B /* RecordingSessionTests.swift in Sources */,
 				7AF61EBA5131350A8221A1B2 /* ThumbnailGeneratorTests.swift in Sources */,

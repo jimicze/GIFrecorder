@@ -59,6 +59,10 @@ final class AppSettings: ObservableObject {
         didSet { defaults.set(gifMaxDurationSeconds, forKey: Keys.gifMaxDurationSeconds) }
     }
 
+    @Published var useGifski: Bool {
+        didSet { defaults.set(useGifski, forKey: Keys.useGifski) }
+    }
+
     private enum Keys {
         static let fps = "fps"
         static let defaultFormat = "defaultFormat"
@@ -71,6 +75,7 @@ final class AppSettings: ObservableObject {
         static let gifFPS = "gifFPS"
         static let gifMaxWidth = "gifMaxWidth"
         static let gifMaxDurationSeconds = "gifMaxDurationSeconds"
+        static let useGifski = "useGifski"
     }
 
     private init() {
@@ -87,6 +92,7 @@ final class AppSettings: ObservableObject {
 
         let storedDuration = defaults.integer(forKey: Keys.gifMaxDurationSeconds)
         self.gifMaxDurationSeconds = storedDuration > 0 ? storedDuration : 30
+        self.useGifski = defaults.object(forKey: Keys.useGifski) as? Bool ?? true
         self.showCountdown = defaults.object(forKey: Keys.showCountdown) as? Bool ?? true
         self.globalHotkeyEnabled = defaults.object(forKey: Keys.globalHotkeyEnabled) as? Bool ?? true
         self.autoCopyOnExport = defaults.object(forKey: Keys.autoCopyOnExport) as? Bool ?? false
@@ -115,6 +121,15 @@ final class AppSettings: ObservableObject {
             fps: gifFPS,
             maxWidth: gifMaxWidth,
             maxDurationSeconds: gifMaxDurationSeconds
+        )
+    }
+
+    var gifskiExportOptions: GifskiExportOptions {
+        GifskiExportOptions(
+            fps: gifFPS,
+            maxWidth: gifMaxWidth,
+            maxDurationSeconds: gifMaxDurationSeconds
+            // quality uses the default (80) — no user setting exposed yet
         )
     }
 }

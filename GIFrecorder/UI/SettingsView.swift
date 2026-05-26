@@ -87,6 +87,12 @@ struct SettingsView: View {
                         in: 5...60,
                         step: 5
                     )
+                    VStack(alignment: .leading, spacing: 4) {
+                        Toggle("Use gifski (higher quality, slower)", isOn: $settings.useGifski)
+                        Text("Falls back to the built-in encoder if gifski fails.")
+                            .font(.caption)
+                            .foregroundStyle(.secondary)
+                    }
                 }
             }
             .formStyle(.grouped)

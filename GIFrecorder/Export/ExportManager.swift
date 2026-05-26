@@ -1,4 +1,7 @@
 import AVFoundation
+import os
+
+private let logger = Logger(subsystem: "com.gifrecorder.app", category: "ExportManager")
 
 /// Typed errors for the export pipeline.
 enum ExportError: LocalizedError {
@@ -48,6 +51,24 @@ final class ExportManager {
         case .mov:
             try await MOVExporter.export(from: sourceURL, to: destinationURL, timeRange: timeRange)
         case .gif:
+            if AppSettings.shared.useGifski {
+                do {
+                    try await GifskiExporter.export(
+                        from: sourceURL,
+                        to: destinationURL,
+                        options: AppSettings.shared.gifskiExportOptions,
+                        timeRange: timeRange,
+                        progressHandler: progressHandler
+                    )
+                    return
+                } catch {
+                    // Log and fall through to the ImageIO exporter.
+                    logger.warning(
+                        "GifskiExporter failed, falling back to GIFExporter: \(error.localizedDescription, privacy: .public)"
+                    )
+                }
+            }
+            // Fallback / useGifski == false path.
             try await GIFExporter.export(
                 from: sourceURL,
                 to: destinationURL,

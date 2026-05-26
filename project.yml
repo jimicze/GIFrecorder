@@ -81,6 +81,13 @@ targets:
           # ditto preserves symlinks and resource forks but may not preserve the
           # code signature in all Xcode/macOS versions. Re-sign explicitly below.
           ditto "$BUILT_PRODUCTS_DIR/$FULL_PRODUCT_NAME" "$DEST/$FULL_PRODUCT_NAME"
+          # Embed bundled binary — gifski is not picked up by Copy Bundle Resources
+          # for extensionless binaries in xcodegen, so we inject it manually here.
+          GIFSKI_SRC="$PROJECT_DIR/GIFrecorder/Resources/Tools/gifski"
+          if [ -f "$GIFSKI_SRC" ]; then
+            cp "$GIFSKI_SRC" "$DEST/$FULL_PRODUCT_NAME/Contents/Resources/gifski"
+            chmod +x "$DEST/$FULL_PRODUCT_NAME/Contents/Resources/gifski"
+          fi
           # Ad-hoc re-sign so the copy is launchable on macOS 13+.
           # --deep ensures nested helpers/frameworks are also signed.
           # When xctest plugins are embedded (from a previous test run), codesign --deep
