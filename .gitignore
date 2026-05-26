@@ -24,3 +24,15 @@ build/
 
 # Temp recordings (in case any leak out of /tmp)
 *.gifrecorder-tmp.mov
+
+# OpenCode agent files
+AGENTS.md
+.opencode/
+.superpowers/
+
+# Hidden config/agent folders
+.agents/
+.claude/
+
+# Playwright MCP temp files
+.playwright-mcp/

@@ -1,6 +1,0 @@
-[      34ms] [WARNING] <meta name="apple-mobile-web-app-capable" content="yes"> is deprecated. Please include <meta name="mobile-web-app-capable" content="yes"> @ https://help.apple.com/xcode/mac/current/#/devaeaf4813e:0
-[      94ms] [WARNING] Could not find topic id:  in topics, sections or urls. @ https://help.apple.com/apps/eagle/5.2/js/app.js:1
-[     323ms] [ERROR] Failed to load resource: net::ERR_NAME_NOT_RESOLVED @ https://sf-saas.cdn-apple.com/2.4.0-beta.0/animations/all.css:0
-[   41478ms] [WARNING] <meta name="apple-mobile-web-app-capable" content="yes"> is deprecated. Please include <meta name="mobile-web-app-capable" content="yes"> @ https://help.apple.com/xcode/mac/current/:0
-[   41490ms] [WARNING] Could not find topic id:  in topics, sections or urls. @ https://help.apple.com/apps/eagle/5.2/js/app.js:1
-[   41493ms] [WARNING] Could not find topic id:  in topics, sections or urls. @ https://help.apple.com/apps/eagle/5.2/js/app.js:1
