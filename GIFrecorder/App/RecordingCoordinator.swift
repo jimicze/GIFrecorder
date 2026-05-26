@@ -443,7 +443,10 @@ private final class SelectionCoordinatorBridge: NSObject, SelectionWindowDelegat
     }
 
     func selectionWindow(_ window: SelectionWindow, didSelectRect rect: CGRect, windowID: CGWindowID?) {
+        let capturedWindowID = windowID  // TODO: forwarded to coordinator in Task 6
         Task { @MainActor in
+            // windowID wiring added in Task 6 (regionSelected will gain windowID: parameter)
+            _ = capturedWindowID
             self.coordinator.regionSelected(rect, appState: self.appState, settings: self.settings)
         }
     }

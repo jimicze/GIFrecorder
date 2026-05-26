@@ -132,7 +132,7 @@ final class SelectionView: NSView {
         let badgeW = strSize.width + hPad * 2
         let badgeH = strSize.height + vPad * 2
         let badgeX = rect.maxX - badgeW - 8
-        let badgeY = rect.minY + 8
+        let badgeY = rect.maxY - badgeH - 8
         let badgeRect = CGRect(x: badgeX, y: badgeY, width: badgeW, height: badgeH)
 
         ctx.saveGState()
