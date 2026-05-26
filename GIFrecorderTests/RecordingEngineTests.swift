@@ -57,6 +57,32 @@ final class RecordingEngineTests: XCTestCase {
         XCTAssertEqual(config.exportFormat, .gif)
     }
 
+    // MARK: - New tracking methods exist
+
+    func testPauseCaptureExistsAndDoesNotCrashWhenNotRecording() {
+        RecordingEngine.shared.pauseCapture()
+        // No crash = pass
+    }
+
+    func testResumeCaptureExistsAndDoesNotCrashWhenNotRecording() async {
+        let region = CGRect(x: 0, y: 0, width: 800, height: 600)
+        await RecordingEngine.shared.resumeCapture(newRegion: region)
+        // No crash = pass
+    }
+
+    func testRestartCaptureThrowsWhenNotRecording() async {
+        let region = CGRect(x: 0, y: 0, width: 800, height: 600)
+        do {
+            try await RecordingEngine.shared.restartCapture(newRegion: region)
+            XCTFail("Expected restartCapture to throw when not recording")
+        } catch let error as RecordingError {
+            if case .notRecording = error { /* expected */ }
+            else { XCTFail("Expected RecordingError.notRecording, got \(error)") }
+        } catch {
+            XCTFail("Expected RecordingError, got \(error)")
+        }
+    }
+
     // MARK: - Stop without start
 
     func testStopWithoutStartThrows() async {

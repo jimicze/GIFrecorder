@@ -3,9 +3,8 @@ import AVFoundation
 import CoreGraphics
 import os
 
-private let logger = Logger(subsystem: "com.gifrecorder.app", category: "RecordingEngine")
+private let logger = Logger(subsystem: "com.lasakondrej.gifrecorder", category: "RecordingEngine")
 
-/// Typed errors for the recording pipeline.
 enum RecordingError: LocalizedError {
     case permissionDenied
     case noDisplayFound
@@ -29,11 +28,6 @@ enum RecordingError: LocalizedError {
     }
 }
 
-/// Core recording engine. Manages SCStream lifecycle.
-/// Call start(region:config:) to begin; stop() to finish.
-/// Marked @unchecked Sendable because all mutations happen from the
-/// @MainActor coordinator (start/stop) or via DispatchQueue.main.async
-/// (unexpected-stop handler). Thread safety is ensured by usage pattern.
 final class RecordingEngine: @unchecked Sendable {
 
     static let shared = RecordingEngine()
@@ -43,12 +37,22 @@ final class RecordingEngine: @unchecked Sendable {
     private var writerSession: AssetWriterSession?
     private var isActive = false
 
-    /// Called on the main thread when the stream stops due to an unexpected error
-    /// (e.g. permission revoked, display disconnected mid-recording).
-    /// Set by RecordingCoordinator before each recording; cleared after stop/error.
     var onUnexpectedStop: ((Error) -> Void)?
 
-    /// Returns the current size of the temp recording file in bytes. 0 when not recording.
+    // MARK: - Multi-segment state (window tracking)
+
+    /// Completed segment temp URLs. Non-empty only when window tracking triggered restartCapture.
+    private var segments: [URL] = []
+    /// True when capture is intentionally paused (freeze-frame mode).
+    private var isPaused = false
+    /// True when restartCapture is in progress; prevents concurrent restarts.
+    private var isRestarting = false
+    /// Stored capture parameters so restartCapture can rebuild the stream.
+    private var captureDisplay: SCDisplay?
+    private var captureScreen: NSScreen?
+    private var captureConfig: RecordingConfig?
+    private var captureRegion: CGRect = .zero
+
     var currentRecordingBytes: Int64 {
         writerSession?.estimatedFileSize ?? 0
     }
@@ -62,8 +66,6 @@ final class RecordingEngine: @unchecked Sendable {
 
         logger.info("start() — region=\(region.width, privacy: .public)×\(region.height, privacy: .public) @ (\(region.origin.x, privacy: .public),\(region.origin.y, privacy: .public)) fps=\(config.fps, privacy: .public) audio=\(config.capturesAudio, privacy: .public)")
 
-        // 0. Fast TCC pre-check — tells us definitively whether the OS will allow capture
-        //    before we even try SCShareableContent.  Logged so it's visible in Xcode console.
         if #available(macOS 14.2, *) {
             let tccGranted = CGPreflightScreenCaptureAccess()
             logger.info("CGPreflightScreenCaptureAccess: \(tccGranted, privacy: .public)")
@@ -73,45 +75,43 @@ final class RecordingEngine: @unchecked Sendable {
             }
         }
 
-        // 1. Get available content (displays, windows)
         let content: SCShareableContent
         do {
             content = try await SCShareableContent.excludingDesktopWindows(false, onScreenWindowsOnly: true)
         } catch {
-            // Log the REAL error — previously this was swallowed and everything looked like
-            // a permission denial even when the root cause was something else entirely.
             logger.error("SCShareableContent failed — domain=\((error as NSError).domain, privacy: .public) code=\((error as NSError).code, privacy: .public) msg=\(error.localizedDescription, privacy: .public)")
             throw RecordingError.permissionDenied
         }
 
-        guard let display = content.displays.first else {
+        let captureScreen = NSScreen.main ?? NSScreen.screens[0]
+        let screenDisplayID = captureScreen.deviceDescription[NSDeviceDescriptionKey("NSScreenNumber")] as? CGDirectDisplayID
+        let matchedDisplay = screenDisplayID.flatMap { id in content.displays.first { $0.displayID == id } }
+        guard let display = matchedDisplay ?? content.displays.first else {
             throw RecordingError.noDisplayFound
         }
+        flog("display selection — all displays: \(content.displays.map { "\($0.displayID)(\($0.width)×\($0.height))" }.joined(separator: ", "))")
+        flog("display selection — NSScreen.main displayID=\(screenDisplayID.map(String.init) ?? "nil") → chose SCDisplay \(display.displayID) (\(display.width)×\(display.height)px)")
+        flog("captureScreen.frame=\(captureScreen.frame) scale=\(captureScreen.backingScaleFactor)")
 
-        // 2. Content filter — entire display (we crop via sourceRect)
         let filter = SCContentFilter(display: display, excludingApplications: [], exceptingWindows: [])
 
-        // 3. Stream configuration
-        // H.264 requires even dimensions; minimum 16px each side.
-        let displayScale = NSScreen.main?.backingScaleFactor ?? 2.0
+        let displayScale = captureScreen.backingScaleFactor
         let captureWidth  = max(Int(region.width  * displayScale) & ~1, 16)
         let captureHeight = max(Int(region.height * displayScale) & ~1, 16)
-        logger.info("computed capture size — \(captureWidth, privacy: .public)×\(captureHeight, privacy: .public)px (scale=\(displayScale, privacy: .public))")
+        flog("captureSize=\(captureWidth)×\(captureHeight)px  displayScale=\(displayScale)")
+
+        let sourceRect = normalizeRegion(region, displayHeightInPoints: captureScreen.frame.height)
+        flog("sourceRect=(\(sourceRect.origin.x),\(sourceRect.origin.y)) \(sourceRect.width)×\(sourceRect.height)pts  displayHeightPts=\(captureScreen.frame.height)")
 
         let streamConfig = SCStreamConfiguration()
         streamConfig.width = captureWidth
         streamConfig.height = captureHeight
         streamConfig.capturesAudio = config.capturesAudio
         streamConfig.minimumFrameInterval = CMTime(value: 1, timescale: CMTimeScale(config.fps))
-        streamConfig.sourceRect = normalizeRegion(region, display: display)
+        streamConfig.sourceRect = sourceRect
         streamConfig.showsCursor = false
-        // NV12 (420YpCbCr8BiPlanarVideoRange) is the H.264 encoder's native pixel format.
-        // Using 32BGRA requires a colour-space conversion in VideoToolbox that can fail in
-        // some configurations, causing AVAssetWriterInput.append() to silently return false
-        // and the writer to enter a .failed state before finishWriting is called.
         streamConfig.pixelFormat = kCVPixelFormatType_420YpCbCr8BiPlanarVideoRange
 
-        // 4. Create AVAssetWriter session — dimensions must match SCStream exactly.
         let tempURL = FileManager.default.temporaryDirectory
             .appendingPathComponent("gifrecorder-\(UUID().uuidString).mov")
 
@@ -123,18 +123,24 @@ final class RecordingEngine: @unchecked Sendable {
         )
         self.writerSession = writer
 
-        // 5. Create SCStream + wire up error propagation
         let delegate = StreamDelegate(session: writer)
         delegate.onUnexpectedStop = { [weak self] error in
             guard let self else { return }
             logger.error("stream stopped unexpectedly: \(error.localizedDescription, privacy: .public)")
-            // The stream has already stopped; clean up locally, then surface the error.
             self.isActive = false
             self.stream = nil
             self.streamDelegate = nil
             self.writerSession?.cancelWriting()
             self.writerSession = nil
-            // Dispatch to main — onUnexpectedStop closure is set by @MainActor coordinator.
+            // Clean up any in-progress segments
+            for url in self.segments { try? FileManager.default.removeItem(at: url) }
+            self.segments = []
+            self.captureDisplay = nil
+            self.captureScreen = nil
+            self.captureConfig = nil
+            self.captureRegion = .zero
+            self.isPaused = false
+            self.isRestarting = false
             DispatchQueue.main.async {
                 self.onUnexpectedStop?(error)
                 self.onUnexpectedStop = nil
@@ -147,22 +153,28 @@ final class RecordingEngine: @unchecked Sendable {
 
         try stream.addStreamOutput(
             delegate, type: .screen,
-            sampleHandlerQueue: DispatchQueue(label: "com.gifrecorder.screen", qos: .userInteractive)
+            sampleHandlerQueue: DispatchQueue(label: "com.lasakondrej.gifrecorder.screen", qos: .userInteractive)
         )
         if config.capturesAudio {
             try stream.addStreamOutput(
                 delegate, type: .audio,
-                sampleHandlerQueue: DispatchQueue(label: "com.gifrecorder.audio", qos: .userInteractive)
+                sampleHandlerQueue: DispatchQueue(label: "com.lasakondrej.gifrecorder.audio", qos: .userInteractive)
             )
         }
 
-        // 6. Start capture
         do {
             try await stream.startCapture()
             isActive = true
+            // Store params for restartCapture
+            self.captureDisplay = display
+            self.captureScreen = captureScreen
+            self.captureConfig = config
+            self.captureRegion = region
+            self.segments = []
+            self.isPaused = false
+            self.isRestarting = false
             logger.info("SCStream started successfully")
         } catch {
-            // Clean up if startCapture fails
             delegate.onUnexpectedStop = nil
             self.stream = nil
             self.streamDelegate = nil
@@ -191,22 +203,212 @@ final class RecordingEngine: @unchecked Sendable {
         self.streamDelegate = nil
         isActive = false
 
-        // Finish writing
-        let url = try await writerSession.finishWriting()
+        // Finish the final (or only) segment
+        let finalURL = try await writerSession.finishWriting()
         self.writerSession = nil
-        logger.info("recording finished — temp file: \(url.lastPathComponent, privacy: .public)")
-        return url
+        segments.append(finalURL)
+
+        let allSegments = segments
+        segments = []
+        captureDisplay = nil
+        captureScreen = nil
+        captureConfig = nil
+        captureRegion = .zero
+        isPaused = false
+        isRestarting = false
+
+        logger.info("recording finished — \(allSegments.count) segment(s)")
+        flog("stop — \(allSegments.count) segment(s)")
+
+        if allSegments.count == 1 {
+            return allSegments[0]
+        }
+
+        // Multiple segments — stitch them into one .mov
+        let stitchedURL = FileManager.default.temporaryDirectory
+            .appendingPathComponent("gifrecorder-stitched-\(UUID().uuidString).mov")
+
+        do {
+            try await SegmentStitcher.stitch(allSegments, outputURL: stitchedURL)
+            flog("stop — stitched \(allSegments.count) segments → \(stitchedURL.lastPathComponent)")
+            return stitchedURL
+        } catch {
+            flog("stop — stitching failed: \(error.localizedDescription); returning first segment")
+            // Clean up unused segments
+            for (idx, url) in allSegments.enumerated() where idx > 0 {
+                try? FileManager.default.removeItem(at: url)
+            }
+            return allSegments[0]
+        }
+    }
+
+    // MARK: - Window Tracking Support
+
+    /// Marks capture as paused. The AssetWriterSession's idle-frame mechanism
+    /// automatically repeats the last pixel buffer, so the output freezes at the
+    /// last complete frame with no further changes needed here.
+    func pauseCapture() {
+        isPaused = true
+        flog("pauseCapture — frozen on last frame (isActive=\(isActive))")
+    }
+
+    /// Updates the capture region for a **position-only** change (no dimension change).
+    /// Debounce is handled upstream by WindowTracker; this method fires `updateConfiguration`
+    /// directly. Falls back to `restartCapture` if `updateConfiguration` fails.
+    func resumeCapture(newRegion: CGRect) async {
+        guard isActive, let stream, let screen = captureScreen, let config = captureConfig else {
+            return
+        }
+
+        let displayScale = screen.backingScaleFactor
+        let captureWidth  = max(Int(newRegion.width  * displayScale) & ~1, 16)
+        let captureHeight = max(Int(newRegion.height * displayScale) & ~1, 16)
+        let sourceRect = normalizeRegion(newRegion, displayHeightInPoints: screen.frame.height)
+
+        let newConfig = SCStreamConfiguration()
+        newConfig.width = captureWidth
+        newConfig.height = captureHeight
+        newConfig.capturesAudio = config.capturesAudio
+        newConfig.minimumFrameInterval = CMTime(value: 1, timescale: CMTimeScale(config.fps))
+        newConfig.sourceRect = sourceRect
+        newConfig.showsCursor = false
+        newConfig.pixelFormat = kCVPixelFormatType_420YpCbCr8BiPlanarVideoRange
+
+        do {
+            try await stream.updateConfiguration(newConfig)
+            captureRegion = newRegion
+            isPaused = false
+            flog("resumeCapture — moved to \(newRegion.origin.x),\(newRegion.origin.y) \(newRegion.width)×\(newRegion.height)")
+        } catch {
+            flog("resumeCapture — updateConfiguration failed: \(error.localizedDescription); falling back to restartCapture")
+            do {
+                try await restartCapture(newRegion: newRegion)
+            } catch {
+                flog("resumeCapture — restartCapture fallback also failed: \(error.localizedDescription)")
+            }
+        }
+    }
+
+    /// Finishes the current segment, starts a new stream at the new dimensions,
+    /// and begins a new `AssetWriterSession`. Used when the tracked window is resized
+    /// or reappears after disappearing.
+    func restartCapture(newRegion: CGRect) async throws {
+        guard isActive, !isRestarting,
+              let screen = captureScreen,
+              let config = captureConfig,
+              let display = captureDisplay else {
+            throw RecordingError.notRecording
+        }
+
+        isRestarting = true
+        defer { isRestarting = false }
+
+        // 1. Freeze current output
+        pauseCapture()
+
+        // 2. Finish current segment
+        streamDelegate?.onUnexpectedStop = nil
+        if let currentSession = writerSession {
+            let segURL = try await currentSession.finishWriting()
+            segments.append(segURL)
+            self.writerSession = nil
+            flog("restartCapture — segment \(segments.count) saved: \(segURL.lastPathComponent)")
+        }
+
+        // 3. Stop current stream
+        if let oldStream = stream {
+            try? await oldStream.stopCapture()
+            self.stream = nil
+            self.streamDelegate = nil
+        }
+
+        // 4. Compute new dimensions
+        let displayScale = screen.backingScaleFactor
+        let captureWidth  = max(Int(newRegion.width  * displayScale) & ~1, 16)
+        let captureHeight = max(Int(newRegion.height * displayScale) & ~1, 16)
+        let sourceRect = normalizeRegion(newRegion, displayHeightInPoints: screen.frame.height)
+
+        // 5. Create new AssetWriterSession
+        let tempURL = FileManager.default.temporaryDirectory
+            .appendingPathComponent("gifrecorder-\(UUID().uuidString).mov")
+        let newSession = try AssetWriterSession(
+            url: tempURL,
+            config: config,
+            videoWidth: captureWidth,
+            videoHeight: captureHeight
+        )
+        self.writerSession = newSession
+
+        // 6. Build new stream configuration
+        let streamConfig = SCStreamConfiguration()
+        streamConfig.width = captureWidth
+        streamConfig.height = captureHeight
+        streamConfig.capturesAudio = config.capturesAudio
+        streamConfig.minimumFrameInterval = CMTime(value: 1, timescale: CMTimeScale(config.fps))
+        streamConfig.sourceRect = sourceRect
+        streamConfig.showsCursor = false
+        streamConfig.pixelFormat = kCVPixelFormatType_420YpCbCr8BiPlanarVideoRange
+
+        let filter = SCContentFilter(display: display, excludingApplications: [], exceptingWindows: [])
+
+        let delegate = StreamDelegate(session: newSession)
+        delegate.onUnexpectedStop = { [weak self] error in
+            guard let self else { return }
+            self.isActive = false
+            self.stream = nil
+            self.streamDelegate = nil
+            self.writerSession?.cancelWriting()
+            self.writerSession = nil
+            for url in self.segments { try? FileManager.default.removeItem(at: url) }
+            self.segments = []
+            self.captureDisplay = nil
+            self.captureScreen = nil
+            self.captureConfig = nil
+            self.captureRegion = .zero
+            self.isPaused = false
+            self.isRestarting = false
+            DispatchQueue.main.async {
+                self.onUnexpectedStop?(error)
+                self.onUnexpectedStop = nil
+            }
+        }
+        self.streamDelegate = delegate
+
+        let newStream = SCStream(filter: filter, configuration: streamConfig, delegate: delegate)
+        self.stream = newStream
+
+        try newStream.addStreamOutput(
+            delegate, type: .screen,
+            sampleHandlerQueue: DispatchQueue(label: "com.lasakondrej.gifrecorder.screen", qos: .userInteractive)
+        )
+        if config.capturesAudio {
+            try newStream.addStreamOutput(
+                delegate, type: .audio,
+                sampleHandlerQueue: DispatchQueue(label: "com.lasakondrej.gifrecorder.audio", qos: .userInteractive)
+            )
+        }
+
+        // 7. Start new stream
+        do {
+            try await newStream.startCapture()
+            captureRegion = newRegion
+            isPaused = false
+            flog("restartCapture — new stream started at \(newRegion.width)×\(newRegion.height), total segments so far=\(segments.count + 1)")
+        } catch {
+            delegate.onUnexpectedStop = nil
+            self.stream = nil
+            self.streamDelegate = nil
+            self.writerSession?.cancelWriting()
+            self.writerSession = nil
+            throw RecordingError.streamSetupFailed(underlying: error)
+        }
     }
 
     // MARK: - Helpers
 
-    /// Converts SelectionView rect (AppKit: bottom-left origin, points) to
-    /// SCStreamConfiguration.sourceRect format (top-left origin, logical points of display).
-    private func normalizeRegion(_ region: CGRect, display: SCDisplay) -> CGRect {
-        let displayHeight = CGFloat(display.height)
-        // AppKit origin: bottom-left → SCStream origin: top-left
+    private func normalizeRegion(_ region: CGRect, displayHeightInPoints: CGFloat) -> CGRect {
         let scX = region.origin.x
-        let scY = displayHeight - region.origin.y - region.height
+        let scY = displayHeightInPoints - region.origin.y - region.height
         return CGRect(x: scX, y: scY, width: region.width, height: region.height)
     }
 }
