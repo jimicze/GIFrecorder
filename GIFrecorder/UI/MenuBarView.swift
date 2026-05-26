@@ -151,7 +151,15 @@ struct MenuBarView: View {
     /// but the *current process* was started before the grant and doesn't have the entitlement
     /// active at the kernel level. A fresh process launch picks it up automatically.
     private func quitAndRelaunch() {
-        NSWorkspace.shared.open(Bundle.main.bundleURL)
+        // Spin up a detached shell that waits for this process to exit, then
+        // opens the app.  We terminate immediately after — the 0.5 s delay
+        // ensures the old process (and its menu-bar icon) is fully gone before
+        // the new instance starts, preventing a ghost double-icon.
+        let path = Bundle.main.bundlePath
+        let task = Process()
+        task.launchPath = "/bin/sh"
+        task.arguments = ["-c", "sleep 0.5 && open \"\(path)\""]
+        task.launch()
         NSApp.terminate(nil)
     }
 

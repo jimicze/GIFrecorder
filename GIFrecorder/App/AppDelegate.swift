@@ -28,6 +28,14 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         if !others.isEmpty {
             logger.warning("terminating \(others.count) stale instance(s) — new launch takes over")
             others.forEach { $0.terminate() }
+
+            // Wait (max 2 s) for all old instances to fully exit so their
+            // NSStatusItems are removed from the menu bar before we add ours.
+            // Blocking here is safe — no UI has been created yet.
+            let deadline = Date().addingTimeInterval(2.0)
+            while others.contains(where: { !$0.isTerminated }), Date() < deadline {
+                Thread.sleep(forTimeInterval: 0.05)
+            }
         }
 
         NSApp.setActivationPolicy(.accessory)
@@ -38,6 +46,13 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
     }
 
     func applicationWillTerminate(_ notification: Notification) {
+        // Explicitly remove the status item before the process exits so macOS
+        // clears the icon from the menu bar immediately.  Without this, a ghost
+        // icon can linger when we are terminated by a newer instance.
+        if let item = statusItem {
+            NSStatusBar.system.removeStatusItem(item)
+            statusItem = nil
+        }
         GlobalHotkeyManager.shared.unregister()
     }
 
