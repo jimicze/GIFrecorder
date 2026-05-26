@@ -17,21 +17,18 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
     let settings = AppSettings.shared
 
     func applicationDidFinishLaunching(_ notification: Notification) {
-        // Single-instance guard — terminate immediately if another copy is already running.
-        // This prevents duplicate menu bar icons when Xcode re-launches the app while
-        // an old instance is still alive (common with LSUIElement / accessory apps).
-        // Skipped in DEBUG so a development build can coexist with an installed Release build
-        // (e.g. /Applications/GIFrecorder.app) without immediately terminating itself.
-        #if !DEBUG
+        // Single-instance guard — the newest launch always wins.
+        // Terminates any stale copies (from a previous Xcode run, a previous manual open,
+        // or a leftover debug session) before finishing setup.
+        // Applied in ALL build configurations: Debug builds are re-launched frequently by
+        // Xcode and would otherwise accumulate stale menu-bar icons.
         let others = NSRunningApplication.runningApplications(
             withBundleIdentifier: Bundle.main.bundleIdentifier ?? ""
         ).filter { $0 != NSRunningApplication.current }
         if !others.isEmpty {
-            logger.warning("another instance detected — terminating this one to avoid duplicates")
-            NSApp.terminate(nil)
-            return
+            logger.warning("terminating \(others.count) stale instance(s) — new launch takes over")
+            others.forEach { $0.terminate() }
         }
-        #endif
 
         NSApp.setActivationPolicy(.accessory)
         logger.info("applicationDidFinishLaunching")

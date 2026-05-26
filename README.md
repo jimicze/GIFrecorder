@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="GIFrecorder/Resources/Assets.xcassets/AppIcon.appiconset/icon_256x256.png" width="128" height="128" alt="GIFrecorder icon"/>
+<img src="docs/icon.png" width="128" height="128" alt="GIFrecorder icon"/>
 
 # GIFrecorder
 
