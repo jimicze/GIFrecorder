@@ -25,9 +25,13 @@ build/
 # Temp recordings (in case any leak out of /tmp)
 *.gifrecorder-tmp.mov
 
-# OpenCode agent files
+# OpenCode agent files — never commit these
+AGENTS.md
+PRD.md
+TASKS.md
 .opencode/
 .superpowers/
+docs/superpowers/
 
 # Hidden config/agent folders
 .agents/
