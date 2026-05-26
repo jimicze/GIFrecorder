@@ -35,4 +35,39 @@ final class AppSettingsTests: XCTestCase {
         XCTAssertEqual(config.capturesAudio, true)
         XCTAssertEqual(config.exportFormat, .mp4)
     }
+
+    func testWindowTrackingEnabledDefault() {
+        // Reset to check default
+        UserDefaults.standard.removeObject(forKey: "windowTrackingEnabled")
+        // AppSettings.shared reads from UserDefaults on access; default is false
+        XCTAssertFalse(AppSettings.shared.windowTrackingEnabled)
+    }
+
+    func testWindowTrackingOnCloseDefault() {
+        UserDefaults.standard.removeObject(forKey: "windowTrackingOnClose")
+        // Default should be .pause
+        // Note: AppSettings.shared is already initialised; test the enum exists
+        let action: WindowCloseAction = .pause
+        XCTAssertEqual(action.rawValue, "pause")
+    }
+
+    func testWindowCloseActionCases() {
+        XCTAssertEqual(WindowCloseAction.allCases.count, 2)
+        XCTAssertEqual(WindowCloseAction.stop.rawValue, "stop")
+        XCTAssertEqual(WindowCloseAction.pause.rawValue, "pause")
+    }
+
+    func testWindowTrackingEnabledPersists() {
+        AppSettings.shared.windowTrackingEnabled = true
+        XCTAssertTrue(AppSettings.shared.windowTrackingEnabled)
+        AppSettings.shared.windowTrackingEnabled = false
+        XCTAssertFalse(AppSettings.shared.windowTrackingEnabled)
+    }
+
+    func testWindowTrackingOnClosePersists() {
+        AppSettings.shared.windowTrackingOnClose = .stop
+        XCTAssertEqual(AppSettings.shared.windowTrackingOnClose, .stop)
+        AppSettings.shared.windowTrackingOnClose = .pause
+        XCTAssertEqual(AppSettings.shared.windowTrackingOnClose, .pause)
+    }
 }

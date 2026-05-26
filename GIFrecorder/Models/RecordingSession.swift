@@ -12,6 +12,13 @@ struct RecordingSession: Identifiable {
     /// Temporary file URL written by the recording engine (.mov).
     var temporaryFileURL: URL?
 
+    /// Non-nil only when window tracking is active for this session.
+    var trackedWindowID: CGWindowID? = nil
+
+    /// Raw Quartz-coordinate frame of the tracked window at session start.
+    /// Quartz: origin = top-left of primary display, Y grows downward.
+    var initialQuartzFrame: CGRect? = nil
+
     var duration: TimeInterval {
         guard let end = endDate else { return Date().timeIntervalSince(startDate) }
         return end.timeIntervalSince(startDate)

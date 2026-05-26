@@ -34,4 +34,22 @@ final class RecordingSessionTests: XCTestCase {
         XCTAssertEqual(config.capturesAudio, true)
         XCTAssertEqual(config.exportFormat, .mp4)
     }
+
+    func testSessionTrackedWindowIDDefaultsToNil() {
+        let region = CGRect(x: 0, y: 0, width: 800, height: 600)
+        let config = RecordingConfig.default
+        let session = RecordingSession(region: region, config: config)
+        XCTAssertNil(session.trackedWindowID)
+        XCTAssertNil(session.initialQuartzFrame)
+    }
+
+    func testSessionCanSetTrackedWindowID() {
+        let region = CGRect(x: 0, y: 0, width: 800, height: 600)
+        let config = RecordingConfig.default
+        var session = RecordingSession(region: region, config: config)
+        session.trackedWindowID = CGWindowID(42)
+        session.initialQuartzFrame = CGRect(x: 100, y: 200, width: 800, height: 600)
+        XCTAssertEqual(session.trackedWindowID, CGWindowID(42))
+        XCTAssertEqual(session.initialQuartzFrame, CGRect(x: 100, y: 200, width: 800, height: 600))
+    }
 }

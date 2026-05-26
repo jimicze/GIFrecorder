@@ -1,6 +1,12 @@
 import Foundation
 import Combine
 
+/// What to do when the tracked window closes or is minimised.
+enum WindowCloseAction: String, CaseIterable {
+    case stop   // auto-stop recording and proceed to export
+    case pause  // freeze on last frame; resume if window reappears
+}
+
 /// UserDefaults-backed settings model. Uses UserDefaults.standard.
 /// Note: never use the app's own bundle ID as a suite name — macOS forbids it
 /// (suite names are for App Groups, not single-app storage).
@@ -67,6 +73,14 @@ final class AppSettings: ObservableObject {
         didSet { defaults.set(showDockIcon, forKey: Keys.showDockIcon) }
     }
 
+    @Published var windowTrackingEnabled: Bool {
+        didSet { defaults.set(windowTrackingEnabled, forKey: Keys.windowTrackingEnabled) }
+    }
+
+    @Published var windowTrackingOnClose: WindowCloseAction {
+        didSet { defaults.set(windowTrackingOnClose.rawValue, forKey: Keys.windowTrackingOnClose) }
+    }
+
     private enum Keys {
         static let fps = "fps"
         static let defaultFormat = "defaultFormat"
@@ -81,6 +95,8 @@ final class AppSettings: ObservableObject {
         static let gifMaxDurationSeconds = "gifMaxDurationSeconds"
         static let useGifski = "useGifski"
         static let showDockIcon = "showDockIcon"
+        static let windowTrackingEnabled = "windowTrackingEnabled"
+        static let windowTrackingOnClose = "windowTrackingOnClose"
     }
 
     private init() {
@@ -99,6 +115,15 @@ final class AppSettings: ObservableObject {
         self.gifMaxDurationSeconds = storedDuration > 0 ? storedDuration : 30
         self.useGifski = defaults.object(forKey: Keys.useGifski) as? Bool ?? true
         self.showDockIcon = defaults.object(forKey: Keys.showDockIcon) as? Bool ?? false
+        self.windowTrackingEnabled = defaults.object(forKey: Keys.windowTrackingEnabled) as? Bool ?? false
+
+        if let raw = defaults.string(forKey: Keys.windowTrackingOnClose),
+           let action = WindowCloseAction(rawValue: raw) {
+            self.windowTrackingOnClose = action
+        } else {
+            self.windowTrackingOnClose = .pause
+        }
+
         self.showCountdown = defaults.object(forKey: Keys.showCountdown) as? Bool ?? true
         self.globalHotkeyEnabled = defaults.object(forKey: Keys.globalHotkeyEnabled) as? Bool ?? true
         self.autoCopyOnExport = defaults.object(forKey: Keys.autoCopyOnExport) as? Bool ?? false
