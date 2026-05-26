@@ -2,7 +2,13 @@ import AppKit
 
 /// Callback protocol from SelectionView to its owning window.
 protocol SelectionViewProtocol: AnyObject {
-    func selectionView(_ view: SelectionView, didFinishSelectingRect rect: CGRect)
+    /// Called when the user commits a region.
+    /// - Parameters:
+    ///   - rect: The selected rect in AppKit coordinates (bottom-left origin).
+    ///   - windowID: The CGWindowID of the snapped window, or nil for freehand.
+    func selectionView(_ view: SelectionView,
+                       didFinishSelectingRect rect: CGRect,
+                       windowID: CGWindowID?)
     func selectionViewDidCancel(_ view: SelectionView)
 }
 
@@ -105,6 +111,38 @@ final class SelectionView: NSView {
         ctx.stroke(rect.insetBy(dx: 1.5, dy: 1.5))
 
         drawDimensionsLabel(ctx: ctx, rect: rect)
+
+        // Show tracking badge when window tracking is enabled
+        if AppSettings.shared.windowTrackingEnabled {
+            drawTrackingBadge(ctx: ctx, rect: rect)
+        }
+    }
+
+    /// Draws a small "⊙ Track" pill badge in the top-right corner of the snap rect.
+    private func drawTrackingBadge(ctx: CGContext, rect: NSRect) {
+        let label = "⊙ Track"
+        let attrs: [NSAttributedString.Key: Any] = [
+            .font: NSFont.systemFont(ofSize: 11, weight: .medium),
+            .foregroundColor: NSColor.white,
+        ]
+        let str = NSAttributedString(string: label, attributes: attrs)
+        let strSize = str.size()
+        let hPad: CGFloat = 6
+        let vPad: CGFloat = 4
+        let badgeW = strSize.width + hPad * 2
+        let badgeH = strSize.height + vPad * 2
+        let badgeX = rect.maxX - badgeW - 8
+        let badgeY = rect.minY + 8
+        let badgeRect = CGRect(x: badgeX, y: badgeY, width: badgeW, height: badgeH)
+
+        ctx.saveGState()
+        let path = CGPath(roundedRect: badgeRect, cornerWidth: 4, cornerHeight: 4, transform: nil)
+        ctx.addPath(path)
+        ctx.setFillColor(NSColor.systemBlue.withAlphaComponent(0.85).cgColor)
+        ctx.fillPath()
+        ctx.restoreGState()
+
+        str.draw(at: NSPoint(x: badgeRect.minX + hPad, y: badgeRect.minY + vPad))
     }
 
     private func drawDimensionsLabel(ctx: CGContext, rect: NSRect) {
@@ -142,7 +180,7 @@ final class SelectionView: NSView {
             // Window snap mode — use this window's bounds
             guard let screen = NSScreen.main else { return }
             let rect = snap.frameInScreen(screen)
-            selectionDelegate?.selectionView(self, didFinishSelectingRect: rect)
+            selectionDelegate?.selectionView(self, didFinishSelectingRect: rect, windowID: snap.id)
         } else {
             // Draw mode
             mode = .drawing(start: point)
@@ -167,7 +205,7 @@ final class SelectionView: NSView {
         guard case .drawing = mode else { return }
         mode = .idle
         if currentRect.width > 10 && currentRect.height > 10 {
-            selectionDelegate?.selectionView(self, didFinishSelectingRect: currentRect)
+            selectionDelegate?.selectionView(self, didFinishSelectingRect: currentRect, windowID: nil)
         } else {
             currentRect = .zero
             setNeedsDisplay(bounds)

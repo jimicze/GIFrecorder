@@ -2,7 +2,13 @@ import AppKit
 
 /// Protocol for receiving the selected region from SelectionWindow.
 protocol SelectionWindowDelegate: AnyObject {
-    func selectionWindow(_ window: SelectionWindow, didSelectRect rect: CGRect)
+    /// Called when the user commits a region.
+    /// - Parameters:
+    ///   - rect: Selected region in AppKit coordinates.
+    ///   - windowID: The CGWindowID of the snapped window, or nil for freehand.
+    func selectionWindow(_ window: SelectionWindow,
+                         didSelectRect rect: CGRect,
+                         windowID: CGWindowID?)
     func selectionWindowDidCancel(_ window: SelectionWindow)
 }
 
@@ -74,10 +80,12 @@ final class SelectionWindow: NSWindow {
 // MARK: - SelectionViewDelegate
 
 extension SelectionWindow: SelectionViewProtocol {
-    func selectionView(_ view: SelectionView, didFinishSelectingRect rect: CGRect) {
+    func selectionView(_ view: SelectionView,
+                       didFinishSelectingRect rect: CGRect,
+                       windowID: CGWindowID?) {
         NSCursor.pop()
         orderOut(nil)
-        selectionDelegate?.selectionWindow(self, didSelectRect: rect)
+        selectionDelegate?.selectionWindow(self, didSelectRect: rect, windowID: windowID)
     }
 
     func selectionViewDidCancel(_ view: SelectionView) {

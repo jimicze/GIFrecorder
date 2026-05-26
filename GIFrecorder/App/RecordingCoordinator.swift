@@ -7,7 +7,7 @@ import SwiftUI
 import UserNotifications
 import os
 
-private let logger = Logger(subsystem: "com.gifrecorder.app", category: "Coordinator")
+private let logger = Logger(subsystem: "com.lasakondrej.gifrecorder", category: "Coordinator")
 
 /// Orchestrates the recording flow: region selection → countdown → recording → export.
 @MainActor
@@ -38,49 +38,48 @@ final class RecordingCoordinator {
 
     /// Checks screen recording permission and updates `appState.screenRecordingPermission`.
     ///
-    /// On macOS 14.2+:
-    ///   1. Fast-path: `CGPreflightScreenCaptureAccess()` — returns immediately if already granted.
-    ///   2. Otherwise: `CGRequestScreenCaptureAccess()` — shows the system dialog and grants
-    ///      permission to the **current running process** when the user allows.
-    ///      No app restart required. This makes the Xcode debug workflow work correctly:
-    ///      run from Xcode → dialog appears → allow → recording works immediately in the
-    ///      same process/debug session.
-    ///      If the user previously denied, the function returns false without showing the
-    ///      dialog again; the banner directs them to System Settings (which requires a restart).
-    /// On macOS 13.0–14.1 falls back to a lightweight `SCShareableContent` probe.
+    /// macOS 14+: `CGPreflightScreenCaptureAccess()` — reads TCC state instantly, no dialog,
+    /// no TCC entry creation, no side effects. This is the correct API for a silent check.
+    ///
+    /// macOS 13 fallback: `SCShareableContent.current` — on macOS 13 calling SCKit APIs does
+    /// NOT trigger an authorization dialog (that behaviour was introduced in macOS 14/15).
+    ///
+    /// We never call `CGRequestScreenCaptureAccess()` or `SCShareableContent.current` on
+    /// macOS 14+ because both trigger the system "would like to record" dialog, which on
+    /// macOS 15.2 creates a disabled/non-toggleable TCC entry the user cannot enable.
     func checkPermission(appState: AppState) async {
+        flog("checkPermission — bundleID=\(Bundle.main.bundleIdentifier ?? "?") pid=\(ProcessInfo.processInfo.processIdentifier) macOS=\(ProcessInfo.processInfo.operatingSystemVersionString)")
         #if DEBUG
-        // ── DEBUG BUILDS: skip the permission banner entirely ─────────────────
-        // The TCC "Quit & Reopen" restart kills the Xcode debug session.
-        // In DEBUG we assume permission is granted and let SCStream enforce it:
-        // if TCC is actually denied, RecordingEngine.start() throws a clear error
-        // that surfaces through the normal error banner — no silent failure.
-        // One-time setup: grant permission once outside Xcode, then ⌘R always works.
         appState.screenRecordingPermission = .granted
         logger.info("DEBUG: permission check bypassed — assuming granted")
+        flog("checkPermission — DEBUG build, bypassed, assuming granted")
         #else
-        // ── RELEASE BUILDS: real TCC check ────────────────────────────────────
-        if #available(macOS 14.2, *) {
-            if CGPreflightScreenCaptureAccess() {
+        if #available(macOS 14.0, *) {
+            // Silent preflight — no dialog, no TCC mutation.
+            let granted = CGPreflightScreenCaptureAccess()
+            if granted {
                 appState.screenRecordingPermission = .granted
-                logger.info("permission check: granted (preflight)")
-                return
+                logger.info("permission check: granted (CGPreflightScreenCaptureAccess)")
+                flog("checkPermission — GRANTED via CGPreflightScreenCaptureAccess")
+            } else {
+                appState.screenRecordingPermission = .denied
+                logger.warning("permission check: denied (CGPreflightScreenCaptureAccess)")
+                flog("checkPermission — DENIED via CGPreflightScreenCaptureAccess")
             }
-            // Opens System Settings to the Screen Recording pane so the user
-            // can toggle GIFrecorder on. Returns false on macOS 15 (restart required).
-            let granted = CGRequestScreenCaptureAccess()
-            appState.screenRecordingPermission = granted ? .granted : .denied
-            logger.info("permission request: \(granted ? "granted" : "denied", privacy: .public)")
-            return
-        }
-        // macOS 13.0–14.1 fallback: SCShareableContent probe.
-        do {
-            _ = try await SCShareableContent.excludingDesktopWindows(false, onScreenWindowsOnly: true)
-            appState.screenRecordingPermission = .granted
-            logger.info("permission check (SCShareableContent probe): granted")
-        } catch {
-            appState.screenRecordingPermission = .denied
-            logger.warning("permission check (SCShareableContent probe): denied — \(error.localizedDescription, privacy: .public)")
+        } else {
+            // macOS 13: SCShareableContent does NOT trigger the authorization dialog on
+            // this OS version, so it is safe to use as a silent probe here.
+            flog("checkPermission — probing via SCShareableContent.current (macOS 13 path)")
+            do {
+                _ = try await SCShareableContent.current
+                appState.screenRecordingPermission = .granted
+                logger.info("permission check: granted (SCShareableContent, macOS 13)")
+                flog("checkPermission — GRANTED via SCShareableContent")
+            } catch {
+                appState.screenRecordingPermission = .denied
+                logger.warning("permission check: denied — \(error.localizedDescription, privacy: .public)")
+                flog("checkPermission — DENIED via SCShareableContent: \(error.localizedDescription)")
+            }
         }
         #endif
     }
@@ -120,6 +119,7 @@ final class RecordingCoordinator {
         selectionBridge = nil
 
         logger.info("region selected — \(rect.width, privacy: .public)×\(rect.height, privacy: .public) @ (\(rect.origin.x, privacy: .public),\(rect.origin.y, privacy: .public))")
+        flog("region selected — \(rect.width)×\(rect.height) @ (\(rect.origin.x),\(rect.origin.y))")
 
         let config = settings.recordingConfig
         let session = RecordingSession(region: rect, config: config)
@@ -166,6 +166,7 @@ final class RecordingCoordinator {
     ) async {
         appState.recordingState = .recording
 
+        flog("startRecording — region \(region.width)×\(region.height) fps=\(config.fps) format=\(config.exportFormat.rawValue)")
         // Store weak refs for the unexpected-stop handler.
         currentAppState = appState
         currentSettings = settings
@@ -194,6 +195,7 @@ final class RecordingCoordinator {
             currentSession = nil
             appState.recordingState = .idle
             logger.error("RecordingEngine.start failed: \(error.localizedDescription, privacy: .public)")
+            flog("ERROR startRecording: \(error.localizedDescription)")
             appState.setError(error.localizedDescription)
             if let delegate = NSApp.delegate as? AppDelegate {
                 delegate.stopRecordingIndicator()
@@ -206,6 +208,7 @@ final class RecordingCoordinator {
     func stopRecording(appState: AppState, settings: AppSettings) async {
         guard case .recording = appState.recordingState else { return }
         logger.info("stopRecording() — initiating stop")
+        flog("stopRecording — initiating")
 
         stopFileSizeTimer()
         appState.recordingState = .stopping
@@ -280,6 +283,7 @@ final class RecordingCoordinator {
             appState.exportProgress = 1
             appState.recordingState = .idle
             logger.info("export complete — \(destinationURL.lastPathComponent, privacy: .public)")
+            flog("export complete — \(destinationURL.lastPathComponent)")
 
             showExportNotification(url: destinationURL)
 
@@ -308,6 +312,7 @@ final class RecordingCoordinator {
             currentSettings = nil
             appState.recordingState = .idle
             logger.error("stopRecording pipeline error: \(error.localizedDescription, privacy: .public)")
+            flog("ERROR stopRecording pipeline: \(error.localizedDescription)")
             appState.setError(error.localizedDescription)
         }
     }
@@ -318,6 +323,7 @@ final class RecordingCoordinator {
     private func handleUnexpectedStreamStop(error: Error) {
         // RecordingEngine already cancelled writing internally.
         logger.error("unexpected stream stop: \(error.localizedDescription, privacy: .public)")
+        flog("ERROR unexpected stream stop: \(error.localizedDescription)")
         stopFileSizeTimer()
         currentSession = nil
         currentAppState?.recordingState = .idle
@@ -436,7 +442,7 @@ private final class SelectionCoordinatorBridge: NSObject, SelectionWindowDelegat
         self.settings = settings
     }
 
-    func selectionWindow(_ window: SelectionWindow, didSelectRect rect: CGRect) {
+    func selectionWindow(_ window: SelectionWindow, didSelectRect rect: CGRect, windowID: CGWindowID?) {
         Task { @MainActor in
             self.coordinator.regionSelected(rect, appState: self.appState, settings: self.settings)
         }
