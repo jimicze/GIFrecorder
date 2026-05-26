@@ -71,6 +71,27 @@ struct SettingsView: View {
                     .buttonStyle(.link)
                 }
 
+                // Window Tracking
+                Section("Window Tracking") {
+                    Toggle("Track Window Position & Size", isOn: $settings.windowTrackingEnabled)
+
+                    if settings.windowTrackingEnabled {
+                        VStack(alignment: .leading, spacing: 4) {
+                            Text("When window closes or minimises:")
+                                .font(.caption)
+                                .foregroundStyle(.secondary)
+                            Picker("", selection: $settings.windowTrackingOnClose) {
+                                Text("Pause and wait for reappearance")
+                                    .tag(WindowCloseAction.pause)
+                                Text("Stop recording automatically")
+                                    .tag(WindowCloseAction.stop)
+                            }
+                            .pickerStyle(.radioGroup)
+                            .labelsHidden()
+                        }
+                    }
+                }
+
                 // GIF Quality
                 Section("GIF Export") {
                     Picker("Frame Rate", selection: $settings.gifFPS) {
@@ -109,12 +130,16 @@ struct SettingsView: View {
 
             HStack {
                 Spacer()
+                Button("Show Logs") {
+                    NSWorkspace.shared.activateFileViewerSelecting([FileLogger.logFileURL])
+                }
+                .buttonStyle(.link)
                 Button("Done") { dismiss() }
                     .buttonStyle(.borderedProminent)
             }
         }
         .padding()
-        .frame(width: 380, height: 590)
+        .frame(width: 380, height: 660)
     }
 
     private var saveDirLabel: String {
