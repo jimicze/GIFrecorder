@@ -48,6 +48,7 @@ targets:
           - "**/*.md"
     resources:
       - path: GIFrecorder/Resources/Assets.xcassets
+      - path: GIFrecorder/Resources/Tools/gifski
     settings:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: com.gifrecorder.app
