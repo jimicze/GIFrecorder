@@ -1,7 +1,7 @@
 import AVFoundation
 import os
 
-private let logger = Logger(subsystem: "com.gifrecorder.app", category: "ExportManager")
+private let logger = Logger(subsystem: "com.lasakondrej.gifrecorder", category: "ExportManager")
 
 /// Typed errors for the export pipeline.
 enum ExportError: LocalizedError {
@@ -44,6 +44,7 @@ final class ExportManager {
     ) async throws {
         // Delete existing file at destination
         try? FileManager.default.removeItem(at: destinationURL)
+        flog("export start — format=\(format.rawValue) dest=\(destinationURL.lastPathComponent)")
 
         switch format {
         case .mp4:
@@ -66,6 +67,7 @@ final class ExportManager {
                     logger.warning(
                         "GifskiExporter failed, falling back to GIFExporter: \(error.localizedDescription, privacy: .public)"
                     )
+                    flog("WARNING gifski failed, falling back to GIFExporter: \(error.localizedDescription)")
                 }
             }
             // Fallback / useGifski == false path.

@@ -3,7 +3,7 @@ import Combine
 import SwiftUI
 import os
 
-private let logger = Logger(subsystem: "com.gifrecorder.app", category: "AppDelegate")
+private let logger = Logger(subsystem: "com.lasakondrej.gifrecorder", category: "AppDelegate")
 
 final class AppDelegate: NSObject, NSApplicationDelegate {
 
@@ -40,6 +40,25 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
 
         NSApp.setActivationPolicy(.accessory)
         logger.info("applicationDidFinishLaunching")
+        let os = ProcessInfo.processInfo.operatingSystemVersionString
+        let path = Bundle.main.bundlePath
+        let pid = ProcessInfo.processInfo.processIdentifier
+        flog("applicationDidFinishLaunching — bundle: \(Bundle.main.bundleIdentifier ?? "?") pid=\(pid)")
+        flog("  macOS: \(os)")
+        flog("  path:  \(path)")
+        flog("  logs:  \(FileLogger.logFileURL.path)")
+        // Log code signing identity of the running binary
+        let cs = Process()
+        cs.executableURL = URL(fileURLWithPath: "/usr/bin/codesign")
+        cs.arguments = ["-dv", "--verbose=4", path]
+        let pipe = Pipe()
+        cs.standardError = pipe
+        cs.standardOutput = pipe
+        try? cs.run(); cs.waitUntilExit()
+        let csOut = String(data: pipe.fileHandleForReading.readDataToEndOfFile(), encoding: .utf8) ?? ""
+        csOut.components(separatedBy: "\n")
+            .filter { $0.contains("TeamIdentifier") || $0.contains("Authority") || $0.contains("Identifier") }
+            .forEach { flog("  codesign: \($0.trimmingCharacters(in: .whitespaces))") }
         applyDockPolicy(settings.showDockIcon)
         setupStatusItem()
         setupPopover()
@@ -59,6 +78,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
     }
 
     func applicationWillTerminate(_ notification: Notification) {
+        flog("applicationWillTerminate")
         // Explicitly remove the status item before the process exits so macOS
         // clears the icon from the menu bar immediately.  Without this, a ghost
         // icon can linger when we are terminated by a newer instance.

@@ -3,7 +3,7 @@ import AppKit
 import Foundation
 import os
 
-private let logger = Logger(subsystem: "com.gifrecorder.app", category: "GifskiExporter")
+private let logger = Logger(subsystem: "com.lasakondrej.gifrecorder", category: "GifskiExporter")
 
 /// Options for gifski GIF encoding. Mirrors GIFExportOptions for drop-in compatibility.
 struct GifskiExportOptions {

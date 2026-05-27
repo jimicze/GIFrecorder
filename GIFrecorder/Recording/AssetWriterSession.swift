@@ -5,7 +5,7 @@ import CoreVideo
 import VideoToolbox
 import os
 
-private let logger = Logger(subsystem: "com.gifrecorder.app", category: "AssetWriterSession")
+private let logger = Logger(subsystem: "com.lasakondrej.gifrecorder", category: "AssetWriterSession")
 
 /// Wraps AVAssetWriter to receive CMSampleBuffers from SCStream.
 /// Writes video (H.264) and audio (AAC) to a .mov file.
@@ -25,9 +25,12 @@ final class AssetWriterSession {
     private let videoInput: AVAssetWriterInput
     private let audioInput: AVAssetWriterInput?
     private let pixelBufferAdaptor: AVAssetWriterInputPixelBufferAdaptor
+    private let declaredVideoWidth: Int
+    private let declaredVideoHeight: Int
 
     private var hasStartedSession = false
     private var lastVideoTime: CMTime = .invalid
+    private var lastPixelBuffer: CVPixelBuffer?   // retained for SCStream idle-frame reuse
     private let lock = NSLock()
 
     // MARK: - Init
@@ -65,7 +68,11 @@ final class AssetWriterSession {
 
         let adaptor = AVAssetWriterInputPixelBufferAdaptor(
             assetWriterInput: videoInput,
-            sourcePixelBufferAttributes: nil
+            sourcePixelBufferAttributes: [
+                kCVPixelBufferPixelFormatTypeKey as String: kCVPixelFormatType_420YpCbCr8BiPlanarVideoRange,
+                kCVPixelBufferWidthKey as String: videoWidth,
+                kCVPixelBufferHeightKey as String: videoHeight,
+            ]
         )
         self.pixelBufferAdaptor = adaptor
 
@@ -83,15 +90,21 @@ final class AssetWriterSession {
             audioInput = ai
         }
         self.audioInput = audioInput
+        self.declaredVideoWidth = videoWidth
+        self.declaredVideoHeight = videoHeight
 
         // Add inputs to writer
         if writer.canAdd(videoInput) { writer.add(videoInput) }
         if let ai = audioInput, writer.canAdd(ai) { writer.add(ai) }
 
+        flog("AssetWriterSession.init — videoWidth=\(videoWidth) videoHeight=\(videoHeight) url=\(url.lastPathComponent)")
         guard writer.startWriting() else {
-            let msg = writer.error?.localizedDescription ?? "AVAssetWriter failed to start"
+            let err = writer.error as NSError?
+            let msg = err?.localizedDescription ?? "AVAssetWriter failed to start"
+            flog("startWriting FAILED — domain=\(err?.domain ?? "nil") code=\(err?.code ?? -1) msg=\(msg) userInfo=\(err?.userInfo ?? [:])")
             throw ExportError.writerFailed(msg)
         }
+        flog("startWriting OK — status=\(writer.status.rawValue)")
     }
 
     // MARK: - Append Buffers
@@ -100,34 +113,53 @@ final class AssetWriterSession {
         lock.lock()
         defer { lock.unlock() }
 
-        guard writer.status == .writing else { return }
+        guard writer.status == .writing else {
+            return
+        }
 
         let pts = CMSampleBufferGetPresentationTimeStamp(sampleBuffer)
         guard pts.isValid else { return }
 
+        // SCStream delivers two kinds of screen output buffers:
+        //   • complete frames – CVPixelBuffer present (screen content changed)
+        //   • idle frames     – no CVPixelBuffer (screen content unchanged)
+        // For idle frames we re-use the last complete pixel buffer so that
+        // the output video maintains a consistent frame rate.
+        // We also use the pixel-buffer adaptor (not videoInput.append(_:)) to
+        // bypass the CMFormatDescription that caused AVFoundationErrorDomain
+        // -11800 / NSOSStatusErrorDomain -16122 with videoInput.append.
+        let pixelBuffer: CVPixelBuffer
+        if let pb = CMSampleBufferGetImageBuffer(sampleBuffer) {
+            lastPixelBuffer = pb
+            pixelBuffer = pb
+        } else if let last = lastPixelBuffer {
+            // Idle frame: repeat last complete frame to preserve frame rate
+            pixelBuffer = last
+        } else {
+            // No complete frame received yet; skip
+            return
+        }
+
         if !hasStartedSession {
             writer.startSession(atSourceTime: pts)
             hasStartedSession = true
+            let bw = CVPixelBufferGetWidth(pixelBuffer)
+            let bh = CVPixelBufferGetHeight(pixelBuffer)
+            let fmt = CVPixelBufferGetPixelFormatType(pixelBuffer)
+            let match = (bw == declaredVideoWidth && bh == declaredVideoHeight) ? "MATCH" : "MISMATCH"
+            flog("first video frame — buffer=\(bw)×\(bh)px fmt=\(fmt) declared=\(declaredVideoWidth)×\(declaredVideoHeight) \(match)")
+            if let fmtDesc = CMSampleBufferGetFormatDescription(sampleBuffer) {
+                let extensions = CMFormatDescriptionGetExtensions(fmtDesc) as? [String: Any]
+                flog("first frame CMFormatDescription extensions=\(String(describing: extensions))")
+            }
         }
 
         guard videoInput.isReadyForMoreMediaData else { return }
 
-        // Detect timestamp gaps (screen was static — SCStream skips duplicate frames).
-        // AVAssetWriter with H.264 handles sparse buffers correctly via presentation
-        // timestamps: the last frame is held for the duration of the gap. No re-timestamping
-        // is required; just continue appending the new buffer as-is.
-        if lastVideoTime.isValid {
-            let delta = CMTimeSubtract(pts, lastVideoTime)
-            let maxGap = CMTime(value: 1, timescale: 5) // 200 ms
-            if CMTimeCompare(delta, maxGap) > 0 {
-                // Gap noted; the video will correctly show the last frame for this duration.
-                // Do not attempt to fill or re-timestamp — that would require buffering the
-                // previous CMSampleBuffer which violates the no-buffer-in-RAM rule.
-            }
-        }
-
-        let appended = videoInput.append(sampleBuffer)
+        let appended = pixelBufferAdaptor.append(pixelBuffer, withPresentationTime: pts)
         if !appended {
+            let err = writer.error as NSError?
+            flog("appendVideo FAILED — pts=\(pts.seconds) writer.status=\(writer.status.rawValue) domain=\(err?.domain ?? "nil") code=\(err?.code ?? -1) msg=\(err?.localizedDescription ?? "nil") userInfo=\(err?.userInfo ?? [:])")
             logger.error("appendVideo failed at pts=\(pts.seconds, privacy: .public) — writer status=\(self.writer.status.rawValue, privacy: .public) error=\(String(describing: self.writer.error), privacy: .public)")
         }
         lastVideoTime = pts
@@ -173,11 +205,14 @@ final class AssetWriterSession {
         return try await withCheckedThrowingContinuation { continuation in
             writer.finishWriting {
                 if writer.status == .completed {
+                    flog("finishWriting OK — \(outputURL.lastPathComponent)")
                     continuation.resume(returning: outputURL)
                 } else {
-                    let fullError = String(describing: writer.error)
-                    logger.error("finishWriting failed — status=\(writer.status.rawValue, privacy: .public) error=\(fullError, privacy: .public)")
-                    let msg = writer.error?.localizedDescription ?? "Unknown error"
+                    let err = writer.error as NSError?
+                    let msg = err?.localizedDescription ?? "Unknown error"
+                    flog("finishWriting FAILED — status=\(writer.status.rawValue) domain=\(err?.domain ?? "nil") code=\(err?.code ?? -1) msg=\(msg)")
+                    flog("finishWriting FAILED — userInfo=\(err?.userInfo ?? [:])")
+                    logger.error("finishWriting failed — status=\(writer.status.rawValue, privacy: .public) error=\(String(describing: writer.error), privacy: .public)")
                     continuation.resume(throwing: ExportError.writerFailed(msg))
                 }
             }

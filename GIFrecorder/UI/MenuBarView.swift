@@ -109,7 +109,7 @@ struct MenuBarView: View {
                     Text("Screen Recording Required")
                         .font(.subheadline)
                         .fontWeight(.semibold)
-                    Text("Grant access in System Settings, then quit and reopen the app. This is required once — every relaunch after that works automatically.")
+                    Text("Open System Settings → Screen Recording. If GIFrecorder isn't listed, click \"+\" and select it from your Applications folder. Then relaunch.")
                         .font(.caption)
                         .foregroundStyle(.secondary)
                         .fixedSize(horizontal: false, vertical: true)
