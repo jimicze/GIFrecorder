@@ -43,8 +43,6 @@ final class RecordingEngine: @unchecked Sendable {
 
     /// Completed segment temp URLs. Non-empty only when window tracking triggered restartCapture.
     private var segments: [URL] = []
-    /// True when capture is intentionally paused (freeze-frame mode).
-    private var isPaused = false
     /// True when restartCapture is in progress; prevents concurrent restarts.
     private var isRestarting = false
     /// Stored capture parameters so restartCapture can rebuild the stream.
@@ -139,7 +137,6 @@ final class RecordingEngine: @unchecked Sendable {
             self.captureScreen = nil
             self.captureConfig = nil
             self.captureRegion = .zero
-            self.isPaused = false
             self.isRestarting = false
             DispatchQueue.main.async {
                 self.onUnexpectedStop?(error)
@@ -171,7 +168,6 @@ final class RecordingEngine: @unchecked Sendable {
             self.captureConfig = config
             self.captureRegion = region
             self.segments = []
-            self.isPaused = false
             self.isRestarting = false
             logger.info("SCStream started successfully")
         } catch {
@@ -188,7 +184,7 @@ final class RecordingEngine: @unchecked Sendable {
     // MARK: - Stop
 
     func stop() async throws -> URL {
-        guard isActive, let stream, let writerSession else {
+        guard isActive else {
             throw RecordingError.notRecording
         }
         logger.info("stop() called")
@@ -197,16 +193,21 @@ final class RecordingEngine: @unchecked Sendable {
         streamDelegate?.onUnexpectedStop = nil
         onUnexpectedStop = nil
 
-        // Stop the stream
-        try await stream.stopCapture()
-        self.stream = nil
-        self.streamDelegate = nil
-        isActive = false
+        // Stop the stream if it is running (will be nil when paused via pauseCapture).
+        if let stream = stream {
+            try await stream.stopCapture()
+            self.stream = nil
+            self.streamDelegate = nil
+        }
 
-        // Finish the final (or only) segment
-        let finalURL = try await writerSession.finishWriting()
-        self.writerSession = nil
-        segments.append(finalURL)
+        // Finish the active segment if there is one (nil when paused — segment was already saved).
+        if let writerSession = writerSession {
+            let finalURL = try await writerSession.finishWriting()
+            self.writerSession = nil
+            segments.append(finalURL)
+        }
+
+        isActive = false
 
         let allSegments = segments
         segments = []
@@ -214,7 +215,6 @@ final class RecordingEngine: @unchecked Sendable {
         captureScreen = nil
         captureConfig = nil
         captureRegion = .zero
-        isPaused = false
         isRestarting = false
 
         logger.info("recording finished — \(allSegments.count) segment(s)")
@@ -244,12 +244,33 @@ final class RecordingEngine: @unchecked Sendable {
 
     // MARK: - Window Tracking Support
 
-    /// Marks capture as paused. The AssetWriterSession's idle-frame mechanism
-    /// automatically repeats the last pixel buffer, so the output freezes at the
-    /// last complete frame with no further changes needed here.
-    func pauseCapture() {
-        isPaused = true
-        flog("pauseCapture — frozen on last frame (isActive=\(isActive))")
+    /// Stops the current stream and finishes the active segment, leaving `isActive = true`
+    /// so the recording can resume later via `restartCapture`. When the tracked window
+    /// disappears this prevents any further frames being written while the window is gone.
+    func pauseCapture() async {
+        guard isActive, stream != nil || writerSession != nil else {
+            flog("pauseCapture — nothing to pause (isActive=\(isActive))")
+            return
+        }
+
+        flog("pauseCapture — stopping stream and finishing segment")
+
+        // Clear unexpected-stop handler so we don't fire spurious callbacks.
+        streamDelegate?.onUnexpectedStop = nil
+
+        if let currentStream = stream {
+            try? await currentStream.stopCapture()
+            self.stream = nil
+            self.streamDelegate = nil
+        }
+
+        if let currentSession = writerSession {
+            if let segURL = try? await currentSession.finishWriting() {
+                segments.append(segURL)
+                flog("pauseCapture — segment \(segments.count) saved: \(segURL.lastPathComponent)")
+            }
+            self.writerSession = nil
+        }
     }
 
     /// Updates the capture region for a **position-only** change (no dimension change).
@@ -277,7 +298,6 @@ final class RecordingEngine: @unchecked Sendable {
         do {
             try await stream.updateConfiguration(newConfig)
             captureRegion = newRegion
-            isPaused = false
             flog("resumeCapture — moved to \(newRegion.origin.x),\(newRegion.origin.y) \(newRegion.width)×\(newRegion.height)")
         } catch {
             flog("resumeCapture — updateConfiguration failed: \(error.localizedDescription); falling back to restartCapture")
@@ -303,10 +323,7 @@ final class RecordingEngine: @unchecked Sendable {
         isRestarting = true
         defer { isRestarting = false }
 
-        // 1. Freeze current output
-        pauseCapture()
-
-        // 2. Finish current segment
+        // 1. Finish current segment (if stream is still running)
         streamDelegate?.onUnexpectedStop = nil
         if let currentSession = writerSession {
             let segURL = try await currentSession.finishWriting()
@@ -315,20 +332,20 @@ final class RecordingEngine: @unchecked Sendable {
             flog("restartCapture — segment \(segments.count) saved: \(segURL.lastPathComponent)")
         }
 
-        // 3. Stop current stream
+        // 2. Stop current stream
         if let oldStream = stream {
             try? await oldStream.stopCapture()
             self.stream = nil
             self.streamDelegate = nil
         }
 
-        // 4. Compute new dimensions
+        // 3. Compute new dimensions
         let displayScale = screen.backingScaleFactor
         let captureWidth  = max(Int(newRegion.width  * displayScale) & ~1, 16)
         let captureHeight = max(Int(newRegion.height * displayScale) & ~1, 16)
         let sourceRect = normalizeRegion(newRegion, displayHeightInPoints: screen.frame.height)
 
-        // 5. Create new AssetWriterSession
+        // 4. Create new AssetWriterSession
         let tempURL = FileManager.default.temporaryDirectory
             .appendingPathComponent("gifrecorder-\(UUID().uuidString).mov")
         let newSession = try AssetWriterSession(
@@ -339,7 +356,7 @@ final class RecordingEngine: @unchecked Sendable {
         )
         self.writerSession = newSession
 
-        // 6. Build new stream configuration
+        // 5. Build new stream configuration
         let streamConfig = SCStreamConfiguration()
         streamConfig.width = captureWidth
         streamConfig.height = captureHeight
@@ -365,7 +382,6 @@ final class RecordingEngine: @unchecked Sendable {
             self.captureScreen = nil
             self.captureConfig = nil
             self.captureRegion = .zero
-            self.isPaused = false
             self.isRestarting = false
             DispatchQueue.main.async {
                 self.onUnexpectedStop?(error)
@@ -388,11 +404,10 @@ final class RecordingEngine: @unchecked Sendable {
             )
         }
 
-        // 7. Start new stream
+        // 6. Start new stream
         do {
             try await newStream.startCapture()
             captureRegion = newRegion
-            isPaused = false
             flog("restartCapture — new stream started at \(newRegion.width)×\(newRegion.height), total segments so far=\(segments.count + 1)")
         } catch {
             delegate.onUnexpectedStop = nil
@@ -407,7 +422,6 @@ final class RecordingEngine: @unchecked Sendable {
             self.captureScreen = nil
             self.captureConfig = nil
             self.captureRegion = .zero
-            self.isPaused = false
             throw RecordingError.streamSetupFailed(underlying: error)
         }
     }

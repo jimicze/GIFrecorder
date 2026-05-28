@@ -396,7 +396,7 @@ final class RecordingCoordinator {
             }
 
         case .disappeared:
-            RecordingEngine.shared.pauseCapture()
+            await RecordingEngine.shared.pauseCapture()
             if settings.windowTrackingOnClose == .stop {
                 flog("handleTrackerEvent .disappeared — auto-stopping per windowTrackingOnClose=.stop")
                 await stopRecording(appState: appState, settings: settings)

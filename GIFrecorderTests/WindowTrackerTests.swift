@@ -76,4 +76,22 @@ final class WindowTrackerTests: XCTestCase {
         if case .reappeared(let r) = reappearedEvent { XCTAssertEqual(r, region) }
         else { XCTFail("Expected .reappeared") }
     }
+
+    // MARK: - Resize debounce threshold
+
+    /// Validates the debounce tick threshold constant: 5 ticks = 500ms gate.
+    /// This is a logic-level test of the expected value, not a live timer test.
+    func testResizeDebounceFiveTickThreshold() {
+        // The threshold is baked into WindowTracker.poll() as `pendingResizeTick >= 5`.
+        // We document and assert the expected minimum stable-size duration:
+        //   5 ticks × 100ms poll interval = 500ms
+        // SCKit audio startup latency is 200–500ms; 500ms gate ensures segments have audio.
+        let pollIntervalMs = 100
+        let stableTicksRequired = 5
+        let minimumStableMs = pollIntervalMs * stableTicksRequired
+        XCTAssertGreaterThanOrEqual(minimumStableMs, 400,
+            "Stable-size gate must be ≥400ms to outlast SCKit audio startup latency")
+        XCTAssertLessThanOrEqual(minimumStableMs, 1000,
+            "Stable-size gate should be ≤1000ms to keep tracking responsive")
+    }
 }

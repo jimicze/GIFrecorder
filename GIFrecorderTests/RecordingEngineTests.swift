@@ -59,8 +59,8 @@ final class RecordingEngineTests: XCTestCase {
 
     // MARK: - New tracking methods exist
 
-    func testPauseCaptureExistsAndDoesNotCrashWhenNotRecording() {
-        RecordingEngine.shared.pauseCapture()
+    func testPauseCaptureExistsAndDoesNotCrashWhenNotRecording() async {
+        await RecordingEngine.shared.pauseCapture()
         // No crash = pass
     }
 

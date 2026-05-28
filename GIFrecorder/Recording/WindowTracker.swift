@@ -34,6 +34,13 @@ final class WindowTracker {
     private var pendingMoveFrame: CGRect?   // Quartz frame of the pending move
     private var pendingMoveTick: Int = 0    // consecutive stable ticks since the move was first seen
 
+    // Debounce state for .resized events.
+    // We fire .resized only after the size has been stable for ≥5 consecutive poll ticks (~500ms).
+    // This prevents rapid restartCapture chains during a live resize gesture, giving SCKit's audio
+    // subsystem enough time to initialise in the new segment (startup latency ~200–500ms).
+    private var pendingResizeFrame: CGRect? // Quartz frame of the pending resize
+    private var pendingResizeTick: Int = 0  // consecutive stable ticks since the resize was first seen
+
     // MARK: - Init
 
     /// - Parameters:
@@ -61,6 +68,8 @@ final class WindowTracker {
         pollTimer = nil
         pendingMoveFrame = nil
         pendingMoveTick = 0
+        pendingResizeFrame = nil
+        pendingResizeTick = 0
     }
 
     // MARK: - Polling
@@ -100,6 +109,8 @@ final class WindowTracker {
             lastKnownFrame = newFrame
             pendingMoveFrame = nil
             pendingMoveTick = 0
+            pendingResizeFrame = nil
+            pendingResizeTick = 0
             onEvent?(.reappeared(newRegion: newRegion))
             return
         }
@@ -110,11 +121,27 @@ final class WindowTracker {
                            || abs(newFrame.origin.y - lastKnownFrame.origin.y) > 2
 
         if sizeChanged {
-            // Size change — fire immediately (no debounce needed; restartCapture is already expensive)
-            lastKnownFrame = newFrame
-            pendingMoveFrame = nil
-            pendingMoveTick = 0
-            onEvent?(.resized(newRegion: newRegion))
+            // Debounce: fire .resized only after 5 stable ticks (~500ms) at the new size.
+            // This prevents rapid restartCapture chains during live resize gestures and ensures
+            // each recorded segment is long enough for SCKit audio startup (~200–500ms).
+            if let pending = pendingResizeFrame,
+               abs(newFrame.width  - pending.width)  <= 2,
+               abs(newFrame.height - pending.height) <= 2 {
+                // Same size as last tick — increment stable counter
+                pendingResizeTick += 1
+                if pendingResizeTick >= 5 {
+                    lastKnownFrame = newFrame
+                    pendingResizeFrame = nil
+                    pendingResizeTick = 0
+                    pendingMoveFrame = nil
+                    pendingMoveTick = 0
+                    onEvent?(.resized(newRegion: newRegion))
+                }
+            } else {
+                // New size seen for the first time (or size still changing) — start/restart debounce
+                pendingResizeFrame = newFrame
+                pendingResizeTick = 1
+            }
         } else if positionChanged {
             // Debounce: fire .moved only after 2 stable ticks (~200ms) at the new position.
             if let pending = pendingMoveFrame,
@@ -144,6 +171,8 @@ final class WindowTracker {
             isDisappeared = true
             pendingMoveFrame = nil
             pendingMoveTick = 0
+            pendingResizeFrame = nil
+            pendingResizeTick = 0
             onEvent?(.disappeared)
         }
     }
